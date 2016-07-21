@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
 
@@ -6,9 +7,12 @@ android {
     buildToolsVersion "24.0.0"
 
     defaultConfig {
+
         applicationId "com.hpedrorodrigues.imagesearch"
+
         minSdkVersion 15
         targetSdkVersion 24
+
         versionCode 1
         versionName "1.0"
     }
@@ -26,6 +30,12 @@ android {
             minifyEnabled false
             proguardFiles 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

@@ -1,7 +1,9 @@
 buildscript {
 
     repositories {
+
         jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -10,11 +12,17 @@ buildscript {
     }
 }
 
+plugins {
+
+    id "me.tatarka.retrolambda" version "3.2.5"
+}
+
 allprojects {
 
     repositories {
 
         jcenter()
+        mavenCentral()
     }
 }
 
