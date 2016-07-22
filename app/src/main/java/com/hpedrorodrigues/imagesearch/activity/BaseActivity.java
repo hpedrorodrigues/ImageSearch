@@ -1,33 +1,48 @@
 package com.hpedrorodrigues.imagesearch.activity;
 
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.application.ISApplication;
+import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private ISComponent component;
 
     @Override
-    public void setContentView(View view) {
-        super.setContentView(view);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        onView();
-        onIntent();
+        component = ((ISApplication) getApplication()).getComponent();
+        component.inject(this);
     }
 
-    protected Toolbar getToolbar() {
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+
+        onView();
+        setUpToolbar();
+        onIntent();
+        setUpPresenter();
+    }
+
+    public ISComponent getComponent() {
+        return component;
+    }
+
+    public Toolbar getToolbar() {
         return toolbar;
     }
 
     protected void setUpToolbar() {
-        setUpToolbar(R.id.toolbar);
-    }
-
-    protected void setUpToolbar(int resourceId) {
-        toolbar = (Toolbar) findViewById(resourceId);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
@@ -36,4 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void onIntent() {
     }
+
+    protected abstract void setUpPresenter();
+
+    protected abstract void inject();
 }
