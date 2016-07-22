@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "818798610563",
+    "project_id": "firebase-image-search"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818798610563:android:2b2111a1ea4c6a98",
+        "android_client_info": {
+          "package_name": "com.hpedrorodrigues.imagesearch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdEkarvQ8aUKozdqwkDCbT2dAK44OQu3g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-66231011-7"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,7 +9,9 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.activity.MainActivity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class MainView extends BaseView<MainActivity> {
 
