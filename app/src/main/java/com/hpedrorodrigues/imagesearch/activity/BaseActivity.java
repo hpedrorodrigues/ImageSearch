@@ -6,21 +6,35 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.crashlytics.android.answers.ContentViewEvent;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.application.ISApplication;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
+import com.hpedrorodrigues.imagesearch.general.ISAnswer;
+
+import javax.inject.Inject;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ISComponent component;
+    private Tracker tracker;
+
+    @Inject
+    protected ISAnswer answer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        component = ((ISApplication) getApplication()).getComponent();
+        ISApplication application = (ISApplication) getApplication();
+
+        component = application.getComponent();
         component.inject(this);
+
+        tracker = application.getTracker();
     }
 
     @Override
@@ -31,6 +45,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         setUpToolbar();
         onIntent();
         setUpPresenter();
+        inject();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        tracker.setScreenName(getScreenName());
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+        answer.instance()
+                .logContentView(new ContentViewEvent().putContentId("Screen:" + getScreenName()));
     }
 
     public ISComponent getComponent() {
@@ -55,4 +80,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void setUpPresenter();
 
     protected abstract void inject();
+
+    protected abstract String getScreenName();
 }

@@ -31,6 +31,11 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected String getScreenName() {
+        return "Main";
+    }
+
+    @Override
     public void onBackPressed() {
         if (presenter.onBackPressed()) {
             super.onBackPressed();
