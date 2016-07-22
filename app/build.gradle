@@ -23,13 +23,19 @@ android {
 
         release {
 
-            minifyEnabled false
+            shrinkResources true
+            useProguard true
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
         }
 
         debug {
 
-            minifyEnabled false
+            shrinkResources true
+            useProguard true
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
         }
     }
