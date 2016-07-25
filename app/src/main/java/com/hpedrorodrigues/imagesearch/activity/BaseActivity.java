@@ -3,7 +3,6 @@ package com.hpedrorodrigues.imagesearch.activity;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.crashlytics.android.answers.ContentViewEvent;
@@ -16,7 +15,7 @@ import com.hpedrorodrigues.imagesearch.general.ISAnswer;
 
 import javax.inject.Inject;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends BaseTransitionActivity {
 
     private Toolbar toolbar;
     private ISComponent component;
