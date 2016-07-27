@@ -1,9 +1,9 @@
 package com.hpedrorodrigues.imagesearch.network;
 
-import com.hpedrorodrigues.imagesearch.network.api.FlickrApi;
-import com.hpedrorodrigues.imagesearch.network.api.FlickrMethod;
-import com.hpedrorodrigues.imagesearch.network.api.FlickrOutputFormat;
-import com.hpedrorodrigues.imagesearch.network.dto.FlickrPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
+import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrMethod;
+import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
+import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 
 import javax.inject.Inject;
 

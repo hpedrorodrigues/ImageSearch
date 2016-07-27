@@ -1,6 +1,6 @@
-package com.hpedrorodrigues.imagesearch.network.api;
+package com.hpedrorodrigues.imagesearch.network.api.flickr;
 
-import com.hpedrorodrigues.imagesearch.network.dto.FlickrPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

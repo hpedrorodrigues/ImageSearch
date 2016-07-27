@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.dto;
+package com.hpedrorodrigues.imagesearch.network.dto.flickr;
 
 import com.google.gson.annotations.SerializedName;
 import com.hpedrorodrigues.imagesearch.network.dto.base.BaseEntityDTO;

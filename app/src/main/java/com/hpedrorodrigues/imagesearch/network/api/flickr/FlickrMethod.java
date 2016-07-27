@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api;
+package com.hpedrorodrigues.imagesearch.network.api.flickr;
 
 public enum FlickrMethod {
 

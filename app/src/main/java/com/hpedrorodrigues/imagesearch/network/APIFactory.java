@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.network;
 
-import com.hpedrorodrigues.imagesearch.network.api.FlickrApi;
+import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
 
 import javax.inject.Inject;
 
