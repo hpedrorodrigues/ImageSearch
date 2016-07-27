@@ -27,14 +27,7 @@ public class MainActivity extends BaseActivity {
 
         presenter.onCreate(savedInstanceState);
 
-        imageApi
-                .flickrSearch("car", 15, 1)
-                .compose(Rx.applySchedulers())
-                .subscribe(
-                        page -> Timber.i("Success: %s", String.valueOf(page)),
-                        error -> Timber.e(error, "Error searching images in flickr"),
-                        () -> Timber.i("Finished flickr search")
-                );
+        search();
     }
 
     @Override
@@ -69,5 +62,25 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item);
+    }
+
+    private void search() {
+        imageApi
+                .flickrSearch("car", 15, 1)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        error -> Timber.e(error, "Error searching images in Flickr"),
+                        () -> Timber.i("Finished Flickr search")
+                );
+
+        imageApi
+                .cseSearch("car", 1, 15)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        error -> Timber.e(error, "Error searching images in CSE"),
+                        () -> Timber.i("Finished CSE search")
+                );
     }
 }

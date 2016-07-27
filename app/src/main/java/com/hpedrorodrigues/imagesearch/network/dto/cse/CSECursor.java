@@ -1,7 +1,5 @@
 package com.hpedrorodrigues.imagesearch.network.dto.cse;
 
-import android.content.Intent;
-
 import java.util.List;
 
 import lombok.Data;
@@ -11,7 +9,7 @@ import lombok.ToString;
 @Data
 public class CSECursor {
 
-    private Intent currentPageIndex;
+    private Integer currentPageIndex;
 
     private String estimatedResultCount;
 

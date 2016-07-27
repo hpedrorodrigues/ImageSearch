@@ -1,8 +1,11 @@
 package com.hpedrorodrigues.imagesearch.network;
 
+import com.hpedrorodrigues.imagesearch.network.api.cse.CSEApi;
+import com.hpedrorodrigues.imagesearch.network.api.cse.CSEParameter;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrMethod;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
+import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 
 import javax.inject.Inject;
@@ -28,6 +31,23 @@ public class ImageApi {
                         perPage,
                         page,
                         1
+                );
+    }
+
+    public Observable<CSEPageWrapper> cseSearch(String text, Integer start, Integer num) {
+        return apiFactory.getCseApi()
+                .search(
+                        CSEApi.API_KEY,
+                        CSEParameter.RSZ,
+                        start,
+                        num,
+                        CSEParameter.SOURCE,
+                        CSEParameter.GSS,
+                        CSEParameter.SIG,
+                        CSEParameter.SEARCH_TYPE,
+                        CSEParameter.CX,
+                        CSEParameter.GOOGLE_HOST,
+                        text
                 );
     }
 }

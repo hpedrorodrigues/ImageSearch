@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.network;
 
+import com.hpedrorodrigues.imagesearch.network.api.cse.CSEApi;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
 
 import javax.inject.Inject;
@@ -27,5 +28,9 @@ public class APIFactory {
 
     public FlickrApi getFlickrApi() {
         return getApi(FlickrApi.ENDPOINT, FlickrApi.class);
+    }
+
+    public CSEApi getCseApi() {
+        return getApi(CSEApi.ENDPOINT, CSEApi.class);
     }
 }

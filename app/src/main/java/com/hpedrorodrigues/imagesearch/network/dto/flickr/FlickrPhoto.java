@@ -1,14 +1,11 @@
 package com.hpedrorodrigues.imagesearch.network.dto.flickr;
 
 import com.google.gson.annotations.SerializedName;
-import com.hpedrorodrigues.imagesearch.network.dto.base.BaseEntityDTO;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class FlickrPhoto extends BaseEntityDTO {
+public class FlickrPhoto {
 
     private String id;
 
