@@ -87,6 +87,21 @@ dependencies {
     provided "org.projectlombok:lombok:1.12.6"
     apt "org.projectlombok:lombok:1.12.6"
 
+    // - Networking dependencies
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    // - GSON
+    compile 'com.google.code.gson:gson:2.4'
+
+    // - RX
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+
+    // - Log
+    compile 'com.jakewharton.timber:timber:4.1.2'
+
     // - Crashlytics
     compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
         transitive = true

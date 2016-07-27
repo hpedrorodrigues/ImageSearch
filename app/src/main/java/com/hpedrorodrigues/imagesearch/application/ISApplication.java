@@ -15,6 +15,7 @@ import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import io.fabric.sdk.android.Fabric;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import timber.log.Timber;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -28,6 +29,9 @@ public class ISApplication extends Application {
         super.onCreate();
 
         boolean isDebug = BuildConfig.DEBUG;
+
+        // Timber
+        Timber.plant(new Timber.DebugTree());
 
         // Dagger
         component = DaggerISComponent.builder().iSModule(new ISModule()).build();

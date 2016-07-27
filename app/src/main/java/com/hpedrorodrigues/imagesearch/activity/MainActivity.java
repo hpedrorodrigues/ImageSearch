@@ -5,11 +5,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.network.ImageApi;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.rx.Rx;
+
+import javax.inject.Inject;
+
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
     private MainPresenter presenter;
+
+    @Inject
+    public ImageApi imageApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +26,15 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         presenter.onCreate(savedInstanceState);
+
+        imageApi
+                .flickrSearch("car", 15, 1)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        error -> Timber.e(error, "Error searching images in flickr"),
+                        () -> Timber.i("Finished flickr search")
+                );
     }
 
     @Override
