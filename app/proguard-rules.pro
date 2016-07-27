@@ -75,6 +75,9 @@
 # Retain declared checked exceptions for use by a Proxy instance.
 -keepattributes Exceptions
 
+# Okio
+-dontwarn okio.**
+
 # Rx
 -keep class rx.schedulers.Schedulers {
     public static <methods>;
