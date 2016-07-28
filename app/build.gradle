@@ -3,6 +3,10 @@ apply plugin: 'io.fabric'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 
+def getApiProperty(String key) {
+    return hasProperty(key) ? getProperty(key) : System.getenv(key)
+}
+
 android {
 
     compileSdkVersion 24
@@ -18,9 +22,9 @@ android {
         versionCode 1
         versionName "1.0.0"
 
-        buildConfigField "String", "CSE_API_KEY", cseApiKey
-        buildConfigField "String", "FLICKR_API_KEY", flickrApiKey
-        buildConfigField "String", "IMGUR_API_CLIENT_ID", imgurApiClientId
+        buildConfigField "String", "CSE_API_KEY", getApiProperty('cseApiKey')
+        buildConfigField "String", "FLICKR_API_KEY", getApiProperty('flickrApiKey')
+        buildConfigField "String", "IMGUR_API_CLIENT_ID", getApiProperty('imgurApiClientId')
     }
 
     buildTypes {
