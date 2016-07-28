@@ -3,6 +3,8 @@ package com.hpedrorodrigues.imagesearch.resolver;
 import com.hpedrorodrigues.imagesearch.entity.ImageEntity;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEImageDetail;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoImageDetail;
+import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPhoto;
 import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurImageDetail;
@@ -22,12 +24,19 @@ public class ApiResolver {
 
     public List<ImageEntity> resolve(Api api, Object object) {
         switch (api) {
+
             case FLICKR:
                 return resolveFlickr((FlickrPageWrapper) object);
+
             case CSE:
                 return resolverCSE((CSEPageWrapper) object);
+
             case IMGUR:
                 return resolveImgur((ImgurPageWrapper) object);
+
+            case DUCK_DUCK_GO:
+                return resolveDuckDuckGo((DuckDuckGoPageWrapper) object);
+
             default:
                 throw new IllegalArgumentException("Unsupported api " + api);
         }
@@ -79,6 +88,23 @@ public class ApiResolver {
                         Api.IMGUR
                 ));
             }
+        }
+
+        return images;
+    }
+
+    private List<ImageEntity> resolveDuckDuckGo(DuckDuckGoPageWrapper wrapper) {
+        List<ImageEntity> images = new ArrayList<>();
+
+        for (DuckDuckGoImageDetail imageDetail : wrapper.getResults()) {
+
+            images.add(new ImageEntity(
+                    imageDetail.getTitle(),
+                    imageDetail.getSource(),
+                    imageDetail.getThumbnail(),
+                    imageDetail.getImage(),
+                    Api.DUCK_DUCK_GO
+            ));
         }
 
         return images;

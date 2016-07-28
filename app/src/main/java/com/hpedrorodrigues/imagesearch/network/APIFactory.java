@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network;
 
 import com.hpedrorodrigues.imagesearch.network.api.cse.CSEApi;
+import com.hpedrorodrigues.imagesearch.network.api.duckduckgo.DuckDuckGoApi;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
 import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurApi;
 import com.hpedrorodrigues.imagesearch.network.interceptor.AuthorizationHeaderInterceptor;
@@ -51,5 +52,9 @@ public class APIFactory {
 
     public ImgurApi getImgurApi() {
         return getApi(ImgurApi.ENDPOINT, ImgurApi.class);
+    }
+
+    public DuckDuckGoApi getDuckDuckGoApi() {
+        return getApi(DuckDuckGoApi.ENDPOINT, DuckDuckGoApi.class);
     }
 }

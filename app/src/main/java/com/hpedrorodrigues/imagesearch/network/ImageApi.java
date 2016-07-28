@@ -9,6 +9,7 @@ import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewApi;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurPageWrapper;
 
@@ -70,5 +71,11 @@ public class ImageApi {
                         page,
                         perPage
                 );
+    }
+
+    public Observable<DuckDuckGoPageWrapper> duckDuckGoSearch(String text, Integer perPage,
+                                                              Integer page) {
+        return apiFactory.getDuckDuckGoApi()
+                .search(page, perPage, text);
     }
 }

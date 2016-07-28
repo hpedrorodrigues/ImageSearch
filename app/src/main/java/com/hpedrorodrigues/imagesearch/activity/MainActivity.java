@@ -110,6 +110,18 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished Imgur search")
                 );
 
+        imageApi
+                .duckDuckGoSearch("car", 15, 1)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        wrapper -> {
+                            List<ImageEntity> images = apiResolver.resolve(Api.DUCK_DUCK_GO, wrapper);
+                            Timber.i("DuckDuckGo Success: %s", String.valueOf(images));
+                        },
+                        error -> Timber.e(error, "Error searching images in DuckDuckGo"),
+                        () -> Timber.i("Finished DuckDuckGo search")
+                );
+
         StreetViewImageDetail imageDetail = new StreetViewImageDetail();
 
         imageDetail.setWidth(600);
