@@ -117,16 +117,16 @@ dependencies {
     }
 
     // - Analytics
-    compile group: 'com.google.android.gms', name: 'play-services-analytics', version: '9.0.1'
+    compile 'com.google.android.gms:play-services-analytics:9.0.1'
 
     // - Firebase
-    compile group: 'com.google.firebase', name: 'firebase-messaging', version: '9.0.1'
+    compile 'com.google.firebase:firebase-messaging:9.0.1'
 
     // - Test dependencies
     testCompile 'junit:junit:4.12'
-    androidTestCompile group: 'commons-io', name: 'commons-io', version: '2.4'
-    androidTestCompile group: 'com.android.support.test', name: 'testing-support-lib', version: '0.1'
-    androidTestCompile group: 'com.android.support.test.espresso', name: 'espresso-core', version: '2.0'
+    androidTestCompile 'commons-io:commons-io:2.4'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
