@@ -107,5 +107,4 @@
 -keep class sun.misc.Unsafe { *; }
 -keep class com.google.gson.examples.android.model.** { *; }
 
-# Local code
--keep class com.hpedrorodrigues.imagesearch.** { *; }
+-dontwarn java.beans.**
