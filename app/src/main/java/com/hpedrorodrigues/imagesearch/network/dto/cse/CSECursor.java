@@ -3,9 +3,7 @@ package com.hpedrorodrigues.imagesearch.network.dto.cse;
 import java.util.List;
 
 import lombok.Data;
-import lombok.ToString;
 
-@ToString
 @Data
 public class CSECursor {
 

@@ -5,9 +5,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.entity.ImageEntity;
 import com.hpedrorodrigues.imagesearch.network.ImageApi;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.resolver.Api;
+import com.hpedrorodrigues.imagesearch.resolver.ApiResolver;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -19,6 +24,9 @@ public class MainActivity extends BaseActivity {
 
     @Inject
     public ImageApi imageApi;
+
+    @Inject
+    public ApiResolver apiResolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +77,10 @@ public class MainActivity extends BaseActivity {
                 .flickrSearch("car", 15, 1)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        wrapper -> {
+                            List<ImageEntity> images = apiResolver.resolve(Api.FLICKR, wrapper);
+                            Timber.i("Flickr Success: %s", String.valueOf(images));
+                        },
                         error -> Timber.e(error, "Error searching images in Flickr"),
                         () -> Timber.i("Finished Flickr search")
                 );
@@ -78,7 +89,10 @@ public class MainActivity extends BaseActivity {
                 .cseSearch("car", 1, 15)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        wrapper -> {
+                            List<ImageEntity> images = apiResolver.resolve(Api.CSE, wrapper);
+                            Timber.i("CSE Success: %s", String.valueOf(images));
+                        },
                         error -> Timber.e(error, "Error searching images in CSE"),
                         () -> Timber.i("Finished CSE search")
                 );
@@ -87,7 +101,10 @@ public class MainActivity extends BaseActivity {
                 .imgurSearch("car", 15, 1)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        wrapper -> {
+                            List<ImageEntity> images = apiResolver.resolve(Api.IMGUR, wrapper);
+                            Timber.i("Imgur Success: %s", String.valueOf(images));
+                        },
                         error -> Timber.e(error, "Error searching images in Imgur"),
                         () -> Timber.i("Finished Imgur search")
                 );

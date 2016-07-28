@@ -3,9 +3,7 @@ package com.hpedrorodrigues.imagesearch.network.dto.imgur;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Data;
-import lombok.ToString;
 
-@ToString
 @Data
 public class ImgurImageDetail {
 
@@ -74,4 +72,6 @@ public class ImgurImageDetail {
     private Boolean isAd;
 
     private Integer views;
+
+    private String type;
 }
