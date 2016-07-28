@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.network;
 
+import com.hpedrorodrigues.imagesearch.network.api.bing.BingParameter;
 import com.hpedrorodrigues.imagesearch.network.api.cse.CSEApi;
 import com.hpedrorodrigues.imagesearch.network.api.cse.CSEParameter;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
@@ -8,6 +9,7 @@ import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
 import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewApi;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
+import com.hpedrorodrigues.imagesearch.network.dto.bing.BingPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
@@ -77,5 +79,11 @@ public class ImageApi {
                                                               Integer page) {
         return apiFactory.getDuckDuckGoApi()
                 .search(page, perPage, text);
+    }
+
+    public Observable<BingPageWrapper> bingSearch(String text, Integer perPage,
+                                                  Integer page) {
+        return apiFactory.getBingApi()
+                .search(text, perPage, page, BingParameter.SAFE_SEARCH);
     }
 }

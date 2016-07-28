@@ -122,6 +122,18 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished DuckDuckGo search")
                 );
 
+        imageApi
+                .bingSearch("car", 15, 1)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        wrapper -> {
+                            List<ImageEntity> images = apiResolver.resolve(Api.BING, wrapper);
+                            Timber.i("Bing Success: %s", String.valueOf(images));
+                        },
+                        error -> Timber.e(error, "Error searching images in Bing"),
+                        () -> Timber.i("Finished Bing search")
+                );
+
         StreetViewImageDetail imageDetail = new StreetViewImageDetail();
 
         imageDetail.setWidth(600);

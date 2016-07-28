@@ -1,6 +1,8 @@
 package com.hpedrorodrigues.imagesearch.resolver;
 
 import com.hpedrorodrigues.imagesearch.entity.ImageEntity;
+import com.hpedrorodrigues.imagesearch.network.dto.bing.BingImageDetail;
+import com.hpedrorodrigues.imagesearch.network.dto.bing.BingPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEImageDetail;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoImageDetail;
@@ -36,6 +38,9 @@ public class ApiResolver {
 
             case DUCK_DUCK_GO:
                 return resolveDuckDuckGo((DuckDuckGoPageWrapper) object);
+
+            case BING:
+                return resolveBing((BingPageWrapper) object);
 
             default:
                 throw new IllegalArgumentException("Unsupported api " + api);
@@ -104,6 +109,22 @@ public class ApiResolver {
                     imageDetail.getThumbnail(),
                     imageDetail.getImage(),
                     Api.DUCK_DUCK_GO
+            ));
+        }
+
+        return images;
+    }
+
+    private List<ImageEntity> resolveBing(BingPageWrapper wrapper) {
+        List<ImageEntity> images = new ArrayList<>();
+
+        for (BingImageDetail imageDetail : wrapper.getValue()) {
+            images.add(new ImageEntity(
+                    imageDetail.getName(),
+                    imageDetail.getDatePublished(),
+                    imageDetail.getThumbnailUrl(),
+                    imageDetail.getContentUrl(),
+                    Api.BING
             ));
         }
 
