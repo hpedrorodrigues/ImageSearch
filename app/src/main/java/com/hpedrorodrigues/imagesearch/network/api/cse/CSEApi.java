@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.network.api.cse;
 
+import com.hpedrorodrigues.imagesearch.BuildConfig;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 
 import retrofit2.http.GET;
@@ -9,7 +10,7 @@ import rx.Observable;
 public interface CSEApi {
 
     String ENDPOINT = "https://www.googleapis.com/";
-    String API_KEY = "AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY";
+    String API_KEY = BuildConfig.CSE_API_KEY;
 
     @GET("/customsearch/v1element")
     Observable<CSEPageWrapper> search(@Query("key") String key,

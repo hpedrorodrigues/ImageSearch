@@ -17,6 +17,10 @@ android {
 
         versionCode 1
         versionName "1.0.0"
+
+        buildConfigField "String", "CSE_API_KEY", cseApiKey
+        buildConfigField "String", "FLICKR_API_KEY", flickrApiKey
+        buildConfigField "String", "IMGUR_API_CLIENT_ID", imgurApiClientId
     }
 
     buildTypes {

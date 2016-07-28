@@ -5,8 +5,10 @@ import com.hpedrorodrigues.imagesearch.network.api.cse.CSEParameter;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrMethod;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
+import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurPageWrapper;
 
 import javax.inject.Inject;
 
@@ -48,6 +50,16 @@ public class ImageApi {
                         CSEParameter.CX,
                         CSEParameter.GOOGLE_HOST,
                         text
+                );
+    }
+
+    public Observable<ImgurPageWrapper> imgurSearch(String text, Integer perPage, Integer page) {
+        return apiFactory.getImgurApi()
+                .search(
+                        ImgurImageType.JPG.getValue(),
+                        text,
+                        page,
+                        perPage
                 );
     }
 }

@@ -82,5 +82,14 @@ public class MainActivity extends BaseActivity {
                         error -> Timber.e(error, "Error searching images in CSE"),
                         () -> Timber.i("Finished CSE search")
                 );
+
+        imageApi
+                .imgurSearch("car", 15, 1)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        page -> Timber.i("Success: %s", String.valueOf(page)),
+                        error -> Timber.e(error, "Error searching images in Imgur"),
+                        () -> Timber.i("Finished Imgur search")
+                );
     }
 }
