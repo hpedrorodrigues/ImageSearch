@@ -8,6 +8,7 @@
 - [Imgur Docs][imgur-docs]
 - [Google Custom Search Engine Docs][google-cse-docs]
 - [Street View Image Api Docs][street-view-docs]
+- [DuckDuckGo Docs][duck-duck-go-docs]
 
 [travis-image]: https://travis-ci.org/hpedrorodrigues/ImageSearch.svg?branch=master
 [travis-url]: https://travis-ci.org/hpedrorodrigues/ImageSearch
@@ -16,3 +17,4 @@
 [imgur-docs]: https://api.imgur.com/endpoints/gallery#gallery-search
 [google-cse-docs]: https://developers.google.com/custom-search/docs/overview
 [street-view-docs]: https://developers.google.com/maps/documentation/streetview/intro
+[duck-duck-go-docs]: https://duckduckgo.com/api
