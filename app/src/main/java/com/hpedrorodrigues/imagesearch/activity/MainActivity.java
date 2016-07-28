@@ -108,5 +108,8 @@ public class MainActivity extends BaseActivity {
                         error -> Timber.e(error, "Error searching images in Imgur"),
                         () -> Timber.i("Finished Imgur search")
                 );
+
+        String imageUrl = imageApi.createImageUrl(600, 300, 46.414382, 10.013988, 151.78, -0.76, 2);
+        Timber.i("StreetView image Url: %s", imageUrl);
     }
 }
