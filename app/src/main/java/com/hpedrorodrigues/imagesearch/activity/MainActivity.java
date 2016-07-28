@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.entity.ImageEntity;
 import com.hpedrorodrigues.imagesearch.network.ImageApi;
+import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.resolver.Api;
 import com.hpedrorodrigues.imagesearch.resolver.ApiResolver;
@@ -109,7 +110,17 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished Imgur search")
                 );
 
-        String imageUrl = imageApi.createImageUrl(600, 300, 46.414382, 10.013988, 151.78, -0.76, 2);
+        StreetViewImageDetail imageDetail = new StreetViewImageDetail();
+
+        imageDetail.setWidth(600);
+        imageDetail.setHeight(300);
+        imageDetail.setLatitude(46.414382);
+        imageDetail.setLongitude(10.013988);
+        imageDetail.setHeading(151.78);
+        imageDetail.setPitch(-0.76);
+        imageDetail.setScale(2);
+
+        String imageUrl = imageApi.getImageUrl(imageDetail);
         Timber.i("StreetView image Url: %s", imageUrl);
     }
 }

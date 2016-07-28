@@ -7,6 +7,7 @@ import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrMethod;
 import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
 import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewApi;
+import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
 import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurPageWrapper;
@@ -27,11 +28,8 @@ public class ImageApi {
     public ImageApi() {
     }
 
-    public String createImageUrl(Integer width, Integer height,
-                                 Double latitude, Double longitude,
-                                 Double heading, Double pitch,
-                                 Integer scale) {
-        return streetViewApi.createImageUrl(width, height, latitude, longitude, heading, pitch, scale);
+    public String getImageUrl(StreetViewImageDetail imageDetail) {
+        return streetViewApi.getImageUrl(imageDetail);
     }
 
     public Observable<FlickrPageWrapper> flickrSearch(String text, Integer perPage, Integer page) {

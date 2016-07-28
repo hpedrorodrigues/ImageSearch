@@ -13,32 +13,28 @@ public class StreetViewApi {
     public StreetViewApi() {
     }
 
-    public String createImageUrl(Integer width, Integer height,
-                                 Double latitude, Double longitude,
-                                 Double heading, Double pitch,
-                                 Integer scale) {
-
+    public String getImageUrl(StreetViewImageDetail imageDetail) {
         return new StringBuilder()
                 .append(ENDPOINT)
                 .append("?")
                 .append("size=")
-                .append(width)
+                .append(imageDetail.getWidth())
                 .append("x")
-                .append(height)
+                .append(imageDetail.getHeight())
                 .append("&")
                 .append("location=")
-                .append(latitude)
+                .append(imageDetail.getLatitude())
                 .append(",")
-                .append(longitude)
+                .append(imageDetail.getLongitude())
                 .append("&")
                 .append("heading=")
-                .append(heading)
+                .append(imageDetail.getHeading())
                 .append("&")
                 .append("pitch=")
-                .append(pitch)
+                .append(imageDetail.getPitch())
                 .append("&")
                 .append("scale=")
-                .append(scale)
+                .append(imageDetail.getScale())
                 .append("&")
                 .append("key=")
                 .append(API_KEY)
