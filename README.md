@@ -11,6 +11,8 @@
 - [DuckDuckGo Docs][duck-duck-go-docs]
 - [Bing Image Search Docs][bing-image-search-docs]
 
+**API responses** [here][docs]
+
 [travis-image]: https://travis-ci.org/hpedrorodrigues/ImageSearch.svg?branch=master
 [travis-url]: https://travis-ci.org/hpedrorodrigues/ImageSearch
 
@@ -20,3 +22,5 @@
 [street-view-docs]: https://developers.google.com/maps/documentation/streetview/intro
 [duck-duck-go-docs]: https://duckduckgo.com/api
 [bing-image-search-docs]: https://dev.cognitive.microsoft.com/docs/services/56b43f0ccf5ff8098cef3808/operations/56b4433fcf5ff8098cef380c
+
+[docs]: ./docs/APIs.md
