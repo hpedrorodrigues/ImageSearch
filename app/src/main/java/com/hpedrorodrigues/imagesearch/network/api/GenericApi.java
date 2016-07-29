@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import retrofit2.Call;
 import rx.Observable;
 
 public class GenericApi {
@@ -44,6 +45,20 @@ public class GenericApi {
             if (baseApi.getApi().equals(api)) {
 
                 return baseApi.search(text, page, perPage, safeSearch);
+            }
+        }
+
+        return null;
+    }
+
+    public Call<Map> callSearch(final Api api, final String text, final Integer page,
+                                final Integer perPage, final Boolean safeSearch) {
+
+        for (BaseApi baseApi : APIS) {
+
+            if (baseApi.getApi().equals(api)) {
+
+                return baseApi.callSearch(text, page, perPage, safeSearch);
             }
         }
 

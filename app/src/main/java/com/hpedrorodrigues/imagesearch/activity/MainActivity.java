@@ -146,5 +146,21 @@ public class MainActivity extends BaseActivity {
 
         String imageUrl = genericApi.getImageUrl(imageDetail);
         Timber.i("StreetView image Url: %s", imageUrl);
+
+//        Observable
+//                .create((Subscriber<? super List<Image>> subscriber) ->{
+//
+//                    List<Image> images = new ArrayList<>();
+//
+//                    try {
+//
+//                        genericApi.callSearch(Api.FLICKR, "car", 1, 15, false).execute().body();
+//
+//                    } catch (Throwable t){
+//
+//                    } finally {
+//
+//                    }
+//        });
     }
 }
