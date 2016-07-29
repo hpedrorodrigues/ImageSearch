@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.duckduckgo;
+package com.hpedrorodrigues.imagesearch.network.services.duckduckgo;
 
 import java.util.Map;
 

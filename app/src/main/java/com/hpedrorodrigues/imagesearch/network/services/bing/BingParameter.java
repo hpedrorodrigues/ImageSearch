@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.bing;
+package com.hpedrorodrigues.imagesearch.network.services.bing;
 
 public interface BingParameter {
 

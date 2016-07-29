@@ -1,15 +1,14 @@
-package com.hpedrorodrigues.imagesearch.network;
+package com.hpedrorodrigues.imagesearch.network.api;
 
-import com.hpedrorodrigues.imagesearch.network.api.bing.BingParameter;
-import com.hpedrorodrigues.imagesearch.network.api.cse.CSEApi;
-import com.hpedrorodrigues.imagesearch.network.api.cse.CSEParameter;
-import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrApi;
-import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrMethod;
-import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
-import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
-import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewApi;
-import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.network.api.Api;
+import com.hpedrorodrigues.imagesearch.network.services.bing.BingParameter;
+import com.hpedrorodrigues.imagesearch.network.services.cse.CSEApi;
+import com.hpedrorodrigues.imagesearch.network.services.cse.CSEParameter;
+import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrApi;
+import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrMethod;
+import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrOutputFormat;
+import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurImageType;
+import com.hpedrorodrigues.imagesearch.network.services.street_view.StreetViewApi;
+import com.hpedrorodrigues.imagesearch.network.services.street_view.StreetViewImageDetail;
 
 import java.util.Map;
 

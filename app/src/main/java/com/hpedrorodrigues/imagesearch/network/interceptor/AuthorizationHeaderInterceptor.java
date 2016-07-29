@@ -1,7 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network.interceptor;
 
-import com.hpedrorodrigues.imagesearch.network.api.bing.BingApi;
-import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurApi;
+import com.hpedrorodrigues.imagesearch.network.services.bing.BingApi;
+import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurApi;
 
 import java.io.IOException;
 

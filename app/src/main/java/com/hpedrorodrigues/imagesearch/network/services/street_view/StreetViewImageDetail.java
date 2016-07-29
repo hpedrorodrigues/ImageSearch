@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.street_view;
+package com.hpedrorodrigues.imagesearch.network.services.street_view;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.flickr;
+package com.hpedrorodrigues.imagesearch.network.services.flickr;
 
 public enum FlickrOutputFormat {
     JSON("json"),

@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.imgur;
+package com.hpedrorodrigues.imagesearch.network.services.imgur;
 
 import com.hpedrorodrigues.imagesearch.BuildConfig;
 

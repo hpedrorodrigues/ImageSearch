@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.network.api.cse;
+package com.hpedrorodrigues.imagesearch.network.services.cse;
 
 import com.hpedrorodrigues.imagesearch.BuildConfig;
 

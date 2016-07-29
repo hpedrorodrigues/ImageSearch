@@ -6,9 +6,9 @@ import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.entity.Image;
-import com.hpedrorodrigues.imagesearch.network.GenericApi;
+import com.hpedrorodrigues.imagesearch.network.api.GenericApi;
 import com.hpedrorodrigues.imagesearch.network.api.Api;
-import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
+import com.hpedrorodrigues.imagesearch.network.services.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
