@@ -17,12 +17,12 @@ import javax.inject.Inject;
 
 public abstract class BaseActivity extends BaseTransitionActivity {
 
+    @Inject
+    protected ISAnswer answer;
+
     private Toolbar toolbar;
     private ISComponent component;
     private Tracker tracker;
-
-    @Inject
-    protected ISAnswer answer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

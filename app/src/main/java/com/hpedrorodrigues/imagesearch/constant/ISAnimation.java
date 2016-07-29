@@ -14,10 +14,6 @@ public enum ISAnimation {
         this.order = order;
     }
 
-    public int getOrder() {
-        return order;
-    }
-
     public static ISAnimation find(int order) {
         for (ISAnimation animation : ISAnimation.values()) {
 
@@ -28,5 +24,9 @@ public enum ISAnimation {
         }
 
         return FADE;
+    }
+
+    public int getOrder() {
+        return order;
     }
 }

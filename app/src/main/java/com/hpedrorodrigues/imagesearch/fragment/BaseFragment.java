@@ -16,12 +16,12 @@ import javax.inject.Inject;
 
 public abstract class BaseFragment extends Fragment {
 
+    @Inject
+    protected ISAnswer answer;
+
     private Toolbar toolbar;
     private ISComponent component;
     private Tracker tracker;
-
-    @Inject
-    protected ISAnswer answer;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

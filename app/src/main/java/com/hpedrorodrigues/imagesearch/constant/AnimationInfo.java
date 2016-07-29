@@ -17,14 +17,6 @@ public enum AnimationInfo {
         this.reverseAnimation = reverseAnimation;
     }
 
-    public ISAnimation getAnimation() {
-        return animation;
-    }
-
-    public ISAnimation getReverseAnimation() {
-        return reverseAnimation;
-    }
-
     public static ISAnimation findReverseByAnimation(ISAnimation animation) {
         for (AnimationInfo animationInfo : AnimationInfo.values()) {
 
@@ -35,5 +27,13 @@ public enum AnimationInfo {
         }
 
         return ISAnimation.FADE;
+    }
+
+    public ISAnimation getAnimation() {
+        return animation;
+    }
+
+    public ISAnimation getReverseAnimation() {
+        return reverseAnimation;
     }
 }

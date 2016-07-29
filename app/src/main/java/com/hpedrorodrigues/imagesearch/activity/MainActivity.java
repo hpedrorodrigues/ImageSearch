@@ -21,13 +21,13 @@ import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
-    private MainPresenter presenter;
-
     @Inject
     public GenericApi genericApi;
 
     @Inject
     public GenericParser genericParser;
+
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
