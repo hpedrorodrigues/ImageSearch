@@ -5,12 +5,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.entity.ImageEntity;
+import com.hpedrorodrigues.imagesearch.entity.Image;
 import com.hpedrorodrigues.imagesearch.network.ImageApi;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
-import com.hpedrorodrigues.imagesearch.resolver.Api;
-import com.hpedrorodrigues.imagesearch.resolver.ApiResolver;
+import com.hpedrorodrigues.imagesearch.network.api.Api;
+import com.hpedrorodrigues.imagesearch.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
 
 import java.util.List;
@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity {
     public ImageApi imageApi;
 
     @Inject
-    public ApiResolver apiResolver;
+    public GenericParser genericParser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +75,11 @@ public class MainActivity extends BaseActivity {
 
     private void search() {
         imageApi
-                .flickrSearch("car", 15, 1)
+                .search(Api.FLICKR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        wrapper -> {
-                            List<ImageEntity> images = apiResolver.resolve(Api.FLICKR, wrapper);
+                        data -> {
+                            List<Image> images = genericParser.parse(Api.FLICKR, data);
                             Timber.i("Flickr Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Flickr"),
@@ -87,11 +87,11 @@ public class MainActivity extends BaseActivity {
                 );
 
         imageApi
-                .cseSearch("car", 1, 15)
+                .search(Api.CSE, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        wrapper -> {
-                            List<ImageEntity> images = apiResolver.resolve(Api.CSE, wrapper);
+                        data -> {
+                            List<Image> images = genericParser.parse(Api.CSE, data);
                             Timber.i("CSE Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in CSE"),
@@ -99,11 +99,11 @@ public class MainActivity extends BaseActivity {
                 );
 
         imageApi
-                .imgurSearch("car", 15, 1)
+                .search(Api.IMGUR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        wrapper -> {
-                            List<ImageEntity> images = apiResolver.resolve(Api.IMGUR, wrapper);
+                        data -> {
+                            List<Image> images = genericParser.parse(Api.IMGUR, data);
                             Timber.i("Imgur Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Imgur"),
@@ -111,11 +111,11 @@ public class MainActivity extends BaseActivity {
                 );
 
         imageApi
-                .duckDuckGoSearch("car", 15, 1)
+                .search(Api.DUCK_DUCK_GO, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        wrapper -> {
-                            List<ImageEntity> images = apiResolver.resolve(Api.DUCK_DUCK_GO, wrapper);
+                        data -> {
+                            List<Image> images = genericParser.parse(Api.DUCK_DUCK_GO, data);
                             Timber.i("DuckDuckGo Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in DuckDuckGo"),
@@ -123,11 +123,11 @@ public class MainActivity extends BaseActivity {
                 );
 
         imageApi
-                .bingSearch("car", 15, 1)
+                .search(Api.BING, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        wrapper -> {
-                            List<ImageEntity> images = apiResolver.resolve(Api.BING, wrapper);
+                        data -> {
+                            List<Image> images = genericParser.parse(Api.BING, data);
                             Timber.i("Bing Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Bing"),

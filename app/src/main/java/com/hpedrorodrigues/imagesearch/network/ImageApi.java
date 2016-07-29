@@ -9,11 +9,9 @@ import com.hpedrorodrigues.imagesearch.network.api.flickr.FlickrOutputFormat;
 import com.hpedrorodrigues.imagesearch.network.api.imgur.ImgurImageType;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewApi;
 import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.network.dto.bing.BingPageWrapper;
-import com.hpedrorodrigues.imagesearch.network.dto.cse.CSEPageWrapper;
-import com.hpedrorodrigues.imagesearch.network.dto.duckduckgo.DuckDuckGoPageWrapper;
-import com.hpedrorodrigues.imagesearch.network.dto.flickr.FlickrPageWrapper;
-import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurPageWrapper;
+import com.hpedrorodrigues.imagesearch.network.api.Api;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -35,7 +33,32 @@ public class ImageApi {
         return streetViewApi.getImageUrl(imageDetail);
     }
 
-    public Observable<FlickrPageWrapper> flickrSearch(String text, Integer perPage, Integer page) {
+    public Observable<Map> search(Api api, String text, Integer page,
+                                  Integer perPage, Boolean safeSearch) {
+        switch (api) {
+
+            case FLICKR:
+                return flickrSearch(text, page, perPage, safeSearch);
+
+            case CSE:
+                return cseSearch(text, page, perPage, safeSearch);
+
+            case IMGUR:
+                return imgurSearch(text, page, perPage, safeSearch);
+
+            case DUCK_DUCK_GO:
+                return duckDuckGoSearch(text, page, perPage, safeSearch);
+
+            case BING:
+                return bingSearch(text, page, perPage, safeSearch);
+
+            default:
+                return null;
+        }
+    }
+
+    private Observable<Map> flickrSearch(String text, Integer page,
+                                         Integer perPage, Boolean safeSearch) {
         return apiFactory.getFlickrApi()
                 .search(
                         FlickrMethod.SEARCH.getId(),
@@ -48,13 +71,14 @@ public class ImageApi {
                 );
     }
 
-    public Observable<CSEPageWrapper> cseSearch(String text, Integer start, Integer num) {
+    private Observable<Map> cseSearch(String text, Integer page,
+                                      Integer perPage, Boolean safeSearch) {
         return apiFactory.getCseApi()
                 .search(
                         CSEApi.API_KEY,
                         CSEParameter.RSZ,
-                        start,
-                        num,
+                        page,
+                        perPage,
                         CSEParameter.SOURCE,
                         CSEParameter.GSS,
                         CSEParameter.SIG,
@@ -65,7 +89,8 @@ public class ImageApi {
                 );
     }
 
-    public Observable<ImgurPageWrapper> imgurSearch(String text, Integer perPage, Integer page) {
+    private Observable<Map> imgurSearch(String text, Integer page,
+                                        Integer perPage, Boolean safeSearch) {
         return apiFactory.getImgurApi()
                 .search(
                         ImgurImageType.JPG.getValue(),
@@ -75,14 +100,14 @@ public class ImageApi {
                 );
     }
 
-    public Observable<DuckDuckGoPageWrapper> duckDuckGoSearch(String text, Integer perPage,
-                                                              Integer page) {
-        return apiFactory.getDuckDuckGoApi()
-                .search(page, perPage, text);
+    private Observable<Map> duckDuckGoSearch(String text, Integer page,
+                                             Integer perPage, Boolean safeSearch) {
+
+        return apiFactory.getDuckDuckGoApi().search(page, perPage, text);
     }
 
-    public Observable<BingPageWrapper> bingSearch(String text, Integer perPage,
-                                                  Integer page) {
+    private Observable<Map> bingSearch(String text, Integer page,
+                                       Integer perPage, Boolean safeSearch) {
         return apiFactory.getBingApi()
                 .search(text, perPage, page, BingParameter.SAFE_SEARCH);
     }

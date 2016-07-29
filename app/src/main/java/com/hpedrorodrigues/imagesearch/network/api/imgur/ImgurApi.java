@@ -1,7 +1,8 @@
 package com.hpedrorodrigues.imagesearch.network.api.imgur;
 
 import com.hpedrorodrigues.imagesearch.BuildConfig;
-import com.hpedrorodrigues.imagesearch.network.dto.imgur.ImgurPageWrapper;
+
+import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -13,8 +14,8 @@ public interface ImgurApi {
     String API_CLIENT_ID = BuildConfig.IMGUR_API_CLIENT_ID;
 
     @GET("/3/gallery/search")
-    Observable<ImgurPageWrapper> search(@Query("q_type") String qType,
-                                        @Query("q") String q,
-                                        @Query("page") Integer page,
-                                        @Query("per_page") Integer perPage);
+    Observable<Map> search(@Query("q_type") String qType,
+                           @Query("q") String q,
+                           @Query("page") Integer page,
+                           @Query("per_page") Integer perPage);
 }

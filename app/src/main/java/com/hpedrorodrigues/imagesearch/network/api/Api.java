@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.resolver;
+package com.hpedrorodrigues.imagesearch.network.api;
 
 public enum Api {
     FLICKR,
