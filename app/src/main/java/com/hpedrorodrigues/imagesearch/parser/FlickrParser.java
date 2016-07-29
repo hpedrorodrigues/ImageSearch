@@ -6,11 +6,8 @@ import com.hpedrorodrigues.imagesearch.network.api.Api;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 class FlickrParser extends BaseParser {
 
-    @Inject
     public FlickrParser() {
     }
 

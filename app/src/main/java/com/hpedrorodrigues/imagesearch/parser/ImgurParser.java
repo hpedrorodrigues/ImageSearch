@@ -7,11 +7,8 @@ import com.hpedrorodrigues.imagesearch.util.StringUtil;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 class ImgurParser extends BaseParser {
 
-    @Inject
     public ImgurParser() {
     }
 
