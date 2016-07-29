@@ -7,6 +7,8 @@ import com.hpedrorodrigues.imagesearch.network.services.duckduckgo.DuckDuckGoApi
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrApi;
 import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurApi;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -18,8 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIFactory {
 
+    private Map<String, Object> cache;
+
     @Inject
     public APIFactory() {
+        this.cache = new HashMap<>();
     }
 
     private OkHttpClient getClient() {
@@ -32,6 +37,10 @@ public class APIFactory {
     }
 
     private <T> T getApi(String endpoint, Class<T> clazz) {
+        if (cache.containsKey(endpoint)) {
+            return (T) cache.get(endpoint);
+        }
+
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl(endpoint)
@@ -40,7 +49,11 @@ public class APIFactory {
                 .client(getClient())
                 .build();
 
-        return retrofit.create(clazz);
+        T service = retrofit.create(clazz);
+
+        cache.put(endpoint, service);
+
+        return service;
     }
 
     public FlickrApi getFlickrApi() {
