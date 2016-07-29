@@ -7,11 +7,10 @@ import android.view.MenuItem;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.entity.Image;
 import com.hpedrorodrigues.imagesearch.network.api.Api;
-import com.hpedrorodrigues.imagesearch.network.api.GenericApi;
 import com.hpedrorodrigues.imagesearch.network.services.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
+import com.hpedrorodrigues.imagesearch.service.GenericService;
 
 import java.util.List;
 
@@ -22,10 +21,7 @@ import timber.log.Timber;
 public class MainActivity extends BaseActivity {
 
     @Inject
-    public GenericApi genericApi;
-
-    @Inject
-    public GenericParser genericParser;
+    public GenericService genericService;
 
     private MainPresenter presenter;
 
@@ -74,64 +70,73 @@ public class MainActivity extends BaseActivity {
     }
 
     private void search() {
-        genericApi
+        genericService
                 .search(Api.FLICKR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericParser.parse(Api.FLICKR, data);
+                            List<Image> images = genericService.parse(Api.FLICKR, data);
                             Timber.i("Flickr Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Flickr"),
                         () -> Timber.i("Finished Flickr search")
                 );
 
-        genericApi
+        genericService
                 .search(Api.CSE, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericParser.parse(Api.CSE, data);
+                            List<Image> images = genericService.parse(Api.CSE, data);
                             Timber.i("CSE Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in CSE"),
                         () -> Timber.i("Finished CSE search")
                 );
 
-        genericApi
+        genericService
                 .search(Api.IMGUR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericParser.parse(Api.IMGUR, data);
+                            List<Image> images = genericService.parse(Api.IMGUR, data);
                             Timber.i("Imgur Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Imgur"),
                         () -> Timber.i("Finished Imgur search")
                 );
 
-        genericApi
+        genericService
                 .search(Api.DUCK_DUCK_GO, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericParser.parse(Api.DUCK_DUCK_GO, data);
+                            List<Image> images = genericService.parse(Api.DUCK_DUCK_GO, data);
                             Timber.i("DuckDuckGo Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in DuckDuckGo"),
                         () -> Timber.i("Finished DuckDuckGo search")
                 );
 
-        genericApi
+        genericService
                 .search(Api.BING, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericParser.parse(Api.BING, data);
+                            List<Image> images = genericService.parse(Api.BING, data);
                             Timber.i("Bing Success: %s", String.valueOf(images));
                         },
                         error -> Timber.e(error, "Error searching images in Bing"),
                         () -> Timber.i("Finished Bing search")
+                );
+
+        genericService
+                .searchAll("car", 1, 15, false)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        images -> Timber.i("All Success: %s", String.valueOf(images)),
+                        error -> Timber.e(error, "Error searching images in all apis"),
+                        () -> Timber.i("Finished all search")
                 );
 
         StreetViewImageDetail imageDetail = new StreetViewImageDetail();
@@ -144,23 +149,7 @@ public class MainActivity extends BaseActivity {
         imageDetail.setPitch(-0.76);
         imageDetail.setScale(2);
 
-        String imageUrl = genericApi.getImageUrl(imageDetail);
+        String imageUrl = genericService.getImageUrl(imageDetail);
         Timber.i("StreetView image Url: %s", imageUrl);
-
-//        Observable
-//                .create((Subscriber<? super List<Image>> subscriber) ->{
-//
-//                    List<Image> images = new ArrayList<>();
-//
-//                    try {
-//
-//                        genericApi.callSearch(Api.FLICKR, "car", 1, 15, false).execute().body();
-//
-//                    } catch (Throwable t){
-//
-//                    } finally {
-//
-//                    }
-//        });
     }
 }
