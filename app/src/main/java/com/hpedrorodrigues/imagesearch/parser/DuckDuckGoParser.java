@@ -8,7 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-public class DuckDuckGoParser extends BaseParser {
+class DuckDuckGoParser extends BaseParser {
 
     @Inject
     public DuckDuckGoParser() {

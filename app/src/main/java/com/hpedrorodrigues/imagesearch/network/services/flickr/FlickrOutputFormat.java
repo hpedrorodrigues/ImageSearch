@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network.services.flickr;
 
 public enum FlickrOutputFormat {
+
     JSON("json"),
     XML("rest"),
     PHP_SERIAL("php_serial");

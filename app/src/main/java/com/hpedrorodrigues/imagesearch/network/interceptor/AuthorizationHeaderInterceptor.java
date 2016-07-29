@@ -1,7 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network.interceptor;
 
-import com.hpedrorodrigues.imagesearch.network.services.bing.BingApi;
-import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurApi;
+import com.hpedrorodrigues.imagesearch.network.services.bing.BingService;
+import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurService;
 
 import java.io.IOException;
 
@@ -17,12 +17,12 @@ public class AuthorizationHeaderInterceptor implements Interceptor {
 
         Request.Builder builder = original.newBuilder();
 
-        if (original.url().toString().startsWith(ImgurApi.ENDPOINT)) {
+        if (original.url().toString().startsWith(ImgurService.ENDPOINT)) {
 
-            builder.addHeader("Authorization", "Client-ID " + ImgurApi.API_CLIENT_ID);
-        } else if (original.url().toString().startsWith(BingApi.ENDPOINT)) {
+            builder.addHeader("Authorization", "Client-ID " + ImgurService.API_CLIENT_ID);
+        } else if (original.url().toString().startsWith(BingService.ENDPOINT)) {
 
-            builder.addHeader("Ocp-Apim-Subscription-Key", BingApi.API_KEY);
+            builder.addHeader("Ocp-Apim-Subscription-Key", BingService.API_KEY);
         }
 
         Request request = builder.method(original.method(), original.body()).build();

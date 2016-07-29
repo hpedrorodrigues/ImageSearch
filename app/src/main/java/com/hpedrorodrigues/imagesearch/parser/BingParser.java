@@ -8,7 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-public class BingParser extends BaseParser {
+class BingParser extends BaseParser {
 
     @Inject
     public BingParser() {

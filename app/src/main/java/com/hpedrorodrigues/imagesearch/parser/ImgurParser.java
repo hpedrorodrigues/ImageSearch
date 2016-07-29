@@ -9,7 +9,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-public class ImgurParser extends BaseParser {
+class ImgurParser extends BaseParser {
 
     @Inject
     public ImgurParser() {

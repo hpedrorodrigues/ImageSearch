@@ -31,8 +31,6 @@ public abstract class BaseActivity extends BaseTransitionActivity {
         ISApplication application = (ISApplication) getApplication();
 
         component = application.getComponent();
-        component.inject(this);
-
         tracker = application.getTracker();
     }
 

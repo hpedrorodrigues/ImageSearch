@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseParser {
+abstract class BaseParser {
 
     protected abstract List<Map> getImages(Map data);
 

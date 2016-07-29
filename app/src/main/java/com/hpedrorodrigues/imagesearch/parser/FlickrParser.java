@@ -8,7 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-public class FlickrParser extends BaseParser {
+class FlickrParser extends BaseParser {
 
     @Inject
     public FlickrParser() {

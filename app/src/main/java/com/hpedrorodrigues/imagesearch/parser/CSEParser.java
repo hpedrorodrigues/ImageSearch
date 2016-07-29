@@ -8,7 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-public class CSEParser extends BaseParser {
+class CSEParser extends BaseParser {
 
     @Inject
     public CSEParser() {
