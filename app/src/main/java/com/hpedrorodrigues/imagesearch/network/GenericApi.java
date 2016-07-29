@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
-public class ImageApi {
+public class GenericApi {
 
     @Inject
     public APIFactory apiFactory;
@@ -26,7 +26,7 @@ public class ImageApi {
     public StreetViewApi streetViewApi;
 
     @Inject
-    public ImageApi() {
+    public GenericApi() {
     }
 
     public String getImageUrl(StreetViewImageDetail imageDetail) {

@@ -6,11 +6,11 @@ import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.entity.Image;
-import com.hpedrorodrigues.imagesearch.network.ImageApi;
-import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.network.GenericApi;
 import com.hpedrorodrigues.imagesearch.network.api.Api;
+import com.hpedrorodrigues.imagesearch.network.api.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.parser.GenericParser;
+import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
     private MainPresenter presenter;
 
     @Inject
-    public ImageApi imageApi;
+    public GenericApi genericApi;
 
     @Inject
     public GenericParser genericParser;
@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void search() {
-        imageApi
+        genericApi
                 .search(Api.FLICKR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished Flickr search")
                 );
 
-        imageApi
+        genericApi
                 .search(Api.CSE, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -98,7 +98,7 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished CSE search")
                 );
 
-        imageApi
+        genericApi
                 .search(Api.IMGUR, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -110,7 +110,7 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished Imgur search")
                 );
 
-        imageApi
+        genericApi
                 .search(Api.DUCK_DUCK_GO, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -122,7 +122,7 @@ public class MainActivity extends BaseActivity {
                         () -> Timber.i("Finished DuckDuckGo search")
                 );
 
-        imageApi
+        genericApi
                 .search(Api.BING, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -144,7 +144,7 @@ public class MainActivity extends BaseActivity {
         imageDetail.setPitch(-0.76);
         imageDetail.setScale(2);
 
-        String imageUrl = imageApi.getImageUrl(imageDetail);
+        String imageUrl = genericApi.getImageUrl(imageDetail);
         Timber.i("StreetView image Url: %s", imageUrl);
     }
 }
