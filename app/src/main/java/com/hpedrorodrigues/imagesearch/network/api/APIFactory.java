@@ -1,11 +1,11 @@
 package com.hpedrorodrigues.imagesearch.network.api;
 
+import com.hpedrorodrigues.imagesearch.network.interceptor.AuthorizationHeaderInterceptor;
 import com.hpedrorodrigues.imagesearch.network.services.bing.BingApi;
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSEApi;
 import com.hpedrorodrigues.imagesearch.network.services.duckduckgo.DuckDuckGoApi;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrApi;
 import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurApi;
-import com.hpedrorodrigues.imagesearch.network.interceptor.AuthorizationHeaderInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
