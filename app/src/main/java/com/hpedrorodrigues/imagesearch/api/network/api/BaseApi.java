@@ -1,5 +1,7 @@
 package com.hpedrorodrigues.imagesearch.api.network.api;
 
+import com.hpedrorodrigues.imagesearch.api.network.services.ServiceFactory;
+
 import java.util.Map;
 
 import javax.inject.Inject;

@@ -10,6 +10,8 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
+import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
+import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 
 import javax.inject.Inject;
 

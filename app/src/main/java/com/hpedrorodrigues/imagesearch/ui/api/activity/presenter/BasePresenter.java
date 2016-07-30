@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
 
 abstract class BasePresenter<T extends BaseActivity> {

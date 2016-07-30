@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.api.parser;
 
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
+import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 import com.hpedrorodrigues.imagesearch.util.StringUtil;
 
 import java.util.List;
