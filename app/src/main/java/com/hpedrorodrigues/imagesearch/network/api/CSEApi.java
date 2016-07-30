@@ -1,7 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network.api;
 
-import com.hpedrorodrigues.imagesearch.network.services.cse.CSEParameter;
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSESafeSearchType;
+import com.hpedrorodrigues.imagesearch.network.services.cse.CSESearchType;
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSEService;
 
 import java.util.Map;
@@ -26,13 +26,8 @@ class CSEApi extends BaseApi {
                 .getCseService()
                 .search(
                         CSEService.API_KEY,
-                        CSEParameter.RSZ,
-                        CSEParameter.SOURCE,
-                        CSEParameter.GSS,
-                        CSEParameter.SIG,
-                        CSEParameter.SEARCH_TYPE,
-                        CSEParameter.CX,
-                        CSEParameter.GOOGLE_HOST,
+                        CSESearchType.IMAGE.getValue(),
+                        CSEService.CX,
                         text,
                         page,
                         perPage,
@@ -47,13 +42,8 @@ class CSEApi extends BaseApi {
                 .getCseService()
                 .callSearch(
                         CSEService.API_KEY,
-                        CSEParameter.RSZ,
-                        CSEParameter.SOURCE,
-                        CSEParameter.GSS,
-                        CSEParameter.SIG,
-                        CSEParameter.SEARCH_TYPE,
-                        CSEParameter.CX,
-                        CSEParameter.GOOGLE_HOST,
+                        CSESearchType.IMAGE.getValue(),
+                        CSEService.CX,
                         text,
                         page,
                         perPage,

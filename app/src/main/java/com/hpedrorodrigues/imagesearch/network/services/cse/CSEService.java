@@ -14,15 +14,12 @@ public interface CSEService {
     String ENDPOINT = "https://www.googleapis.com/";
     String API_KEY = BuildConfig.CSE_API_KEY;
 
+    String CX = "008358958714783432655:jgkoxl4lfti";
+
     @GET("/customsearch/v1element")
     Observable<Map> search(@Query("key") String key,
-                           @Query("rsz") String rsz,
-                           @Query("source") String source,
-                           @Query("gss") String gss,
-                           @Query("sig") String sig,
                            @Query("searchtype") String searchType,
                            @Query("cx") String cx,
-                           @Query("googlehost") String googleHost,
                            @Query("q") String q,
                            @Query("start") Integer start,
                            @Query("num") Integer num,
@@ -31,13 +28,8 @@ public interface CSEService {
 
     @GET("/customsearch/v1element")
     Call<Map> callSearch(@Query("key") String key,
-                         @Query("rsz") String rsz,
-                         @Query("source") String source,
-                         @Query("gss") String gss,
-                         @Query("sig") String sig,
                          @Query("searchtype") String searchType,
                          @Query("cx") String cx,
-                         @Query("googlehost") String googleHost,
                          @Query("q") String q,
                          @Query("start") Integer start,
                          @Query("num") Integer num,
