@@ -64,6 +64,10 @@ public class MainView extends BaseView<MainActivity> {
         });
     }
 
+    public boolean isDrawerOpen() {
+        return drawer.isDrawerOpen(GravityCompat.START);
+    }
+
     public void closeDrawer() {
         drawer.closeDrawer(GravityCompat.START);
     }

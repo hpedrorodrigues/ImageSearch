@@ -2,13 +2,13 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
-import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 
 public class MainPresenter extends BasePresenter<MainActivity> {
@@ -17,8 +17,8 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
     private final MainView view;
 
-    public MainPresenter(MainActivity activity) {
-        super(activity, new AndroidActivityNavigator(activity));
+    public MainPresenter(MainActivity activity, Navigator navigator) {
+        super(activity, navigator);
         this.view = new MainView(activity);
     }
 
@@ -26,21 +26,19 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     public void onCreate(Bundle savedInstanceState) {
         view.setUp();
         setUpDrawerListener();
+        setUpFirstFragment();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (view.getDrawerToggle().onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return view.getDrawerToggle().onOptionsItemSelected(item)
+                || super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onBackPressed() {
-        if (view.getDrawer().isDrawerOpen(GravityCompat.START)) {
-            view.getDrawer().closeDrawer(GravityCompat.START);
+        if (view.isDrawerOpen()) {
+            view.closeDrawer();
             return false;
         }
 
@@ -48,16 +46,19 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void setUpDrawerListener() {
-        view.setDrawerItemSelectedListener(item -> new Handler().postDelayed(() -> {
-            GenericFragment fragment = GenericFragment.create(item.getApi());
+        view.setDrawerItemSelectedListener(item ->
+                new Handler().postDelayed(() -> navigateTo(item), DRAWER_REPLACE_SCREEN_DELAY));
+    }
 
-            activity.getComponent().inject(fragment);
+    private void navigateTo(DrawerItem item) {
+        GenericFragment fragment = GenericFragment.create(item.getApi());
+        activity.getComponent().inject(fragment);
+        navigator.toFragmentScreen(fragment);
+    }
 
-            activity
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .commit();
-        }, DRAWER_REPLACE_SCREEN_DELAY));
+    private void setUpFirstFragment() {
+        GenericFragment fragment = GenericFragment.create(Api.FLICKR);
+        activity.getComponent().inject(fragment);
+        navigator.toFirstFragmentScreen(fragment);
     }
 }

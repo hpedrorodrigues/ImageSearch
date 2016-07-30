@@ -6,6 +6,8 @@ import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 
 public class MainActivity extends BaseActivity {
 
@@ -21,7 +23,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setUpPresenter() {
-        presenter = new MainPresenter(this);
+        Navigator navigator = new AndroidNavigator(R.id.container, this);
+        presenter = new MainPresenter(this, navigator);
         getComponent().inject(presenter);
     }
 
