@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.general;
+package com.hpedrorodrigues.imagesearch.util.general;
 
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;

@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.activity;
+package com.hpedrorodrigues.imagesearch.ui.activity;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.api.service.GenericService;
-import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
-import com.hpedrorodrigues.imagesearch.rx.Rx;
+import com.hpedrorodrigues.imagesearch.ui.api.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 
 import javax.inject.Inject;
 

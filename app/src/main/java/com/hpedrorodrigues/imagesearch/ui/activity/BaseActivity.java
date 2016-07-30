@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.activity;
+package com.hpedrorodrigues.imagesearch.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -9,9 +9,9 @@ import com.crashlytics.android.answers.ContentViewEvent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.application.ISApplication;
+import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
-import com.hpedrorodrigues.imagesearch.general.ISAnswer;
+import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 
 import javax.inject.Inject;
 

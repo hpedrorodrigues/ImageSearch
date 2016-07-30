@@ -1,11 +1,11 @@
 package com.hpedrorodrigues.imagesearch.dagger.component;
 
-import com.hpedrorodrigues.imagesearch.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.api.network.api.BaseApi;
 import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
-import com.hpedrorodrigues.imagesearch.fragment.BaseFragment;
-import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.api.presenter.MainPresenter;
 
 import dagger.Component;
 

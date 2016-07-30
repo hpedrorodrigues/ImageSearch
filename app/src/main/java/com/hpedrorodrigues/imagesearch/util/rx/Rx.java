@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.rx;
+package com.hpedrorodrigues.imagesearch.util.rx;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;

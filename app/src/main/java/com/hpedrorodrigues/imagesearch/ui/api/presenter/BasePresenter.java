@@ -1,10 +1,10 @@
-package com.hpedrorodrigues.imagesearch.presenter;
+package com.hpedrorodrigues.imagesearch.ui.api.presenter;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.activity.BaseActivity;
-import com.hpedrorodrigues.imagesearch.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 
 public abstract class BasePresenter<T extends BaseActivity> {
 

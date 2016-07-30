@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.application;
+package com.hpedrorodrigues.imagesearch.dagger.application;
 
 import android.app.Application;
 

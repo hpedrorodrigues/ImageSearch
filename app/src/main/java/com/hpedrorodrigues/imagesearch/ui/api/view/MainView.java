@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.view;
+package com.hpedrorodrigues.imagesearch.ui.api.view;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -6,7 +6,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

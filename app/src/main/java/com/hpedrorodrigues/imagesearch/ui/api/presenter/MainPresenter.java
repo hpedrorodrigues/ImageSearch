@@ -1,12 +1,12 @@
-package com.hpedrorodrigues.imagesearch.presenter;
+package com.hpedrorodrigues.imagesearch.ui.api.presenter;
 
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.activity.MainActivity;
-import com.hpedrorodrigues.imagesearch.navigation.AndroidNavigator;
-import com.hpedrorodrigues.imagesearch.view.MainView;
+import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
+import com.hpedrorodrigues.imagesearch.ui.api.view.MainView;
 
 public class MainPresenter extends BasePresenter<MainActivity> {
 
