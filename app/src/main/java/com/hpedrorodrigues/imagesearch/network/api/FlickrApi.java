@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.network.api;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrCallback;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrMethod;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrOutputFormat;
+import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrSafeSearchType;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrService;
 
 import java.util.Map;
@@ -32,7 +33,8 @@ class FlickrApi extends BaseApi {
                         FlickrCallback.OFF.getValue(),
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch ? FlickrSafeSearchType.SAFE.getValue() : FlickrSafeSearchType.MODERATE.getValue()
                 );
     }
 
@@ -48,7 +50,8 @@ class FlickrApi extends BaseApi {
                         FlickrCallback.OFF.getValue(),
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch ? FlickrSafeSearchType.SAFE.getValue() : FlickrSafeSearchType.MODERATE.getValue()
                 );
     }
 }

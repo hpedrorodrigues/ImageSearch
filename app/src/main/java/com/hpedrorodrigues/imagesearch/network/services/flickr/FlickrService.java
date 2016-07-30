@@ -21,7 +21,8 @@ public interface FlickrService {
                            @Query("nojsoncallback") Integer noJsonCallback,
                            @Query("text") String text,
                            @Query("page") Integer page,
-                           @Query("per_page") Integer perPage
+                           @Query("per_page") Integer perPage,
+                           @Query("safe_search") Integer safeSearch
     );
 
     @GET("/services/rest/")
@@ -31,6 +32,7 @@ public interface FlickrService {
                          @Query("nojsoncallback") Integer noJsonCallback,
                          @Query("text") String text,
                          @Query("page") Integer page,
-                         @Query("per_page") Integer perPage
+                         @Query("per_page") Integer perPage,
+                         @Query("safe_search") Integer safeSearch
     );
 }
