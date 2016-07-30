@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.network.api;
 
-import com.hpedrorodrigues.imagesearch.network.services.bing.BingParameter;
+import com.hpedrorodrigues.imagesearch.network.services.bing.BingSafeSearchType;
 
 import java.util.Map;
 
@@ -22,7 +22,12 @@ class BingApi extends BaseApi {
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
                 .getBingService()
-                .search(text, page, perPage, BingParameter.SAFE_SEARCH);
+                .search(
+                        text,
+                        page,
+                        perPage,
+                        safeSearch ? BingSafeSearchType.STRICT.getValue() : BingSafeSearchType.OFF.getValue()
+                );
     }
 
     @Override
@@ -30,6 +35,11 @@ class BingApi extends BaseApi {
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
                 .getBingService()
-                .callSearch(text, page, perPage, BingParameter.SAFE_SEARCH);
+                .callSearch(
+                        text,
+                        page,
+                        perPage,
+                        safeSearch ? BingSafeSearchType.STRICT.getValue() : BingSafeSearchType.OFF.getValue()
+                );
     }
 }
