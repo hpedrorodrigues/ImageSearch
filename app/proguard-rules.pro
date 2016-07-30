@@ -109,5 +109,8 @@
 
 -dontwarn java.beans.**
 
-# AsymmetricGridView
--dontwarn android.util.FloatMath
+# Picasso / OkHttp
+-dontwarn com.squareup.okhttp.**
+
+# Okio
+-dontwarn okio.**
