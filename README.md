@@ -4,17 +4,19 @@
 
 ## Docs
 
-- [Flickr Docs][flickr-docs]
-- [Imgur Docs][imgur-docs]
-- [Google Custom Search Engine Docs][google-cse-docs]
-- [Street View Image Api Docs][street-view-docs]
-- [DuckDuckGo Docs][duck-duck-go-docs]
-- [Bing Image Search Docs][bing-image-search-docs]
-- [Pixabay Docs][pixabay-docs]
-- [Giphy Docs][giphy-docs]
+- [x] [Flickr Docs][flickr-docs]
+- [x] [Imgur Docs][imgur-docs]
+- [x] [Google Custom Search Engine Docs][google-cse-docs]
+- [x] [Street View Image Api Docs][street-view-docs]
+- [x] [DuckDuckGo Docs][duck-duck-go-docs]
+- [x] [Bing Image Search Docs][bing-image-search-docs]
+- [x] [Pixabay Docs][pixabay-docs]
+- [x] [Giphy Docs][giphy-docs]
 
-**API responses** [here][docs]
-**More APIs** [here][more-apis]
+**More**:
+
+- API responses [here][docs]
+- More APIs [here][more-apis]
 
 [travis-image]: https://travis-ci.org/hpedrorodrigues/ImageSearch.svg?branch=master
 [travis-url]: https://travis-ci.org/hpedrorodrigues/ImageSearch
