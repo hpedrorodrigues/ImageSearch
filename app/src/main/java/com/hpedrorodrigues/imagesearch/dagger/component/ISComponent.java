@@ -6,6 +6,7 @@ import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
+import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 
 import javax.inject.Singleton;
@@ -27,4 +28,6 @@ public interface ISComponent extends BaseComponent {
     void inject(GenericFragment genericFragment);
 
     void inject(GenericPresenter genericPresenter);
+
+    void inject(GenericView view);
 }

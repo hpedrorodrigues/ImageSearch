@@ -1,10 +1,10 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.api.service.GenericService;
+import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
 
@@ -29,7 +29,7 @@ abstract class BasePresenter<T extends BaseFragment> {
 
     public abstract void onViewCreated(View view);
 
-    protected FragmentActivity getActivity() {
-        return fragment.getActivity();
+    protected BaseActivity getActivity() {
+        return (BaseActivity) fragment.getActivity();
     }
 }
