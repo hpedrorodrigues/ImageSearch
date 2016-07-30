@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.entity;
+package com.hpedrorodrigues.imagesearch.api.entity;
 
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
