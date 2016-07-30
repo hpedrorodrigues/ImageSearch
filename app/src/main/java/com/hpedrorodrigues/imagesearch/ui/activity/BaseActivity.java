@@ -52,7 +52,7 @@ public abstract class BaseActivity extends BaseTransitionActivity {
         tracker.setScreenName(getScreenName());
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
         answer.instance()
-                .logContentView(new ContentViewEvent().putContentId("Activity Screen:" + getScreenName()));
+                .logContentView(new ContentViewEvent().putContentId("Activity Screen: " + getScreenName()));
     }
 
     public ISComponent getComponent() {

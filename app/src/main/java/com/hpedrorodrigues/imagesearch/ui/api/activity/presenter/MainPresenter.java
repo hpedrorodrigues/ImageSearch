@@ -52,13 +52,11 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
     private void navigateTo(DrawerItem item) {
         GenericFragment fragment = GenericFragment.create(item.getApi());
-        activity.getComponent().inject(fragment);
         navigator.toFragmentScreen(fragment);
     }
 
     private void setUpFirstFragment() {
         GenericFragment fragment = GenericFragment.create(Api.FLICKR);
-        activity.getComponent().inject(fragment);
         navigator.toFirstFragmentScreen(fragment);
     }
 }

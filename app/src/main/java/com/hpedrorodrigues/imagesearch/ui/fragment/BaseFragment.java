@@ -32,6 +32,9 @@ public abstract class BaseFragment extends Fragment {
         toolbar = activity.getToolbar();
         component = activity.getComponent();
         tracker = activity.getTracker();
+
+        inject();
+        setUpPresenter();
     }
 
     @Override
@@ -41,7 +44,7 @@ public abstract class BaseFragment extends Fragment {
         tracker.setScreenName(getScreenName());
         tracker.send(new HitBuilders.ScreenViewBuilder().build());
         answer.instance()
-                .logContentView(new ContentViewEvent().putContentId("Fragment Screen:" + getScreenName()));
+                .logContentView(new ContentViewEvent().putContentId("Fragment Screen: " + getScreenName()));
     }
 
     public Toolbar getToolbar() {
