@@ -3,22 +3,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/flickr_item"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Flickr" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/cse_item"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="CSE" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/imgur_item"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="IMGUR" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/duckduckgo_item"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="DuckDuckGo" />
+
+        <item
+            android:id="@+id/bing_item"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Bing" />
+
+        <item
+            android:id="@+id/pixabay_item"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Pixabay" />
+
+        <item
+            android:id="@+id/giphy_item"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="GIPHY" />
+
     </group>
 
     <item android:title="Communicate">

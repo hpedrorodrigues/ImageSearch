@@ -44,6 +44,18 @@ public abstract class BaseFragment extends Fragment {
                 .logContentView(new ContentViewEvent().putContentId("Fragment Screen:" + getScreenName()));
     }
 
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
+    public ISComponent getComponent() {
+        return component;
+    }
+
+    public Tracker getTracker() {
+        return tracker;
+    }
+
     protected abstract void setUpPresenter();
 
     protected abstract void inject();
