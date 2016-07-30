@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.view;
+package com.hpedrorodrigues.imagesearch.ui.api.activity.view;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;

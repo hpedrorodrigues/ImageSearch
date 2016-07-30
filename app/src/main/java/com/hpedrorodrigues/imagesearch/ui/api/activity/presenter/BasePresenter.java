@@ -1,19 +1,19 @@
-package com.hpedrorodrigues.imagesearch.ui.api.presenter;
+package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
-import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
 
-public abstract class BasePresenter<T extends BaseActivity> {
+abstract class BasePresenter<T extends BaseActivity> {
 
     protected final T activity;
-    protected final Navigator navigator;
+    protected final ActivityNavigator activityNavigator;
 
-    public BasePresenter(T activity, Navigator navigator) {
+    public BasePresenter(T activity, ActivityNavigator activityNavigator) {
         this.activity = activity;
-        this.navigator = navigator;
+        this.activityNavigator = activityNavigator;
     }
 
     public abstract void onCreate(Bundle savedInstanceState);

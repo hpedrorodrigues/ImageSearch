@@ -1,15 +1,15 @@
-package com.hpedrorodrigues.imagesearch.ui.api.navigation;
+package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 
 import android.content.Intent;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 
-public class AndroidNavigator implements Navigator {
+public class AndroidActivityNavigator implements ActivityNavigator {
 
     private final BaseActivity activity;
 
-    public AndroidNavigator(BaseActivity activity) {
+    public AndroidActivityNavigator(BaseActivity activity) {
         this.activity = activity;
     }
 
