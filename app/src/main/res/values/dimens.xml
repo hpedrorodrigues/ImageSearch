@@ -10,4 +10,7 @@
 
     <integer name="animations_duration">300</integer>
 
+    <dimen name="min_image_size">80dp</dimen>
+    <dimen name="max_image_size">100dp</dimen>
+
 </resources>

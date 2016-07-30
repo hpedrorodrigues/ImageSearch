@@ -5,7 +5,7 @@ import android.view.View;
 import com.etsy.android.grid.StaggeredGridView;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
-import com.hpedrorodrigues.imagesearch.ui.adapter.ImagesAdapter;
+import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
@@ -22,7 +22,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     private final GenericView view;
 
     @Inject
-    public ImagesAdapter imagesAdapter;
+    public ImageAdapter imagesAdapter;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator) {
         super(fragment, navigator);

@@ -12,14 +12,15 @@ import javax.inject.Inject;
 
 abstract class BasePresenter<T extends BaseFragment> {
 
+    protected final T fragment;
+
+    protected final Navigator navigator;
+
     @Inject
     public Context context;
 
     @Inject
     public GenericService genericService;
-
-    protected final T fragment;
-    protected final Navigator navigator;
 
     protected BasePresenter(T fragment, Navigator navigator) {
         this.fragment = fragment;

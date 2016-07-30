@@ -10,7 +10,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-abstract class BaseAsymmetricAdapter<T> implements ListAdapter {
+abstract class ISBaseAdapter<T> implements ListAdapter {
 
     private List<T> content;
 

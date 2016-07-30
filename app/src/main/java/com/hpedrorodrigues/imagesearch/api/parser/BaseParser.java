@@ -2,13 +2,19 @@ package com.hpedrorodrigues.imagesearch.api.parser;
 
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.api.validator.ImageValidator;
 import com.hpedrorodrigues.imagesearch.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 public abstract class BaseParser {
+
+    @Inject
+    public ImageValidator imageValidator;
 
     protected abstract List<Map> getImages(Map data);
 
@@ -54,6 +60,8 @@ public abstract class BaseParser {
             if (conditionToAdd(info)) {
                 Image image = asImage(info);
                 image.setApi(getApi());
+
+                imageValidator.validate(image);
 
                 images.add(image);
             }
