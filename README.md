@@ -10,6 +10,7 @@
 - [Street View Image Api Docs][street-view-docs]
 - [DuckDuckGo Docs][duck-duck-go-docs]
 - [Bing Image Search Docs][bing-image-search-docs]
+- [Pixabay Docs][pixabay-docs]
 
 **API responses** [here][docs]
 
@@ -22,5 +23,6 @@
 [street-view-docs]: https://developers.google.com/maps/documentation/streetview/intro
 [duck-duck-go-docs]: https://duckduckgo.com/api
 [bing-image-search-docs]: https://dev.cognitive.microsoft.com/docs/services/56b43f0ccf5ff8098cef3808/operations/56b4433fcf5ff8098cef380c
+[pixabay-docs]: https://pixabay.com/api/docs/
 
 [docs]: ./docs/APIs.md
