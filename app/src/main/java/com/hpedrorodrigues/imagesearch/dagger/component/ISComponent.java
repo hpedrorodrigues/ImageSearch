@@ -8,8 +8,11 @@ import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
+@Singleton
 @Component(modules = ISModule.class)
 public interface ISComponent extends BaseComponent {
 

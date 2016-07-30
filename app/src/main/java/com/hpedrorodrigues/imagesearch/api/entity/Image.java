@@ -2,6 +2,8 @@ package com.hpedrorodrigues.imagesearch.api.entity;
 
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -9,7 +11,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Data
-public class Image {
+public class Image implements Serializable {
 
     private String title;
 

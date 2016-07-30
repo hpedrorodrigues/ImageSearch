@@ -34,7 +34,7 @@ public class ISApplication extends Application {
         Timber.plant(new Timber.DebugTree());
 
         // Dagger
-        component = DaggerISComponent.builder().iSModule(new ISModule()).build();
+        component = DaggerISComponent.builder().iSModule(new ISModule(this)).build();
 
         // Crashlytics and Answers
         CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(isDebug).build();
