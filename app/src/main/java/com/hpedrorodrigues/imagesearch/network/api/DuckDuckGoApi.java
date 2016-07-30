@@ -19,7 +19,7 @@ class DuckDuckGoApi extends BaseApi {
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getDuckDuckGoApi()
+                .getDuckDuckGoService()
                 .search(page, perPage, text);
     }
 
@@ -27,7 +27,7 @@ class DuckDuckGoApi extends BaseApi {
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getDuckDuckGoApi()
+                .getDuckDuckGoService()
                 .callSearch(page, perPage, text);
     }
 }

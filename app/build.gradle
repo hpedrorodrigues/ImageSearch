@@ -27,6 +27,7 @@ android {
         buildConfigField "String", "IMGUR_API_CLIENT_ID", getApiProperty('imgurApiClientId')
         buildConfigField "String", "STREET_VIEW_API_KEY", getApiProperty('streetViewApiKey')
         buildConfigField "String", "BING_API_KEY", getApiProperty('bingSearchApiKey')
+        buildConfigField "String", "PIXABAY_API_KEY", getApiProperty('pixabayApiKey')
     }
 
     buildTypes {

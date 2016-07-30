@@ -24,7 +24,7 @@ class FlickrApi extends BaseApi {
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getFlickrApi()
+                .getFlickrService()
                 .search(
                         FlickrMethod.SEARCH.getId(),
                         FlickrService.API_KEY,
@@ -40,7 +40,7 @@ class FlickrApi extends BaseApi {
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getFlickrApi()
+                .getFlickrService()
                 .callSearch(
                         FlickrMethod.SEARCH.getId(),
                         FlickrService.API_KEY,

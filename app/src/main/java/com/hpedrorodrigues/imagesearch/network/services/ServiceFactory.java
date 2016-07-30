@@ -6,6 +6,7 @@ import com.hpedrorodrigues.imagesearch.network.services.cse.CSEService;
 import com.hpedrorodrigues.imagesearch.network.services.duckduckgo.DuckDuckGoService;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrService;
 import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurService;
+import com.hpedrorodrigues.imagesearch.network.services.pixabay.PixabayService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class ServiceFactory {
                 .build();
     }
 
-    private <T> T getApi(String endpoint, Class<T> clazz) {
+    private <T> T getService(String endpoint, Class<T> clazz) {
         if (cache.containsKey(endpoint)) {
             return (T) cache.get(endpoint);
         }
@@ -56,23 +57,27 @@ public class ServiceFactory {
         return service;
     }
 
-    public FlickrService getFlickrApi() {
-        return getApi(FlickrService.ENDPOINT, FlickrService.class);
+    public FlickrService getFlickrService() {
+        return getService(FlickrService.ENDPOINT, FlickrService.class);
     }
 
-    public CSEService getCseApi() {
-        return getApi(CSEService.ENDPOINT, CSEService.class);
+    public CSEService getCseService() {
+        return getService(CSEService.ENDPOINT, CSEService.class);
     }
 
-    public ImgurService getImgurApi() {
-        return getApi(ImgurService.ENDPOINT, ImgurService.class);
+    public ImgurService getImgurService() {
+        return getService(ImgurService.ENDPOINT, ImgurService.class);
     }
 
-    public DuckDuckGoService getDuckDuckGoApi() {
-        return getApi(DuckDuckGoService.ENDPOINT, DuckDuckGoService.class);
+    public DuckDuckGoService getDuckDuckGoService() {
+        return getService(DuckDuckGoService.ENDPOINT, DuckDuckGoService.class);
     }
 
-    public BingService getBingApi() {
-        return getApi(BingService.ENDPOINT, BingService.class);
+    public BingService getBingService() {
+        return getService(BingService.ENDPOINT, BingService.class);
+    }
+
+    public PixabayService getPixabayService() {
+        return getService(PixabayService.ENDPOINT, PixabayService.class);
     }
 }

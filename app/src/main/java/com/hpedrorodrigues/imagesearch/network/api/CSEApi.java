@@ -22,7 +22,7 @@ class CSEApi extends BaseApi {
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getCseApi()
+                .getCseService()
                 .search(
                         CSEService.API_KEY,
                         CSEParameter.RSZ,
@@ -42,7 +42,7 @@ class CSEApi extends BaseApi {
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getCseApi()
+                .getCseService()
                 .callSearch(
                         CSEService.API_KEY,
                         CSEParameter.RSZ,

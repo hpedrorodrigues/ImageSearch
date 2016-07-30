@@ -21,7 +21,7 @@ class BingApi extends BaseApi {
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getBingApi()
+                .getBingService()
                 .search(text, page, perPage, BingParameter.SAFE_SEARCH);
     }
 
@@ -29,7 +29,7 @@ class BingApi extends BaseApi {
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getBingApi()
+                .getBingService()
                 .callSearch(text, page, perPage, BingParameter.SAFE_SEARCH);
     }
 }

@@ -57,6 +57,7 @@ public class GenericService {
                     try {
                         List<Image> images = new ArrayList<>();
                         List<Api> apis = EnumUtil.valuesAsList(Api.class);
+
                         for (Api api : apis) {
                             images.addAll(callSearchAnParse(api, search, page, perPage, safeSearch));
                         }

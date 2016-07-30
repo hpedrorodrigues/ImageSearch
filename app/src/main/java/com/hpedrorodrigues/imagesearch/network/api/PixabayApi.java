@@ -1,32 +1,35 @@
 package com.hpedrorodrigues.imagesearch.network.api;
 
-import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurImageType;
+import com.hpedrorodrigues.imagesearch.network.services.pixabay.PixabayImageType;
+import com.hpedrorodrigues.imagesearch.network.services.pixabay.PixabayService;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import rx.Observable;
 
-class ImgurApi extends BaseApi {
+class PixabayApi extends BaseApi {
 
-    public ImgurApi() {
+    public PixabayApi() {
     }
 
     @Override
     public Api getApi() {
-        return Api.IMGUR;
+        return Api.PIXABAY;
     }
 
     @Override
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getImgurService()
+                .getPixabayService()
                 .search(
-                        ImgurImageType.JPG.getValue(),
+                        PixabayService.API_KEY,
+                        PixabayImageType.PHOTO.getValue(),
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch
                 );
     }
 
@@ -34,12 +37,14 @@ class ImgurApi extends BaseApi {
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
-                .getImgurService()
+                .getPixabayService()
                 .callSearch(
-                        ImgurImageType.JPG.getValue(),
+                        PixabayService.API_KEY,
+                        PixabayImageType.PHOTO.getValue(),
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch
                 );
     }
 }

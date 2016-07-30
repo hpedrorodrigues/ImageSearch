@@ -20,7 +20,8 @@ public class GenericApi {
             new CSEApi(),
             new ImgurApi(),
             new DuckDuckGoApi(),
-            new BingApi()
+            new BingApi(),
+            new PixabayApi()
     );
 
     @Inject

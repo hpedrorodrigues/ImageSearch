@@ -5,5 +5,6 @@ public enum Api {
     CSE,
     IMGUR,
     DUCK_DUCK_GO,
-    BING
+    BING,
+    PIXABAY
 }
