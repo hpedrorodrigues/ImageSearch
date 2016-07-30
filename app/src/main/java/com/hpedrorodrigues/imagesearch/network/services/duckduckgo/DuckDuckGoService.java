@@ -14,10 +14,12 @@ public interface DuckDuckGoService {
     @GET("/i.js")
     Observable<Map> search(@Query("next") Integer next,
                            @Query("s") Integer s,
-                           @Query("q") String q);
+                           @Query("q") String q,
+                           @Query("safesearch") Boolean safeSearch);
 
     @GET("/i.js")
     Call<Map> callSearch(@Query("next") Integer next,
                          @Query("s") Integer s,
-                         @Query("q") String q);
+                         @Query("q") String q,
+                         @Query("safesearch") Boolean safeSearch);
 }

@@ -20,7 +20,7 @@ class DuckDuckGoApi extends BaseApi {
                                      final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
                 .getDuckDuckGoService()
-                .search(page, perPage, text);
+                .search(page, perPage, text, safeSearch);
     }
 
     @Override
@@ -28,6 +28,6 @@ class DuckDuckGoApi extends BaseApi {
                                    final Integer perPage, final Boolean safeSearch) {
         return serviceFactory
                 .getDuckDuckGoService()
-                .callSearch(page, perPage, text);
+                .callSearch(page, perPage, text, safeSearch);
     }
 }
