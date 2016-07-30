@@ -13,6 +13,8 @@ public class MainActivity extends BaseActivity {
 
     private MainPresenter presenter;
 
+    private Navigator navigator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setUpPresenter() {
-        Navigator navigator = new AndroidNavigator(R.id.container, this);
+        navigator = new AndroidNavigator(R.id.container, this);
         presenter = new MainPresenter(this, navigator);
         getComponent().inject(presenter);
     }
@@ -54,5 +56,9 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item);
+    }
+
+    public Navigator getNavigator() {
+        return navigator;
     }
 }

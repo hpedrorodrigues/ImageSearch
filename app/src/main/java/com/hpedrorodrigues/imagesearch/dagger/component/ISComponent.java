@@ -5,6 +5,7 @@ import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
+import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 
 import dagger.Component;
@@ -21,4 +22,6 @@ public interface ISComponent extends BaseComponent {
     void inject(MainPresenter presenter);
 
     void inject(GenericFragment genericFragment);
+
+    void inject(GenericPresenter genericPresenter);
 }

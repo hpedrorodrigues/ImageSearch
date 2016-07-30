@@ -8,15 +8,13 @@ import android.view.ViewGroup;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
-import com.hpedrorodrigues.imagesearch.api.service.GenericService;
 import com.hpedrorodrigues.imagesearch.constant.BundleKey;
-
-import javax.inject.Inject;
+import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
 
 public class GenericFragment extends BaseFragment {
 
-    @Inject
-    public GenericService genericService;
+    private GenericPresenter genericPresenter;
 
     public static GenericFragment create(Api api) {
         GenericFragment fragment = new GenericFragment();
@@ -48,7 +46,17 @@ public class GenericFragment extends BaseFragment {
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        genericPresenter.onViewCreated(view);
+    }
+
+    @Override
     protected void setUpPresenter() {
+        MainActivity activity = (MainActivity) getActivity();
+        genericPresenter = new GenericPresenter(this, activity.getNavigator());
+        getComponent().inject(genericPresenter);
     }
 
     @Override
