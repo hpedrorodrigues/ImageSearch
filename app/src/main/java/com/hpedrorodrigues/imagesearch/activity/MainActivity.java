@@ -5,10 +5,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.network.services.street_view.StreetViewImageDetail;
+import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewImageDetail;
+import com.hpedrorodrigues.imagesearch.api.service.GenericService;
 import com.hpedrorodrigues.imagesearch.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.rx.Rx;
-import com.hpedrorodrigues.imagesearch.service.GenericService;
 
 import javax.inject.Inject;
 

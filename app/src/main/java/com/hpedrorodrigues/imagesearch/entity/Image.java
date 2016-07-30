@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.entity;
 
-import com.hpedrorodrigues.imagesearch.network.api.Api;
+import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
