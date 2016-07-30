@@ -8,8 +8,8 @@ import android.support.v7.widget.Toolbar;
 import com.crashlytics.android.answers.ContentViewEvent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
+import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 
 import javax.inject.Inject;
