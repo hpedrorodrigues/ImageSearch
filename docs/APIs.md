@@ -311,3 +311,179 @@ Content-Type: application/json; charset=utf-8
   "total": 1029
 }
 ```
+
+## Giphy
+
+**Request**
+
+```http
+GET http://api.giphy.com/v1/gifs/search?q=car&api_key={API_KEY}&limit=5&offset=1
+```
+
+**Response**
+
+
+```http
+Status: 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "data": [
+    {
+      "type": "gif",
+      "id": "xT1XGOgWb2Qo40pi00",
+      "slug": "nickelodeon-nicktoons-loud-house-xT1XGOgWb2Qo40pi00",
+      "url": "http://giphy.com/gifs/nickelodeon-nicktoons-loud-house-xT1XGOgWb2Qo40pi00",
+      "bitly_gif_url": "http://gph.is/1WtnN8Z",
+      "bitly_url": "http://gph.is/1WtnN8Z",
+      "embed_url": "http://giphy.com/embed/xT1XGOgWb2Qo40pi00",
+      "username": "nickelodeon",
+      "source": "nick.com",
+      "rating": "pg",
+      "content_url": "",
+      "user": {
+        "avatar_url": "https://media2.giphy.com/avatars/nickelodeon/oa2rI6pKE2un.png",
+        "banner_url": "https://media2.giphy.com/avatars/nickelodeon/xsjy36tB8oCX.gif",
+        "profile_url": "https://giphy.com/nickelodeon/",
+        "username": "nickelodeon",
+        "display_name": "Nickelodeon",
+        "twitter": "@NickelodeonTV"
+      },
+      "source_tld": "",
+      "source_post_url": "nick.com",
+      "is_indexable": 0,
+      "import_datetime": "2016-04-28 18:57:03",
+      "trending_datetime": "2016-04-29 00:00:02",
+      "images": {
+        "fixed_height": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200.gif",
+          "width": "356",
+          "height": "200",
+          "size": "332480",
+          "mp4": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200.mp4",
+          "mp4_size": "127131",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200.webp",
+          "webp_size": "455296"
+        },
+        "fixed_height_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200_s.gif",
+          "width": "356",
+          "height": "200"
+        },
+        "fixed_height_downsampled": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200_d.gif",
+          "width": "356",
+          "height": "200",
+          "size": "137873",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200_d.webp",
+          "webp_size": "92366"
+        },
+        "fixed_width": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w.gif",
+          "width": "200",
+          "height": "113",
+          "size": "123515",
+          "mp4": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w.mp4",
+          "mp4_size": "58083",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w.webp",
+          "webp_size": "194030"
+        },
+        "fixed_width_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w_s.gif",
+          "width": "200",
+          "height": "113"
+        },
+        "fixed_width_downsampled": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w_d.gif",
+          "width": "200",
+          "height": "113",
+          "size": "51017",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/200w_d.webp",
+          "webp_size": "39694"
+        },
+        "fixed_height_small": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100.gif",
+          "width": "178",
+          "height": "100",
+          "size": "103146",
+          "mp4": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100.mp4",
+          "mp4_size": "50291",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100.webp",
+          "webp_size": "165276"
+        },
+        "fixed_height_small_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100_s.gif",
+          "width": "178",
+          "height": "100"
+        },
+        "fixed_width_small": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100w.gif",
+          "width": "100",
+          "height": "56",
+          "size": "41134",
+          "mp4": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100w.mp4",
+          "mp4_size": "21357",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100w.webp",
+          "webp_size": "67170"
+        },
+        "fixed_width_small_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/100w_s.gif",
+          "width": "100",
+          "height": "56"
+        },
+        "downsized": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.gif",
+          "width": "800",
+          "height": "450",
+          "size": "1457995"
+        },
+        "downsized_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy_s.gif",
+          "width": "800",
+          "height": "450"
+        },
+        "downsized_large": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.gif",
+          "width": "800",
+          "height": "450",
+          "size": "1457995"
+        },
+        "downsized_medium": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.gif",
+          "width": "800",
+          "height": "450",
+          "size": "1457995"
+        },
+        "original": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.gif",
+          "width": "800",
+          "height": "450",
+          "size": "1457995",
+          "frames": "39",
+          "mp4": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.mp4",
+          "mp4_size": "188114",
+          "webp": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy.webp",
+          "webp_size": "1439838"
+        },
+        "original_still": {
+          "url": "http://media1.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy_s.gif",
+          "width": "800",
+          "height": "450"
+        },
+        "looping": {
+          "mp4": "http://media.giphy.com/media/xT1XGOgWb2Qo40pi00/giphy-loop.mp4"
+        }
+      }
+    }
+  ],
+  "meta": {
+    "status": 200,
+    "msg": "OK"
+  },
+  "pagination": {
+    "total_count": 15105,
+    "count": 5,
+    "offset": 1
+  }
+}
+```

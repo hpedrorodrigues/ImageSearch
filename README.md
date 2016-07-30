@@ -11,6 +11,7 @@
 - [DuckDuckGo Docs][duck-duck-go-docs]
 - [Bing Image Search Docs][bing-image-search-docs]
 - [Pixabay Docs][pixabay-docs]
+- [Giphy Docs][giphy-docs]
 
 **API responses** [here][docs]
 
@@ -24,5 +25,6 @@
 [duck-duck-go-docs]: https://duckduckgo.com/api
 [bing-image-search-docs]: https://dev.cognitive.microsoft.com/docs/services/56b43f0ccf5ff8098cef3808/operations/56b4433fcf5ff8098cef380c
 [pixabay-docs]: https://pixabay.com/api/docs/
+[giphy-docs]: https://github.com/Giphy/GiphyAPI
 
 [docs]: ./docs/APIs.md
