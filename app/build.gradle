@@ -28,6 +28,7 @@ android {
         buildConfigField "String", "STREET_VIEW_API_KEY", getApiProperty('streetViewApiKey')
         buildConfigField "String", "BING_API_KEY", getApiProperty('bingSearchApiKey')
         buildConfigField "String", "PIXABAY_API_KEY", getApiProperty('pixabayApiKey')
+        buildConfigField "String", "GIPHY_API_KEY", getApiProperty('giphyApiKey')
     }
 
     buildTypes {

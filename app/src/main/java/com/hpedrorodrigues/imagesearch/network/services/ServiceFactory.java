@@ -5,6 +5,7 @@ import com.hpedrorodrigues.imagesearch.network.services.bing.BingService;
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSEService;
 import com.hpedrorodrigues.imagesearch.network.services.duckduckgo.DuckDuckGoService;
 import com.hpedrorodrigues.imagesearch.network.services.flickr.FlickrService;
+import com.hpedrorodrigues.imagesearch.network.services.giphy.GiphyService;
 import com.hpedrorodrigues.imagesearch.network.services.imgur.ImgurService;
 import com.hpedrorodrigues.imagesearch.network.services.pixabay.PixabayService;
 
@@ -79,5 +80,9 @@ public class ServiceFactory {
 
     public PixabayService getPixabayService() {
         return getService(PixabayService.ENDPOINT, PixabayService.class);
+    }
+
+    public GiphyService getGiphyService() {
+        return getService(GiphyService.ENDPOINT, GiphyService.class);
     }
 }

@@ -18,7 +18,8 @@ public class GenericParser {
             new ImgurParser(),
             new DuckDuckGoParser(),
             new BingParser(),
-            new PixabayParser()
+            new PixabayParser(),
+            new GiphyParser()
     );
 
     @Inject

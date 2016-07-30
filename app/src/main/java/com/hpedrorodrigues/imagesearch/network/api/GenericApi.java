@@ -21,7 +21,8 @@ public class GenericApi {
             new ImgurApi(),
             new DuckDuckGoApi(),
             new BingApi(),
-            new PixabayApi()
+            new PixabayApi(),
+            new GiphyApi()
     );
 
     @Inject

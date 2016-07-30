@@ -6,5 +6,6 @@ public enum Api {
     IMGUR,
     DUCK_DUCK_GO,
     BING,
-    PIXABAY
+    PIXABAY,
+    GIPHY
 }
