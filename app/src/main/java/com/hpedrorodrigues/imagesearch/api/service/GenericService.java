@@ -1,8 +1,6 @@
 package com.hpedrorodrigues.imagesearch.api.service;
 
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.api.network.api.Api;
-import com.hpedrorodrigues.imagesearch.api.network.api.GenericApi;
 import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.api.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.util.EnumUtil;

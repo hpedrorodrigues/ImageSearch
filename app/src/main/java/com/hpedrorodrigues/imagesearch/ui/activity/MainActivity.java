@@ -6,7 +6,6 @@ import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.api.service.GenericService;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 

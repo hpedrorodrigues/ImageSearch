@@ -1,10 +1,8 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
 

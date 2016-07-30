@@ -1,8 +1,6 @@
 package com.hpedrorodrigues.imagesearch.api.network.api;
 
-import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewApi;
 import com.hpedrorodrigues.imagesearch.api.network.services.street_view.StreetViewImageDetail;
-import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 
 import java.util.Arrays;
 import java.util.List;

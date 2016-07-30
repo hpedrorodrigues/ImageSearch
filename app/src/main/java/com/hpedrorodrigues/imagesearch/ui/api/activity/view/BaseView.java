@@ -1,7 +1,5 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.view;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
-
 abstract class BaseView<T extends BaseActivity> {
 
     protected final T activity;
