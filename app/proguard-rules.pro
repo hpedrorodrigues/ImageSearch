@@ -108,3 +108,6 @@
 -keep class com.google.gson.examples.android.model.** { *; }
 
 -dontwarn java.beans.**
+
+# AsymmetricGridView
+-dontwarn android.util.FloatMath
