@@ -14,6 +14,7 @@
 - [Giphy Docs][giphy-docs]
 
 **API responses** [here][docs]
+**More APIs** [here][more-apis]
 
 [travis-image]: https://travis-ci.org/hpedrorodrigues/ImageSearch.svg?branch=master
 [travis-url]: https://travis-ci.org/hpedrorodrigues/ImageSearch
@@ -28,3 +29,4 @@
 [giphy-docs]: https://github.com/Giphy/GiphyAPI
 
 [docs]: ./docs/APIs.md
+[more-apis]: http://www.programmableweb.com/category/images%2Bsearch/apis?category=19979%2C20055
