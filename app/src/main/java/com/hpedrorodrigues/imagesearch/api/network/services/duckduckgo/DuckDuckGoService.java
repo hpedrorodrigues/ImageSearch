@@ -12,14 +12,14 @@ public interface DuckDuckGoService {
     String ENDPOINT = "https://api.duckduckgo.com/";
 
     @GET("/i.js")
-    Observable<Map> search(@Query("next") Integer next,
+    Observable<Map> search(@Query("q") String q,
+                           @Query("next") Integer next,
                            @Query("s") Integer s,
-                           @Query("q") String q,
                            @Query("safesearch") Boolean safeSearch);
 
     @GET("/i.js")
-    Call<Map> callSearch(@Query("next") Integer next,
+    Call<Map> callSearch(@Query("q") String q,
+                         @Query("next") Integer next,
                          @Query("s") Integer s,
-                         @Query("q") String q,
                          @Query("safesearch") Boolean safeSearch);
 }
