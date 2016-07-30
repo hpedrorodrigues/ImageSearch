@@ -21,11 +21,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     private final GenericView view;
 
+    private final Api api;
+
     @Inject
     public ImageAdapter imagesAdapter;
 
-    public GenericPresenter(GenericFragment fragment, Navigator navigator) {
+    public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
+        this.api = api;
         this.view = new GenericView(fragment);
     }
 
@@ -38,11 +41,11 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     public void setUp() {
         genericService
-                .search(Api.FLICKR, "car", 1, 15, false)
+                .search(api, "car", 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {
-                            List<Image> images = genericService.parse(Api.FLICKR, data);
+                            List<Image> images = genericService.parse(api, data);
                             setUpAsymmetricView(images);
                             Timber.i("Images loaded %s", images);
                         },

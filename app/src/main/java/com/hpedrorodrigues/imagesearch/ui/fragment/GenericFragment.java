@@ -55,7 +55,7 @@ public class GenericFragment extends BaseFragment {
     @Override
     protected void setUpPresenter() {
         MainActivity activity = (MainActivity) getActivity();
-        genericPresenter = new GenericPresenter(this, activity.getNavigator());
+        genericPresenter = new GenericPresenter(this, activity.getNavigator(), getApi());
         getComponent().inject(genericPresenter);
     }
 
