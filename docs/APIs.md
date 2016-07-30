@@ -266,3 +266,48 @@ Content-Type: application/json; charset=utf-8
   "displayRecipeSourcesBadges": true
 }
 ```
+
+## Pixabay
+
+**Request**
+
+```http
+GET https://pixabay.com/api/?key={API_KEY}&q=carro&image_type=photo&page=1&per_page=5
+```
+
+**Response**
+
+
+```http
+Status: 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "totalHits": 500,
+  "hits": [
+    {
+      "previewHeight": 100,
+      "likes": 17,
+      "favorites": 10,
+      "tags": "cart, wheel, agriculture",
+      "webformatHeight": 428,
+      "views": 4618,
+      "webformatWidth": 640,
+      "previewWidth": 150,
+      "comments": 1,
+      "downloads": 2902,
+      "pageURL": "https://pixabay.com/en/cart-wheel-agriculture-farm-1049327/",
+      "previewURL": "https://pixabay.com/static/uploads/photo/2015/11/18/15/38/cart-1049327_150.jpg",
+      "webformatURL": "https://pixabay.com/get/e835b5062bf6063ed95c4518b74f4696e573e1d704b015479cf8c57aa1e8b4_640.jpg",
+      "imageWidth": 3872,
+      "user_id": 483877,
+      "user": "jackmac34",
+      "type": "photo",
+      "id": 1049327,
+      "userImageURL": "https://pixabay.com/static/uploads/user/2014/10/03/19-00-06-229_250x250.jpg",
+      "imageHeight": 2592
+    }
+  ],
+  "total": 1029
+}
+```
