@@ -25,7 +25,8 @@ public interface CSEService {
                            @Query("googlehost") String googleHost,
                            @Query("q") String q,
                            @Query("start") Integer start,
-                           @Query("num") Integer num
+                           @Query("num") Integer num,
+                           @Query("safe") String safeSearch
     );
 
     @GET("/customsearch/v1element")
@@ -39,6 +40,7 @@ public interface CSEService {
                          @Query("googlehost") String googleHost,
                          @Query("q") String q,
                          @Query("start") Integer start,
-                         @Query("num") Integer num
+                         @Query("num") Integer num,
+                         @Query("safe") String safeSearch
     );
 }

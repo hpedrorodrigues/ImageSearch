@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.network.api;
 
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSEParameter;
+import com.hpedrorodrigues.imagesearch.network.services.cse.CSESafeSearchType;
 import com.hpedrorodrigues.imagesearch.network.services.cse.CSEService;
 
 import java.util.Map;
@@ -34,7 +35,8 @@ class CSEApi extends BaseApi {
                         CSEParameter.GOOGLE_HOST,
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch ? CSESafeSearchType.ACTIVE.getValue() : CSESafeSearchType.OFF.getValue()
                 );
     }
 
@@ -54,7 +56,8 @@ class CSEApi extends BaseApi {
                         CSEParameter.GOOGLE_HOST,
                         text,
                         page,
-                        perPage
+                        perPage,
+                        safeSearch ? CSESafeSearchType.ACTIVE.getValue() : CSESafeSearchType.OFF.getValue()
                 );
     }
 }
