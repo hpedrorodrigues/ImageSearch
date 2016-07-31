@@ -4,6 +4,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
@@ -147,6 +148,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
             switch (item.getItemId()) {
 
                 case R.id.action_share:
+                    long imageId = downloadUtil
+                            .enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+
+                    // TODO: this must be made in DownloadCompletedReceiver
+                    String path = downloadUtil.getPathById(imageId);
+                    shareUtil.shareImage(getActivity(), path);
                     break;
 
                 case R.id.action_share_link:
@@ -159,6 +166,11 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
                 case R.id.action_download:
                     downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+                    Toast.makeText(
+                            context,
+                            context.getString(R.string.downloading, image.getImageUrl()),
+                            Toast.LENGTH_LONG
+                    ).show();
                     break;
             }
         });

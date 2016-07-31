@@ -2,11 +2,9 @@ package com.hpedrorodrigues.imagesearch.util.general;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
-import android.widget.Toast;
-
-import com.hpedrorodrigues.imagesearch.R;
 
 import java.io.File;
 import java.util.UUID;
@@ -25,7 +23,7 @@ public class DownloadUtil {
     public DownloadUtil() {
     }
 
-    public void enqueueDownload(String downloadUrl, String directory) {
+    public long enqueueDownload(String downloadUrl, String directory) {
         File direct = new File(Environment.getExternalStorageDirectory(), directory);
 
         if (!direct.exists()) {
@@ -40,17 +38,27 @@ public class DownloadUtil {
 
         request.setAllowedNetworkTypes(types)
                 .setAllowedOverRoaming(false)
+                .setVisibleInDownloadsUi(true)
                 .setTitle(fileName)
                 .setDescription(downloadUrl)
                 .setDestinationInExternalPublicDir(getDirectoryName(directory), fileName);
 
-        downloadManager.enqueue(request);
+        return downloadManager.enqueue(request);
+    }
 
-        Toast.makeText(
-                context,
-                context.getString(R.string.downloading, downloadUri),
-                Toast.LENGTH_LONG
-        ).show();
+    public String getPathById(long id) {
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(id);
+
+        Cursor cursor = downloadManager.query(query);
+
+        if (cursor.moveToFirst()) {
+
+            int pathIndex = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+            return cursor.getString(pathIndex);
+        }
+
+        return null;
     }
 
     private String getDirectoryName(String directory) {
