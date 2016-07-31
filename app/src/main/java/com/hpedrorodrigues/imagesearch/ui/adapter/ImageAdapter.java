@@ -17,13 +17,13 @@ import javax.inject.Inject;
 
 public class ImageAdapter extends ISBaseAdapter<Image> {
 
-    private OnPopupItemClickListener listener;
-
     @Inject
     public Context context;
 
     @Inject
     public LayoutInflater inflater;
+
+    private OnPopupItemClickListener listener;
 
     @Inject
     public ImageAdapter() {

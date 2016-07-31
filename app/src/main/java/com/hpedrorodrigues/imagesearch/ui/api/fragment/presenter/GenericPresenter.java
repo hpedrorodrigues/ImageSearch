@@ -26,15 +26,15 @@ import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
 
+    private final GenericView view;
+
+    private final Api api;
+
     @Inject
     public ClipboardUtil clipboardUtil;
 
     @Inject
     public ShareUtil shareUtil;
-
-    private final GenericView view;
-
-    private final Api api;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);

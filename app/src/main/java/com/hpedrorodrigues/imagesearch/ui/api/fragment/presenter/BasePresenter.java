@@ -22,8 +22,6 @@ abstract class BasePresenter<T extends BaseFragment> {
 
     protected final Navigator navigator;
 
-    private CompositeSubscription compositeSubscription;
-
     @Inject
     public Context context;
 
@@ -32,6 +30,8 @@ abstract class BasePresenter<T extends BaseFragment> {
 
     @Inject
     protected ISAnswer answer;
+
+    private CompositeSubscription compositeSubscription;
 
     protected BasePresenter(T fragment, Navigator navigator) {
         this.fragment = fragment;

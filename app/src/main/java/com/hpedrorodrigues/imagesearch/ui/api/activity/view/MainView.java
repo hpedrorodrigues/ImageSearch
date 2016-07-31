@@ -23,13 +23,13 @@ import lombok.EqualsAndHashCode;
 @Data
 public class MainView extends BaseView<MainActivity> {
 
+    @Inject
+    public VersionInfo versionInfo;
+
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
     private OnDrawerItemSelectedListener drawerItemSelectedListener;
-
-    @Inject
-    public VersionInfo versionInfo;
 
     public MainView(MainActivity activity) {
         super(activity);

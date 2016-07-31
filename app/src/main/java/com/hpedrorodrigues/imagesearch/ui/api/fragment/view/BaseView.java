@@ -9,10 +9,10 @@ import javax.inject.Inject;
 
 abstract class BaseView<T extends BaseFragment> {
 
+    protected final T fragment;
+
     @Inject
     public Context context;
-
-    protected final T fragment;
 
     protected BaseView(T fragment) {
         this.fragment = fragment;
