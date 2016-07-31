@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hpedrorodrigues.imagesearch.BuildConfig;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.ui.adapter.holder.ImageHolder;
@@ -42,7 +43,9 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
         holder.moreView.setOnClickListener(v -> showPopup(v, image));
 
-        Picasso.with(context).load(image.getThumbnailUrl()).into(holder.imageView);
+        Picasso picasso = Picasso.with(context);
+        picasso.setIndicatorsEnabled(BuildConfig.DEBUG);
+        picasso.load(image.getThumbnailUrl()).into(holder.imageView);
 
         return view;
     }
