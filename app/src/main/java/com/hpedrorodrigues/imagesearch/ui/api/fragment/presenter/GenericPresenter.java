@@ -13,6 +13,7 @@ import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
+import com.hpedrorodrigues.imagesearch.util.general.DownloadUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
@@ -35,6 +36,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     @Inject
     public ShareUtil shareUtil;
+
+    @Inject
+    public DownloadUtil downloadUtil;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -154,6 +158,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                     break;
 
                 case R.id.action_download:
+                    downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
                     break;
             }
         });

@@ -29,4 +29,6 @@
 
     <string name="choose_app">Choose an app</string>
 
+    <string name="downloading">Downloading "%s"</string>
+
 </resources>
