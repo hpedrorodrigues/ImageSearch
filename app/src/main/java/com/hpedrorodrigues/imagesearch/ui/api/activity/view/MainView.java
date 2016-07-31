@@ -62,7 +62,9 @@ public class MainView extends BaseView<MainActivity> {
 
     public void setUpNavigationView() {
         navigationView.setNavigationItemSelectedListener(item -> {
-            item.setChecked(true);
+            if (item.getItemId() != R.id.about_item && item.getItemId() != R.id.settings_item) {
+                item.setChecked(true);
+            }
 
             closeDrawer();
 
