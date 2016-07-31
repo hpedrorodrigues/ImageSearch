@@ -20,6 +20,8 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     public MainPresenter(MainActivity activity, Navigator navigator) {
         super(activity, navigator);
         this.view = new MainView(activity);
+
+        this.activity.getComponent().inject(view);
     }
 
     @Override
@@ -57,6 +59,7 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
     private void setUpFirstFragment() {
         activity.setTitle(R.string.all_provider);
+        view.getNavigationView().getMenu().getItem(0).setChecked(true);
         GenericFragment fragment = GenericFragment.create();
         navigator.toFirstFragmentScreen(fragment);
     }

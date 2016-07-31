@@ -6,10 +6,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.util.general.VersionInfo;
+
+import javax.inject.Inject;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,6 +27,9 @@ public class MainView extends BaseView<MainActivity> {
     private NavigationView navigationView;
     private ActionBarDrawerToggle drawerToggle;
     private OnDrawerItemSelectedListener drawerItemSelectedListener;
+
+    @Inject
+    public VersionInfo versionInfo;
 
     public MainView(MainActivity activity) {
         super(activity);
@@ -64,6 +72,10 @@ public class MainView extends BaseView<MainActivity> {
 
             return true;
         });
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView appVersionView = (TextView) headerView.findViewById(R.id.app_version);
+        appVersionView.setText(versionInfo.getVersionName());
 
         Menu menu = navigationView.getMenu();
         for (int i = 0; i < menu.size(); i++) {
