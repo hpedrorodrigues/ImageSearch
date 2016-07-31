@@ -3,19 +3,8 @@
 # Retrolambda
 -dontwarn java.lang.invoke.*
 
-# Crashlytics
--keep class com.crashlytics.** { *; }
--dontwarn com.crashlytics.**
+# General
 -keepattributes *Annotation*
--keepattributes SourceFile,LineNumberTable
--keep public class * extends java.lang.Exception
--printmapping mapping.txt
-
-# Fabric SDK
--keep class io.fabric.sdk.android.** { *; }
--keep interface io.fabric.sdk.android.** { *; }
--keep class io.fabric.** { *; }
--keep interface io.fabric.** { *; }
 
 # R class
 -keepclassmembers class **.R$* {
