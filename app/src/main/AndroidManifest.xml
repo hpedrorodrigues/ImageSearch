@@ -39,6 +39,12 @@
             android:label="@string/settings"
             android:theme="@style/AppTheme" />
 
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+            android:label="@string/about"
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ public enum DrawerItem {
     BING(Api.BING, R.id.bing_item),
     PIXABAY(Api.PIXABAY, R.id.pixabay_item),
     GIPHY(Api.GIPHY, R.id.giphy_item),
+    ABOUT(null, R.id.about_item),
     SETTINGS(null, R.id.settings_item);
 
     private final Api api;

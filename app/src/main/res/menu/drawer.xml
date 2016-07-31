@@ -49,6 +49,11 @@
         <menu>
 
             <item
+                android:id="@+id/about_item"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/about" />
+
+            <item
                 android:id="@+id/settings_item"
                 android:icon="@mipmap/ic_launcher"
                 android:title="@string/settings" />
