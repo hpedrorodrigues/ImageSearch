@@ -12,6 +12,11 @@ public class AndroidNavigator implements Navigator {
     private final ActivityNavigator activityNavigator;
     private final FragmentNavigator fragmentNavigator;
 
+    public AndroidNavigator(BaseActivity activity) {
+        activityNavigator = new AndroidActivityNavigator(activity);
+        fragmentNavigator = null;
+    }
+
     public AndroidNavigator(int containerId, BaseActivity activity) {
         activityNavigator = new AndroidActivityNavigator(activity);
         fragmentNavigator = new AndroidFragmentNavigator(containerId, activity);
