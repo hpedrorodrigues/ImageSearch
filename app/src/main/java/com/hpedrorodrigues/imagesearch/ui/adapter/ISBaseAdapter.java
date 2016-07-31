@@ -14,6 +14,16 @@ abstract class ISBaseAdapter<T> implements ListAdapter {
 
     private List<T> content;
 
+    public T getItemTyped(int i) {
+        return (T) getItem(i);
+    }
+
+    public void clear() {
+        if (!isEmpty()) {
+            content.clear();
+        }
+    }
+
     @Override
     public void registerDataSetObserver(DataSetObserver dataSetObserver) {
     }
@@ -35,10 +45,6 @@ abstract class ISBaseAdapter<T> implements ListAdapter {
     @Override
     public Object getItem(int i) {
         return isEmpty() ? null : content.get(i);
-    }
-
-    public T getItemTyped(int i) {
-        return (T) getItem(i);
     }
 
     @Override

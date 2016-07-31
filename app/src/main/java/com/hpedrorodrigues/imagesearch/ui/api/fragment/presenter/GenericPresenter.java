@@ -95,6 +95,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     public void search(String search) {
+        view.showProgress();
+        view.clearImageAdapter();
+
         if (api == null) {
 
             genericService
@@ -103,6 +106,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                     .subscribe(
                             images -> {
                                 view.setContentFromGridView(images);
+                                view.hideProgress();
                                 Timber.i("Images loaded %s", images);
                             },
                             error -> Timber.e(error, "Error")
@@ -116,6 +120,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                             data -> {
                                 List<Image> images = genericService.parse(api, data);
                                 view.setContentFromGridView(images);
+                                view.hideProgress();
                                 Timber.i("Images loaded %s", images);
                             },
                             error -> Timber.e(error, "Error")

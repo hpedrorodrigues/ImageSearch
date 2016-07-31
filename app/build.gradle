@@ -97,6 +97,10 @@ dependencies {
     // - Image Loading
     compile 'com.squareup.picasso:picasso:2.5.2'
 
+    // - Loading Library
+    compile 'com.wang.avi:library:1.0.5'
+    compile 'com.nineoldandroids:library:2.4.0'
+
     // - Dagger 2
     compile 'com.google.dagger:dagger:2.2'
     apt 'com.google.dagger:dagger-compiler:2.2'

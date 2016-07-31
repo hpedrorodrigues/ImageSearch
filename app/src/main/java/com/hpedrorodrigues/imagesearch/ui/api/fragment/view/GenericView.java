@@ -11,6 +11,7 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private StaggeredGridView gridView;
 
+    private AVLoadingIndicatorView loadingView;
+
     public GenericView(GenericFragment fragment) {
         super(fragment);
     }
@@ -35,6 +38,17 @@ public class GenericView extends BaseView<GenericFragment> {
     @Override
     public void onView(View view) {
         gridView = (StaggeredGridView) view.findViewById(R.id.grid_view);
+        loadingView = (AVLoadingIndicatorView) view.findViewById(R.id.loadingIndicatorView);
+    }
+
+    public void showProgress() {
+        loadingView.setVisibility(View.VISIBLE);
+        gridView.setVisibility(View.GONE);
+    }
+
+    public void hideProgress() {
+        loadingView.setVisibility(View.GONE);
+        gridView.setVisibility(View.VISIBLE);
     }
 
     public void setUpImageAdapter() {
@@ -45,6 +59,10 @@ public class GenericView extends BaseView<GenericFragment> {
     public void setContentFromGridView(List<Image> images) {
         imagesAdapter.setContent(images);
         gridView.setAdapter(imagesAdapter);
+    }
+
+    public void clearImageAdapter() {
+        imagesAdapter.clear();
     }
 
     public SearchView getSearchView(Menu menu) {
