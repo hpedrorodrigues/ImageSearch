@@ -13,6 +13,7 @@ import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
+import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
@@ -27,6 +28,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     @Inject
     public ClipboardUtil clipboardUtil;
+
+    @Inject
+    public ShareUtil shareUtil;
 
     private final GenericView view;
 
@@ -142,6 +146,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                     break;
 
                 case R.id.action_share_link:
+                    shareUtil.shareText(getActivity(), image.getImageUrl());
                     break;
 
                 case R.id.action_copy_link:

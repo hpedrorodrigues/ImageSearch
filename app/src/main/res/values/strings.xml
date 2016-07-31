@@ -27,4 +27,6 @@
 
     <string name="text_copied_to_clipboard">Text copied to Clipboard "%s"</string>
 
+    <string name="choose_app">Choose an app</string>
+
 </resources>
