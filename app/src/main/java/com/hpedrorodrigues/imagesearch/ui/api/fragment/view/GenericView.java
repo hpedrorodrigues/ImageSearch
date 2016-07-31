@@ -46,7 +46,7 @@ public class GenericView extends BaseView<GenericFragment> {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        searchView.setQueryHint("test");
+        searchView.setQueryHint(context.getString(R.string.search_hint));
         searchView.setFocusable(true);
         searchView.setIconifiedByDefault(false);
         searchView.requestFocus();

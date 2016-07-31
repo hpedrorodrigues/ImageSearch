@@ -7,34 +7,34 @@
         <item
             android:id="@+id/flickr_item"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Flickr" />
+            android:title="@string/flickr_provider" />
         <item
             android:id="@+id/cse_item"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="CSE" />
+            android:title="@string/google_provider" />
         <item
             android:id="@+id/imgur_item"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="IMGUR" />
+            android:title="@string/imgur_provider" />
         <item
             android:id="@+id/duckduckgo_item"
             android:icon="@drawable/ic_menu_manage"
-            android:title="DuckDuckGo" />
+            android:title="@string/duck_duck_go_provider" />
 
         <item
             android:id="@+id/bing_item"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Bing" />
+            android:title="@string/bing_provider" />
 
         <item
             android:id="@+id/pixabay_item"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Pixabay" />
+            android:title="@string/pixabay_provider" />
 
         <item
             android:id="@+id/giphy_item"
             android:icon="@drawable/ic_menu_manage"
-            android:title="GIPHY" />
+            android:title="@string/giphy_provider" />
 
     </group>
 
