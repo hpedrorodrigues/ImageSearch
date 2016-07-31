@@ -1,12 +1,15 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
+import android.Manifest;
 import android.app.DownloadManager;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.api.entity.Feature;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
@@ -17,6 +20,7 @@ import com.hpedrorodrigues.imagesearch.util.StringUtil;
 import com.hpedrorodrigues.imagesearch.util.general.BroadcastUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
 import com.hpedrorodrigues.imagesearch.util.general.DownloadUtil;
+import com.hpedrorodrigues.imagesearch.util.general.FeatureUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
@@ -30,6 +34,8 @@ import rx.Subscription;
 import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
+
+    private static final int WRITE_EXTERNAL_STORAGE = 1;
 
     private final GenericView view;
 
@@ -49,6 +55,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     @Inject
     public BroadcastUtil broadcastUtil;
+
+    @Inject
+    public FeatureUtil featureUtil;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -84,6 +93,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 );
 
         bindSubscription(subscription);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        featureUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void loadTitleByApi() {
@@ -157,7 +172,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
             switch (item.getItemId()) {
 
                 case R.id.action_share:
-                    shareImage(image);
+                    Feature shareFeature = createImageFeature(image);
+                    featureUtil.requestFeature(shareFeature, (feature, permissionGranted) -> {
+                        if (permissionGranted) {
+                            shareImage(image);
+                        } else {
+                            toastUtil.showLong("Permission not granted");
+                        }
+                    });
                     break;
 
                 case R.id.action_share_link:
@@ -169,10 +191,28 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                     break;
 
                 case R.id.action_download:
-                    downloadImage(image);
+                    Feature downloadFeature = createImageFeature(image);
+                    featureUtil.requestFeature(downloadFeature, (feature, permissionGranted) -> {
+                        if (permissionGranted) {
+                            downloadImage(image);
+                        } else {
+                            toastUtil.showLong("Permission not granted");
+                        }
+                    });
                     break;
             }
         });
+    }
+
+    private Feature createImageFeature(Image image) {
+        Feature feature = new Feature();
+
+        feature.setActivity(getActivity());
+        feature.setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        feature.setRequestCode(WRITE_EXTERNAL_STORAGE);
+        feature.setValue(image);
+
+        return feature;
     }
 
     private void downloadImage(Image image) {

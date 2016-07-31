@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
@@ -44,6 +45,12 @@ public class MainActivity extends BaseActivity {
         if (presenter.onBackPressed()) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

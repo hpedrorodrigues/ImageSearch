@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
@@ -25,6 +26,10 @@ abstract class BasePresenter<T extends BaseActivity> {
     }
 
     public void onDestroy() {
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
     }
 
     public boolean onBackPressed() {

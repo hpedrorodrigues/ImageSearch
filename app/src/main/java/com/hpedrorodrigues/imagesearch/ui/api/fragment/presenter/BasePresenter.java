@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -42,6 +43,10 @@ abstract class BasePresenter<T extends BaseFragment> {
     public abstract void onViewCreated(View view);
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    }
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
     }
 
     protected void bindSubscription(Subscription subscription) {
