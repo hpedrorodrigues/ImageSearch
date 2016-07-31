@@ -97,8 +97,6 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
                             search(query, true);
 
-                            answer.logSearch(api, query);
-
                             Timber.d("Searching for query: %s", query);
                         },
                         error -> Timber.e(error, "Error searching images")
@@ -145,17 +143,19 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         fragment.getToolbar().setTitle(title);
     }
 
-    public void search(String search, boolean smallLoading) {
+    public void search(String query, boolean smallLoading) {
         if (smallLoading) {
             view.showSmallProgress();
         } else {
             view.showProgress();
         }
 
+        answer.logSearch(api, query, currentPage);
+
         if (api == null) {
-            searchAll(search, smallLoading);
+            searchAll(query, smallLoading);
         } else {
-            searchByApi(search, smallLoading);
+            searchByApi(query, smallLoading);
         }
     }
 
@@ -251,9 +251,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         });
     }
 
-    private void searchAll(String search, boolean smallLoading) {
+    private void searchAll(String query, boolean smallLoading) {
         genericService
-                .searchAll(search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         images -> {
@@ -272,9 +272,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 );
     }
 
-    private void searchByApi(String search, boolean smallLoading) {
+    private void searchByApi(String query, boolean smallLoading) {
         genericService
-                .search(api, search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .search(api, query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {

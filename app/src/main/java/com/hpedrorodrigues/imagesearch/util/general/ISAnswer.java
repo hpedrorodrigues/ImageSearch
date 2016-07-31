@@ -43,10 +43,11 @@ public class ISAnswer {
         instance().logShare(new ShareEvent().putMethod("Android Provider").putContentName(message));
     }
 
-    public void logSearch(Api api, String search) {
+    public void logSearch(Api api, String query, int page) {
         instance().logSearch(new SearchEvent()
-                .putQuery(search)
+                .putQuery(query)
                 .putCustomAttribute("Api", api == null ? "ALL" : api.name())
+                .putCustomAttribute("Page", page)
         );
     }
 }
