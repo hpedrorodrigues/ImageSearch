@@ -34,15 +34,6 @@
 -dontwarn android.support.v4.view.**
 -dontwarn android.support.v4.widget.**
 
-# Support library v7
--keep public class android.support.v7.widget.** { *; }
--keep public class android.support.v7.internal.widget.** { *; }
--keep public class android.support.v7.internal.view.menu.** { *; }
-
--keep public class * extends android.support.v4.view.ActionProvider {
-    public <init>(android.content.Context);
-}
-
 # Support Design
 -keep class android.support.design.widget.** { *; }
 -keep interface android.support.design.widget.** { *; }
@@ -55,8 +46,6 @@
 # Retrofit 2
 # Platform calls Class.forName on types which do not exist on Android to determine platform.
 -dontnote retrofit2.Platform
-# Platform used when running on RoboVM on iOS. Will not be used at runtime.
--dontnote retrofit2.Platform$IOS$MainThreadExecutor
 # Platform used when running on Java 8 VMs. Will not be used at runtime.
 -dontwarn retrofit2.Platform$Java8
 # Retain generic type information for use by reflection by converters and adapters.
