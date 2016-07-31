@@ -72,6 +72,8 @@ public class GenericView extends BaseView<GenericFragment> {
         moreListener = new OnLoadMoreListener(1, listener);
         moreListener.setCanLoadMore(true);
 
+        gridView.setAdapter(imagesAdapter);
+
         gridView.setOnScrollListener(moreListener);
     }
 
@@ -85,7 +87,7 @@ public class GenericView extends BaseView<GenericFragment> {
 
     public void addContentToGridView(List<Image> images) {
         imagesAdapter.add(images);
-        gridView.setAdapter(imagesAdapter);
+        imagesAdapter.notifyDataSetChanged();
     }
 
     public SearchView getSearchView(Menu menu) {

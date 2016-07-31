@@ -1,7 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.adapter;
 
-import android.database.DataSetObserver;
-import android.widget.ListAdapter;
+import android.widget.BaseAdapter;
 
 import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 
@@ -9,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-abstract class ISBaseAdapter<T> implements ListAdapter {
+abstract class ISBaseAdapter<T> extends BaseAdapter {
 
     private List<T> content;
 
@@ -34,19 +35,6 @@ abstract class ISBaseAdapter<T> implements ListAdapter {
     }
 
     @Override
-    public void registerDataSetObserver(DataSetObserver dataSetObserver) {
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
-
-    @Override
     public long getItemId(int i) {
         return i;
     }
@@ -64,25 +52,5 @@ abstract class ISBaseAdapter<T> implements ListAdapter {
     @Override
     public boolean isEmpty() {
         return CollectionUtil.isEmpty(content);
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }
-
-    @Override
-    public int getItemViewType(int i) {
-        return 1;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled(int i) {
-        return true;
     }
 }
