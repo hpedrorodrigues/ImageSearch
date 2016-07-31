@@ -4,6 +4,7 @@ import com.hpedrorodrigues.imagesearch.api.network.api.BaseApi;
 import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
@@ -18,19 +19,21 @@ import dagger.Component;
 @Component(modules = ISModule.class)
 public interface ISComponent extends BaseComponent {
 
-    void inject(BaseApi baseApi);
+    void inject(BaseApi api);
 
-    void inject(BaseParser baseParser);
+    void inject(BaseParser parser);
 
     void inject(MainActivity activity);
 
     void inject(MainPresenter presenter);
 
-    void inject(GenericFragment genericFragment);
+    void inject(GenericFragment fragment);
 
-    void inject(GenericPresenter genericPresenter);
+    void inject(GenericPresenter presenter);
 
     void inject(GenericView view);
 
     void inject(MainView view);
+
+    void inject(SettingsActivity activity);
 }
