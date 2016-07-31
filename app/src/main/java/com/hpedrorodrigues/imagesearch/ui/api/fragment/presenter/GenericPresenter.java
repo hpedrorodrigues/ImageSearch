@@ -60,7 +60,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     public FeatureUtil featureUtil;
 
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
-    private int currentPage = 1;
+    private int currentPage = ISConstant.INITIAL_PAGE;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -93,6 +93,10 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .create()
                 .subscribe(
                         query -> {
+                            view.clearImageAdapter();
+
+                            currentPage = ISConstant.INITIAL_PAGE;
+
                             currentSearch = query;
 
                             search(query, true);

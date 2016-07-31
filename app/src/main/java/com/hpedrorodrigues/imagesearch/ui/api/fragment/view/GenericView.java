@@ -90,6 +90,10 @@ public class GenericView extends BaseView<GenericFragment> {
         imagesAdapter.notifyDataSetChanged();
     }
 
+    public void clearImageAdapter() {
+        imagesAdapter.clear();
+    }
+
     public SearchView getSearchView(Menu menu) {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
