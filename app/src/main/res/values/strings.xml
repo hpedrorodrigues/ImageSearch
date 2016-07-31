@@ -12,7 +12,7 @@
     <string name="all_provider">All</string>
     <string name="google_provider">Google</string>
     <string name="flickr_provider">Flickr</string>
-    <string name="imgur_provider">IMGUR</string>
+    <string name="imgur_provider">imgur</string>
     <string name="duck_duck_go_provider" tools:ignore="Typos">Duck Duck Go</string>
     <string name="bing_provider">Bing</string>
     <string name="pixabay_provider">Pixabay</string>

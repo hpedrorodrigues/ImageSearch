@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 
+import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
@@ -55,6 +56,7 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void setUpFirstFragment() {
+        activity.setTitle(R.string.all_provider);
         GenericFragment fragment = GenericFragment.create();
         navigator.toFirstFragmentScreen(fragment);
     }

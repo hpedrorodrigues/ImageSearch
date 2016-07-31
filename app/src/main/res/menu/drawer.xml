@@ -21,6 +21,7 @@
             android:id="@+id/imgur_item"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/imgur_provider" />
+
         <item
             android:id="@+id/duckduckgo_item"
             android:icon="@drawable/ic_menu_manage"

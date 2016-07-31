@@ -4,6 +4,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
@@ -62,6 +64,14 @@ public class MainView extends BaseView<MainActivity> {
 
             return true;
         });
+
+        Menu menu = navigationView.getMenu();
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem menuItem = menu.getItem(i);
+
+            String upperTitle = menuItem.getTitle().toString().toUpperCase();
+            menuItem.setTitle(upperTitle);
+        }
     }
 
     public boolean isDrawerOpen() {

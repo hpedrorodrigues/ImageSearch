@@ -39,6 +39,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         this.view.onView(view);
         this.view.setUpImageAdapter();
 
+        loadTitleByApi();
         search(ISConstant.DEFAULT_SEARCH);
     }
 
@@ -59,6 +60,38 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 );
 
         bindSubscription(subscription);
+    }
+
+    private void loadTitleByApi() {
+        String title;
+
+        if (api == null) {
+
+            title = context.getString(R.string.all_provider);
+        } else if (api.equals(Api.FLICKR)) {
+
+            title = context.getString(R.string.flickr_provider);
+        } else if (api.equals(Api.CSE)) {
+
+            title = context.getString(R.string.google_provider);
+        } else if (api.equals(Api.IMGUR)) {
+
+            title = context.getString(R.string.imgur_provider);
+        } else if (api.equals(Api.DUCK_DUCK_GO)) {
+
+            title = context.getString(R.string.duck_duck_go_provider);
+        } else if (api.equals(Api.BING)) {
+
+            title = context.getString(R.string.bing_provider);
+        } else if (api.equals(Api.PIXABAY)) {
+
+            title = context.getString(R.string.pixabay_provider);
+        } else {
+
+            title = context.getString(R.string.giphy_provider);
+        }
+
+        fragment.getToolbar().setTitle(title);
     }
 
     public void search(String search) {
