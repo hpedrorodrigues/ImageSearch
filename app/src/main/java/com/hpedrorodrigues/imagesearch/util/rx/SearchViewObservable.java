@@ -25,6 +25,7 @@ public class SearchViewObservable {
                     searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                         @Override
                         public boolean onQueryTextSubmit(String query) {
+                            subscriber.onNext(query);
                             return false;
                         }
 
