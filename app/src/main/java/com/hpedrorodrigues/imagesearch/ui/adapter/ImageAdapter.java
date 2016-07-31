@@ -33,6 +33,8 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
         ImageHolder holder = new ImageHolder(view);
         Image image = getItemTyped(i);
 
+        holder.titleView.setText(image.getTitle());
+
         Picasso.with(context).load(image.getThumbnailUrl()).into(holder.imageView);
 
         return view;
