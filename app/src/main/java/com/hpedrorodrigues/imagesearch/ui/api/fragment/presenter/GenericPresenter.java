@@ -76,10 +76,10 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
         this.view.setUpGridView(() -> {
             currentPage++;
-            search(currentSearch);
+            search(currentSearch, true);
         });
 
-        search(ISConstant.DEFAULT_SEARCH);
+        search(ISConstant.DEFAULT_SEARCH, false);
         loadTitleByApi();
         setUpImageAdapter();
     }
@@ -95,7 +95,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         query -> {
                             currentSearch = query;
 
-                            search(query);
+                            search(query, true);
 
                             answer.logSearch(api, query);
 
@@ -145,38 +145,17 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         fragment.getToolbar().setTitle(title);
     }
 
-    public void search(String search) {
-        view.showProgress();
+    public void search(String search, boolean smallLoading) {
+        if (smallLoading) {
+            view.showSmallProgress();
+        } else {
+            view.showProgress();
+        }
 
         if (api == null) {
-
-            genericService
-                    .searchAll(search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
-                    .compose(Rx.applySchedulers())
-                    .subscribe(
-                            images -> {
-                                view.setContentFromGridView(images);
-                                view.hideProgress();
-                                view.setCanLoadMore(true);
-                                Timber.i("Images loaded %s", images);
-                            },
-                            error -> Timber.e(error, "Error")
-                    );
+            searchAll(search, smallLoading);
         } else {
-
-            genericService
-                    .search(api, search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
-                    .compose(Rx.applySchedulers())
-                    .subscribe(
-                            data -> {
-                                List<Image> images = genericService.parse(api, data);
-                                view.setContentFromGridView(images);
-                                view.hideProgress();
-                                view.setCanLoadMore(true);
-                                Timber.i("Images loaded %s", images);
-                            },
-                            error -> Timber.e(error, "Error")
-                    );
+            searchByApi(search, smallLoading);
         }
     }
 
@@ -270,5 +249,48 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
             return false;
         });
+    }
+
+    private void searchAll(String search, boolean smallLoading) {
+        genericService
+                .searchAll(search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        images -> {
+                            view.addContentToGridView(images);
+                            view.setCanLoadMore(true);
+
+                            if (smallLoading) {
+                                view.hideSmallProgress();
+                            } else {
+                                view.hideProgress();
+                            }
+
+                            Timber.i("Images loaded %s", images);
+                        },
+                        error -> Timber.e(error, "Error")
+                );
+    }
+
+    private void searchByApi(String search, boolean smallLoading) {
+        genericService
+                .search(api, search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .compose(Rx.applySchedulers())
+                .subscribe(
+                        data -> {
+                            List<Image> images = genericService.parse(api, data);
+                            view.addContentToGridView(images);
+                            view.setCanLoadMore(true);
+
+                            if (smallLoading) {
+                                view.hideSmallProgress();
+                            } else {
+                                view.hideProgress();
+                            }
+
+                            Timber.i("Images loaded %s", images);
+                        },
+                        error -> Timber.e(error, "Error")
+                );
     }
 }

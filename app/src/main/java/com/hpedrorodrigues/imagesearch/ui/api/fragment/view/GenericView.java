@@ -5,6 +5,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.hpedrorodrigues.imagesearch.R;
@@ -32,6 +33,8 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private AVLoadingIndicatorView loadingView;
 
+    private LinearLayout smallLoadingView;
+
     private OnLoadMoreListener moreListener;
 
     public GenericView(GenericFragment fragment) {
@@ -42,6 +45,17 @@ public class GenericView extends BaseView<GenericFragment> {
     public void onView(View view) {
         gridView = (StaggeredGridView) view.findViewById(R.id.grid_view);
         loadingView = (AVLoadingIndicatorView) view.findViewById(R.id.loadingIndicatorView);
+        smallLoadingView = (LinearLayout) view.findViewById(R.id.smallLoadingIndicatorView);
+    }
+
+    public void showSmallProgress() {
+        loadingView.setVisibility(View.GONE);
+        smallLoadingView.setVisibility(View.VISIBLE);
+    }
+
+    public void hideSmallProgress() {
+        loadingView.setVisibility(View.GONE);
+        smallLoadingView.setVisibility(View.GONE);
     }
 
     public void showProgress() {
@@ -69,10 +83,9 @@ public class GenericView extends BaseView<GenericFragment> {
         imagesAdapter.setListener(listener);
     }
 
-    public void setContentFromGridView(List<Image> images) {
+    public void addContentToGridView(List<Image> images) {
         imagesAdapter.add(images);
         gridView.setAdapter(imagesAdapter);
-        gridView.invalidateViews();
     }
 
     public SearchView getSearchView(Menu menu) {
