@@ -7,7 +7,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="settings">Settings</string>
 
     <string name="all_provider">All</string>
     <string name="google_provider">Google</string>
@@ -33,5 +33,7 @@
 
     <string name="error_downloading_image">Error downloading</string>
     <string name="image_downloaded_successful">Image saved in "%s"</string>
+
+    <string name="general">General</string>
 
 </resources>
