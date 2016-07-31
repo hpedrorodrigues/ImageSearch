@@ -12,15 +12,21 @@ import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.Subscription;
 import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
+
+    @Inject
+    public ClipboardUtil clipboardUtil;
 
     private final GenericView view;
 
@@ -37,10 +43,10 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Override
     public void onViewCreated(View view) {
         this.view.onView(view);
-        this.view.setUpImageAdapter();
 
-        loadTitleByApi();
         search(ISConstant.DEFAULT_SEARCH);
+        loadTitleByApi();
+        setUpImageAdapter();
     }
 
     @Override
@@ -126,5 +132,25 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                             error -> Timber.e(error, "Error")
                     );
         }
+    }
+
+    private void setUpImageAdapter() {
+        this.view.setUpImageAdapter((item, image) -> {
+            switch (item.getItemId()) {
+
+                case R.id.action_share:
+                    break;
+
+                case R.id.action_share_link:
+                    break;
+
+                case R.id.action_copy_link:
+                    clipboardUtil.copy(image.getImageUrl());
+                    break;
+
+                case R.id.action_download:
+                    break;
+            }
+        });
     }
 }

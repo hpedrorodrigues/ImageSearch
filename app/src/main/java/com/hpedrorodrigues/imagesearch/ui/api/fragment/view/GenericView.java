@@ -51,9 +51,8 @@ public class GenericView extends BaseView<GenericFragment> {
         gridView.setVisibility(View.VISIBLE);
     }
 
-    public void setUpImageAdapter() {
-        imagesAdapter.setListener((item, image) -> {
-        });
+    public void setUpImageAdapter(ImageAdapter.OnPopupItemClickListener listener) {
+        imagesAdapter.setListener(listener);
     }
 
     public void setContentFromGridView(List<Image> images) {

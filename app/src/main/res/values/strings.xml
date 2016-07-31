@@ -25,4 +25,6 @@
     <string name="copy_link">Copy link</string>
     <string name="download">Download</string>
 
+    <string name="text_copied_to_clipboard">Text copied to Clipboard "%s"</string>
+
 </resources>

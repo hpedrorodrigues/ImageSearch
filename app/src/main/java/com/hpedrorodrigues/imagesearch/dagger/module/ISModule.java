@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.dagger.module;
 
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 
@@ -29,5 +30,11 @@ public final class ISModule extends BaseModule {
     @Singleton
     public LayoutInflater provideInflater(Context context) {
         return LayoutInflater.from(context);
+    }
+
+    @Provides
+    @Singleton
+    public ClipboardManager provideClipboardManager(Context context) {
+        return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
     }
 }
