@@ -95,6 +95,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     public void search(String search) {
+        cancelPendingProcesses();
+
         if (api == null) {
 
             genericService

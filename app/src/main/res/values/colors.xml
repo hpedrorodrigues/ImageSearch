@@ -8,7 +8,7 @@
 
     <color name="screens">#F5F5F5</color>
     <color name="white">#FFF</color>
-    <color name="opaque">#B3000000</color>
+    <color name="opaque">#B3FF4081</color>
     <color name="transparent">#00000000</color>
     <color name="touch_background">#99000000</color>
     <color name="black">#212121</color>
