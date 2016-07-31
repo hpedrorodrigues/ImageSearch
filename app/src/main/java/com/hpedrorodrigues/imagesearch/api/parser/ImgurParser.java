@@ -2,6 +2,7 @@ package com.hpedrorodrigues.imagesearch.api.parser;
 
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.api.network.services.imgur.ImgurThumbnailSize;
 import com.hpedrorodrigues.imagesearch.util.StringUtil;
 
 import java.util.List;
@@ -21,24 +22,38 @@ class ImgurParser extends BaseParser {
     protected Image asImage(Map info) {
         Image image = new Image();
 
+        String imageUrl = asString(info.get("link"));
+
         image.setTitle(asString(info.get("title")));
         image.setDescription(asString(info.get("description")));
         image.setWidth(asInteger(info.get("width")));
         image.setHeight(asInteger(info.get("height")));
         image.setWebSiteUrl(null);
-        image.setThumbnailUrl(asString(info.get("link")));
-        image.setImageUrl(asString(info.get("link")));
+        image.setThumbnailUrl(getThumbnailUrl(imageUrl));
+        image.setImageUrl(imageUrl);
 
         return image;
     }
 
     @Override
     protected boolean conditionToAdd(Map info) {
-        return !StringUtil.isEmpty(asString(info.get("type")));
+        String type = asString(info.get("type"));
+        return !StringUtil.isEmpty(type) && type.equals("image/jpeg");
     }
 
     @Override
     protected Api getApi() {
         return Api.IMGUR;
+    }
+
+    private String getThumbnailUrl(String imageUrl) {
+        if (imageUrl.contains(".")) {
+
+            String format = imageUrl.substring(imageUrl.lastIndexOf("."), imageUrl.length());
+            String thumbnailSize = ImgurThumbnailSize.SMALL_THUMBNAIL.getValue();
+            return imageUrl.substring(0, imageUrl.lastIndexOf(".")) + thumbnailSize + format;
+        }
+
+        return imageUrl;
     }
 }
