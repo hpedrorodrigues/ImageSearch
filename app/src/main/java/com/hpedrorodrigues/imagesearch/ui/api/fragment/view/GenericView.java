@@ -10,6 +10,7 @@ import com.etsy.android.grid.StaggeredGridView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
+import com.hpedrorodrigues.imagesearch.ui.component.OnLoadMoreListener;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -31,6 +32,8 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private AVLoadingIndicatorView loadingView;
 
+    private OnLoadMoreListener moreListener;
+
     public GenericView(GenericFragment fragment) {
         super(fragment);
     }
@@ -51,17 +54,25 @@ public class GenericView extends BaseView<GenericFragment> {
         gridView.setVisibility(View.VISIBLE);
     }
 
+    public void setUpGridView(OnLoadMoreListener.OnMoreListener listener) {
+        moreListener = new OnLoadMoreListener(1, listener);
+        moreListener.setCanLoadMore(true);
+
+        gridView.setOnScrollListener(moreListener);
+    }
+
+    public void setCanLoadMore(boolean canLoadMore) {
+        moreListener.setCanLoadMore(canLoadMore);
+    }
+
     public void setUpImageAdapter(ImageAdapter.OnPopupItemClickListener listener) {
         imagesAdapter.setListener(listener);
     }
 
     public void setContentFromGridView(List<Image> images) {
-        imagesAdapter.setContent(images);
+        imagesAdapter.add(images);
         gridView.setAdapter(imagesAdapter);
-    }
-
-    public void clearImageAdapter() {
-        imagesAdapter.clear();
+        gridView.invalidateViews();
     }
 
     public SearchView getSearchView(Menu menu) {

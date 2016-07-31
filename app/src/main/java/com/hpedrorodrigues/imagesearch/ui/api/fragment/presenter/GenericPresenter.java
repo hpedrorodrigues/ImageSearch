@@ -59,6 +59,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Inject
     public FeatureUtil featureUtil;
 
+    private String currentSearch = ISConstant.DEFAULT_SEARCH;
+    private int currentPage = 1;
+
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
         this.api = api;
@@ -70,6 +73,11 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Override
     public void onViewCreated(View view) {
         this.view.onView(view);
+
+        this.view.setUpGridView(() -> {
+            currentPage++;
+            search(currentSearch);
+        });
 
         search(ISConstant.DEFAULT_SEARCH);
         loadTitleByApi();
@@ -85,8 +93,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .create()
                 .subscribe(
                         query -> {
+                            currentSearch = query;
+
                             search(query);
+
                             answer.logSearch(api, query);
+
                             Timber.d("Searching for query: %s", query);
                         },
                         error -> Timber.e(error, "Error searching images")
@@ -135,17 +147,17 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     public void search(String search) {
         view.showProgress();
-        view.clearImageAdapter();
 
         if (api == null) {
 
             genericService
-                    .searchAll(search, 1, 15, false)
+                    .searchAll(search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                     .compose(Rx.applySchedulers())
                     .subscribe(
                             images -> {
                                 view.setContentFromGridView(images);
                                 view.hideProgress();
+                                view.setCanLoadMore(true);
                                 Timber.i("Images loaded %s", images);
                             },
                             error -> Timber.e(error, "Error")
@@ -153,13 +165,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         } else {
 
             genericService
-                    .search(api, search, 1, 15, false)
+                    .search(api, search, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                     .compose(Rx.applySchedulers())
                     .subscribe(
                             data -> {
                                 List<Image> images = genericService.parse(api, data);
                                 view.setContentFromGridView(images);
                                 view.hideProgress();
+                                view.setCanLoadMore(true);
                                 Timber.i("Images loaded %s", images);
                             },
                             error -> Timber.e(error, "Error")

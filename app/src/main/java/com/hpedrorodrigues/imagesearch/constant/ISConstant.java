@@ -6,4 +6,5 @@ public interface ISConstant {
 
     String DEFAULT_SEARCH = "tree";
     String DEFAULT_DIRECTORY = Environment.DIRECTORY_DOWNLOADS;
+    int IMAGES_PER_PAGE = 15;
 }

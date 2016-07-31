@@ -5,6 +5,7 @@ import android.widget.ListAdapter;
 
 import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Data;
@@ -16,6 +17,14 @@ abstract class ISBaseAdapter<T> implements ListAdapter {
 
     public T getItemTyped(int i) {
         return (T) getItem(i);
+    }
+
+    public void add(List<T> content) {
+        if (isEmpty()) {
+            setContent(new ArrayList<>());
+        }
+
+        this.content.addAll(content);
     }
 
     public void clear() {

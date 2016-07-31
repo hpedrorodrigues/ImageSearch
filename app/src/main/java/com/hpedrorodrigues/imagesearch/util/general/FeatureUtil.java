@@ -52,6 +52,11 @@ public class FeatureUtil {
         }
     }
 
+    public interface onFeaturePermittedListener {
+
+        void onPermitted(Feature feature, boolean permissionGranted);
+    }
+
     private class FeaturePermitted implements Serializable {
 
         private final Feature feature;
@@ -69,10 +74,5 @@ public class FeatureUtil {
         public onFeaturePermittedListener getListener() {
             return listener;
         }
-    }
-
-    public interface onFeaturePermittedListener {
-
-        void onPermitted(Feature feature, boolean permissionGranted);
     }
 }
