@@ -3,7 +3,6 @@ package com.hpedrorodrigues.imagesearch.util.general;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.widget.Toast;
 
 import com.hpedrorodrigues.imagesearch.R;
 
@@ -18,6 +17,9 @@ public class ClipboardUtil {
     public Context context;
 
     @Inject
+    public ToastUtil toastUtil;
+
+    @Inject
     public ClipboardUtil() {
     }
 
@@ -25,10 +27,6 @@ public class ClipboardUtil {
         ClipData clip = ClipData.newPlainText(text, text);
         clipboardManager.setPrimaryClip(clip);
 
-        Toast.makeText(
-                context,
-                context.getString(R.string.text_copied_to_clipboard, text),
-                Toast.LENGTH_LONG
-        ).show();
+        toastUtil.showLong(context.getString(R.string.text_copied_to_clipboard, text));
     }
 }

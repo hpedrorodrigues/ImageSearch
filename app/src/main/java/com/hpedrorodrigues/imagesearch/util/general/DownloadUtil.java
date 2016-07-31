@@ -46,6 +46,31 @@ public class DownloadUtil {
         return downloadManager.enqueue(request);
     }
 
+    public boolean isCompleted(long id) {
+        Integer status = getStatusById(id);
+
+        if (status == null) {
+            return false;
+        }
+
+        return status.equals(DownloadManager.STATUS_FAILED) || status.equals(DownloadManager.STATUS_SUCCESSFUL);
+    }
+
+    public Integer getStatusById(long id) {
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(id);
+
+        Cursor cursor = downloadManager.query(query);
+
+        if (cursor.moveToFirst()) {
+
+            int statusIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
+            return cursor.getInt(statusIndex);
+        }
+
+        return null;
+    }
+
     public String getPathById(long id) {
         DownloadManager.Query query = new DownloadManager.Query();
         query.setFilterById(id);
@@ -54,8 +79,11 @@ public class DownloadUtil {
 
         if (cursor.moveToFirst()) {
 
-            int pathIndex = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
-            return cursor.getString(pathIndex);
+            if (getStatusById(id) == DownloadManager.STATUS_SUCCESSFUL) {
+
+                int pathIndex = cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_FILENAME);
+                return cursor.getString(pathIndex);
+            }
         }
 
         return null;

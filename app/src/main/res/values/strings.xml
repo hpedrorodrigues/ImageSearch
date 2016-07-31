@@ -31,4 +31,7 @@
 
     <string name="downloading">Downloading "%s"</string>
 
+    <string name="error_downloading_image">Error downloading</string>
+    <string name="image_downloaded_successful">Image saved in "%s"</string>
+
 </resources>

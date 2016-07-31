@@ -1,10 +1,10 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
+import android.app.DownloadManager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
@@ -13,9 +13,12 @@ import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.imagesearch.util.StringUtil;
+import com.hpedrorodrigues.imagesearch.util.general.BroadcastUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
 import com.hpedrorodrigues.imagesearch.util.general.DownloadUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
+import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
@@ -40,6 +43,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     @Inject
     public DownloadUtil downloadUtil;
+
+    @Inject
+    public ToastUtil toastUtil;
+
+    @Inject
+    public BroadcastUtil broadcastUtil;
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -148,12 +157,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
             switch (item.getItemId()) {
 
                 case R.id.action_share:
-                    long imageId = downloadUtil
-                            .enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
-
-                    // TODO: this must be made in DownloadCompletedReceiver
-                    String path = downloadUtil.getPathById(imageId);
-                    shareUtil.shareImage(getActivity(), path);
+                    shareImage(image);
                     break;
 
                 case R.id.action_share_link:
@@ -165,14 +169,53 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                     break;
 
                 case R.id.action_download:
-                    downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
-                    Toast.makeText(
-                            context,
-                            context.getString(R.string.downloading, image.getImageUrl()),
-                            Toast.LENGTH_LONG
-                    ).show();
+                    downloadImage(image);
                     break;
             }
+        });
+    }
+
+    private void downloadImage(Image image) {
+        long imageId = downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+
+        toastUtil.showLong(context.getString(R.string.downloading, image.getImageUrl()));
+
+        broadcastUtil.register(getActivity(), DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
+            if (downloadUtil.isCompleted(imageId)) {
+
+                String path = downloadUtil.getPathById(imageId);
+                String message = StringUtil.isEmpty(path)
+                        ? context.getString(R.string.error_downloading_image)
+                        : context.getString(R.string.image_downloaded_successful, path);
+
+                toastUtil.showLong(message);
+
+                return true;
+            }
+
+            return false;
+        });
+    }
+
+    private void shareImage(Image image) {
+        long imageId = downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+
+        toastUtil.showLong(context.getString(R.string.downloading, image.getImageUrl()));
+
+        broadcastUtil.register(getActivity(), DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
+            if (downloadUtil.isCompleted(imageId)) {
+
+                String path = downloadUtil.getPathById(imageId);
+                if (StringUtil.isEmpty(path)) {
+                    toastUtil.showLong(context.getString(R.string.error_downloading_image));
+                } else {
+                    shareUtil.shareImage(getActivity(), path);
+                }
+
+                return true;
+            }
+
+            return false;
         });
     }
 }
