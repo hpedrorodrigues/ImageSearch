@@ -6,40 +6,40 @@
 
         <item
             android:id="@+id/all_item"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle"
             android:title="@string/all_provider" />
 
         <item
             android:id="@+id/flickr_item"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle_outline"
             android:title="@string/flickr_provider" />
         <item
             android:id="@+id/cse_item"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle"
             android:title="@string/google_provider" />
         <item
             android:id="@+id/imgur_item"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle_outline"
             android:title="@string/imgur_provider" />
 
         <item
             android:id="@+id/duckduckgo_item"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle"
             android:title="@string/duck_duck_go_provider" />
 
         <item
             android:id="@+id/bing_item"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle_outline"
             android:title="@string/bing_provider" />
 
         <item
             android:id="@+id/pixabay_item"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle"
             android:title="@string/pixabay_provider" />
 
         <item
             android:id="@+id/giphy_item"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@mipmap/ic_checkbox_multiple_blank_circle_outline"
             android:title="@string/giphy_provider" />
 
     </group>
