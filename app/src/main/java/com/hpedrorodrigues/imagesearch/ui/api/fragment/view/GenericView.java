@@ -1,5 +1,9 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.view;
 
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.etsy.android.grid.StaggeredGridView;
@@ -19,10 +23,10 @@ import lombok.EqualsAndHashCode;
 @Data
 public class GenericView extends BaseView<GenericFragment> {
 
-    private StaggeredGridView gridView;
-
     @Inject
     public ImageAdapter imagesAdapter;
+
+    private StaggeredGridView gridView;
 
     public GenericView(GenericFragment fragment) {
         super(fragment);
@@ -36,5 +40,17 @@ public class GenericView extends BaseView<GenericFragment> {
     public void setContentFromGridView(List<Image> images) {
         imagesAdapter.setContent(images);
         gridView.setAdapter(imagesAdapter);
+    }
+
+    public SearchView getSearchView(Menu menu) {
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setQueryHint("test");
+        searchView.setFocusable(true);
+        searchView.setIconifiedByDefault(false);
+        searchView.requestFocus();
+
+        return searchView;
     }
 }

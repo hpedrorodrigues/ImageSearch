@@ -1,13 +1,17 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.View;
 
+import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
+import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
 import java.util.List;
 
@@ -30,13 +34,30 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Override
     public void onViewCreated(View view) {
         this.view.onView(view);
-
-        setUp();
     }
 
-    public void setUp() {
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        getActivity().getMenuInflater().inflate(R.menu.generic_item, menu);
+        SearchView searchView = view.getSearchView(menu);
+
+        new SearchViewObservable(searchView)
+                .create()
+                .subscribe(
+                        query -> {
+                            setUp(query);
+                            answer.logSearch(api, query);
+                            Timber.d("Searching for query: %s", query);
+                        },
+                        error -> Timber.e(error, "Error searching images")
+                );
+    }
+
+    public void setUp(String search) {
         genericService
-                .search(api, "car", 1, 15, false)
+                .search(api, search, 1, 15, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {

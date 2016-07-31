@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -50,6 +51,11 @@ public class GenericFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         genericPresenter.onViewCreated(view);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        genericPresenter.onPrepareOptionsMenu(menu);
     }
 
     @Override

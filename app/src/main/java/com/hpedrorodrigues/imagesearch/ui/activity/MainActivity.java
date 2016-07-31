@@ -1,7 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.activity;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
@@ -45,12 +44,6 @@ public class MainActivity extends BaseActivity {
         if (presenter.onBackPressed()) {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

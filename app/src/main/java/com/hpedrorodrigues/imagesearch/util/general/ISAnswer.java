@@ -2,7 +2,9 @@ package com.hpedrorodrigues.imagesearch.util.general;
 
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.CustomEvent;
+import com.crashlytics.android.answers.SearchEvent;
 import com.crashlytics.android.answers.ShareEvent;
+import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
 import javax.inject.Inject;
 
@@ -39,5 +41,12 @@ public class ISAnswer {
 
     public void logShare(String message) {
         instance().logShare(new ShareEvent().putMethod("Android Provider").putContentName(message));
+    }
+
+    public void logSearch(Api api, String search) {
+        instance().logSearch(new SearchEvent()
+                .putQuery(search)
+                .putCustomAttribute("Api", api.name())
+        );
     }
 }
