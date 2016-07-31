@@ -36,4 +36,37 @@
 
     <string name="general">General</string>
 
+    <string name="interface_settings">Interface settings</string>
+
+    <string name="ask_to_exit">Ask to exit</string>
+    <string name="display_an_alert_to_exit">Display an alert asking if you want to leave</string>
+
+    <string name="keep_screen_on">Keep screen on</string>
+    <string name="keep_screen_on_description"> Keep screen on while reading posts</string>
+
+    <string name="about">About</string>
+    <string name="about_the_app">About this app</string>
+
+    <string name="rate_the_app">Rate us</string>
+    <string name="publish_a_review">Tell your opinion about the app</string>
+
+    <string name="share_app_message">Image Search</string>
+    <string name="share_the_app">Share</string>
+    <string name="share_the_app_with_your_friends">Share Image Search with your friends</string>
+
+    <string name="report_a_bug">Report a bug</string>
+    <string name="tell_us_about_a_crash">Tell us about a crash, a design problem, lags…</string>
+
+    <string name="an_idea_to_improve">Help us improve</string>
+    <string name="send_us_your_ideas_and_suggestions">Send suggestions and ideas</string>
+
+
+    <string name="like_the_image_search">Liked Image Search?</string>
+    <string name="send_us_your_feedback">Tell us your experiences and opinions</string>
+
+    <string name="contact_us">Contact us</string>
+    <string name="send_us_a_email">Send us a email</string>
+
+    <string name="open_source_licenses">Open source licenses</string>
+
 </resources>

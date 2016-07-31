@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
@@ -59,11 +60,18 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void setUpDrawerListener() {
-        view.setDrawerItemSelectedListener(item ->
-                new Handler().postDelayed(() -> navigateTo(item), DRAWER_REPLACE_SCREEN_DELAY));
+        view.setDrawerItemSelectedListener(item -> new Handler().postDelayed(() -> {
+            if (item.equals(DrawerItem.SETTINGS)) {
+
+                navigator.toActivityScreen(SettingsActivity.class);
+            } else {
+
+                navigateToFragment(item);
+            }
+        }, DRAWER_REPLACE_SCREEN_DELAY));
     }
 
-    private void navigateTo(DrawerItem item) {
+    private void navigateToFragment(DrawerItem item) {
         GenericFragment fragment = GenericFragment.create(item.getApi());
         navigator.toFragmentScreen(fragment);
     }

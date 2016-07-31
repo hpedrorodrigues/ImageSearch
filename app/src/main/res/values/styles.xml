@@ -1,3 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources></resources>
+<resources>
+
+    <style name="AppTheme.SettingsHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/default_size_for_headers</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="AppTheme.SettingsHeaderTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/default_size</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:paddingLeft">@dimen/spacing_large</item>
+        <item name="android:paddingRight">@dimen/spacing_large</item>
+    </style>
+
+    <style name="AppTheme.SettingsItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">@dimen/spacing_medium</item>
+        <item name="android:paddingBottom">@dimen/spacing_medium</item>
+        <item name="android:paddingLeft">@dimen/spacing_large</item>
+        <item name="android:paddingRight">@dimen/spacing_large</item>
+        <item name="android:minHeight">@dimen/default_size_for_list_items</item>
+    </style>
+
+    <style name="AppTheme.SettingsItemImageView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/default_size</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:tint">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.SettingsItemTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.SettingsItemSubTitleTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+</resources>

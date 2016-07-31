@@ -25,4 +25,7 @@
     <dimen name="spacing_xxlarge">32dp</dimen>
     <dimen name="spacing_xxxlarge">38dp</dimen>
 
+    <dimen name="default_size_for_headers">36dp</dimen>
+    <dimen name="default_size_for_list_items">72dp</dimen>
+
 </resources>

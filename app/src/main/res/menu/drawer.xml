@@ -49,8 +49,8 @@
         <menu>
 
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:id="@+id/settings_item"
+                android:icon="@mipmap/ic_launcher"
                 android:title="@string/settings" />
 
         </menu>

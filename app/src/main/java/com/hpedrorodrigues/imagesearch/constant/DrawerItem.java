@@ -12,7 +12,8 @@ public enum DrawerItem {
     DUCK_DUCK_GO(Api.DUCK_DUCK_GO, R.id.duckduckgo_item),
     BING(Api.BING, R.id.bing_item),
     PIXABAY(Api.PIXABAY, R.id.pixabay_item),
-    GIPHY(Api.GIPHY, R.id.giphy_item);
+    GIPHY(Api.GIPHY, R.id.giphy_item),
+    SETTINGS(null, R.id.settings_item);
 
     private final Api api;
     private final int id;
