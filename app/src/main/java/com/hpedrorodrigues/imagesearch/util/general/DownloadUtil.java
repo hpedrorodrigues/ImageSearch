@@ -33,7 +33,7 @@ public class DownloadUtil {
         Uri downloadUri = Uri.parse(downloadUrl);
         DownloadManager.Request request = new DownloadManager.Request(downloadUri);
 
-        String fileName = UUID.randomUUID().toString();
+        String fileName = UUID.randomUUID().toString() + getFileFormat(downloadUrl);
         int types = DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE;
 
         request.setAllowedNetworkTypes(types)
@@ -91,5 +91,14 @@ public class DownloadUtil {
 
     private String getDirectoryName(String directory) {
         return directory.startsWith(File.separator) ? directory : File.separator + directory;
+    }
+
+    private String getFileFormat(String downloadUrl) {
+        if (downloadUrl.contains(".")) {
+            String format = downloadUrl.substring(downloadUrl.lastIndexOf("."), downloadUrl.length());
+            return "." + format;
+        }
+
+        return "";
     }
 }
