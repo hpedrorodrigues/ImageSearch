@@ -2,6 +2,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
 
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
@@ -15,6 +16,7 @@ import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
 import java.util.List;
 
+import rx.Subscription;
 import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
@@ -37,13 +39,11 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-
-        getActivity().getMenuInflater().inflate(R.menu.generic_item, menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.generic_item, menu);
         SearchView searchView = view.getSearchView(menu);
 
-        new SearchViewObservable(searchView)
+        Subscription subscription = new SearchViewObservable(searchView)
                 .create()
                 .subscribe(
                         query -> {
@@ -53,6 +53,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         },
                         error -> Timber.e(error, "Error searching images")
                 );
+
+        bindSubscription(subscription);
     }
 
     public void setUp(String search) {
