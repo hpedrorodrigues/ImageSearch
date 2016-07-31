@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
@@ -56,7 +55,7 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void setUpFirstFragment() {
-        GenericFragment fragment = GenericFragment.create(Api.FLICKR);
+        GenericFragment fragment = GenericFragment.create();
         navigator.toFirstFragmentScreen(fragment);
     }
 }

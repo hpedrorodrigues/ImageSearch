@@ -28,6 +28,18 @@
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
 
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="@dimen/default_size"
+            android:layout_height="@dimen/default_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/selectable_item_background"
+            android:clickable="true"
+            android:padding="@dimen/spacing_medium"
+            android:src="@mipmap/ic_more"
+            android:tint="@color/colorAccent" />
+
         <RelativeLayout
             android:id="@+id/content"
             android:layout_width="match_parent"

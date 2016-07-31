@@ -8,6 +8,7 @@ import android.view.View;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
@@ -36,6 +37,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Override
     public void onViewCreated(View view) {
         this.view.onView(view);
+        this.view.setUpImageAdapter();
+
+        search(ISConstant.DEFAULT_SEARCH);
     }
 
     @Override
@@ -47,7 +51,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .create()
                 .subscribe(
                         query -> {
-                            setUp(query);
+                            search(query);
                             answer.logSearch(api, query);
                             Timber.d("Searching for query: %s", query);
                         },
@@ -57,17 +61,32 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         bindSubscription(subscription);
     }
 
-    public void setUp(String search) {
-        genericService
-                .search(api, search, 1, 15, false)
-                .compose(Rx.applySchedulers())
-                .subscribe(
-                        data -> {
-                            List<Image> images = genericService.parse(api, data);
-                            view.setContentFromGridView(images);
-                            Timber.i("Images loaded %s", images);
-                        },
-                        error -> Timber.e(error, "Error")
-                );
+    public void search(String search) {
+        if (api == null) {
+
+            genericService
+                    .searchAll(search, 1, 15, false)
+                    .compose(Rx.applySchedulers())
+                    .subscribe(
+                            images -> {
+                                view.setContentFromGridView(images);
+                                Timber.i("Images loaded %s", images);
+                            },
+                            error -> Timber.e(error, "Error")
+                    );
+        } else {
+
+            genericService
+                    .search(api, search, 1, 15, false)
+                    .compose(Rx.applySchedulers())
+                    .subscribe(
+                            data -> {
+                                List<Image> images = genericService.parse(api, data);
+                                view.setContentFromGridView(images);
+                                Timber.i("Images loaded %s", images);
+                            },
+                            error -> Timber.e(error, "Error")
+                    );
+        }
     }
 }

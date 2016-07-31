@@ -13,6 +13,8 @@
     <dimen name="min_image_size">250dp</dimen>
     <dimen name="max_image_size">300dp</dimen>
 
+    <dimen name="default_size">48dp</dimen>
+
     <dimen name="spacing_xsmall">2dp</dimen>
     <dimen name="spacing_small">4dp</dimen>
     <dimen name="spacing_medium">8dp</dimen>

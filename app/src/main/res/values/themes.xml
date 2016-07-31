@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="PopupMenu" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:popupBackground">#0F213F</item>
+        <item name="android:disabledAlpha">0.5</item>
+    </style>
+
+</resources>

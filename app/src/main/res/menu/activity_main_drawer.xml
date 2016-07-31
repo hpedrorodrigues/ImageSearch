@@ -5,6 +5,11 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/all_item"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/all_provider" />
+
+        <item
             android:id="@+id/flickr_item"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/flickr_provider" />

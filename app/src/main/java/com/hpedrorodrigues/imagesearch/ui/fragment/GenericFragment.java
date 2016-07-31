@@ -18,6 +18,10 @@ public class GenericFragment extends BaseFragment {
 
     private GenericPresenter genericPresenter;
 
+    public static GenericFragment create() {
+        return new GenericFragment();
+    }
+
     public static GenericFragment create(Api api) {
         GenericFragment fragment = new GenericFragment();
 
@@ -30,6 +34,10 @@ public class GenericFragment extends BaseFragment {
     }
 
     public Api getApi() {
+        if (getArguments() == null) {
+            return null;
+        }
+
         return (Api) getArguments().getSerializable(BundleKey.API);
     }
 
@@ -73,6 +81,10 @@ public class GenericFragment extends BaseFragment {
 
     @Override
     protected String getScreenName() {
+        if (getApi() == null) {
+            return "ALL";
+        }
+
         return getApi().name();
     }
 

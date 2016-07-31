@@ -5,6 +5,7 @@ import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
 public enum DrawerItem {
 
+    ALL(null, R.id.all_item),
     FLICKR(Api.FLICKR, R.id.flickr_item),
     CSE(Api.CSE, R.id.cse_item),
     IMGUR(Api.IMGUR, R.id.imgur_item),

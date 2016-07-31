@@ -9,6 +9,7 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="all_provider">All</string>
     <string name="google_provider">Google</string>
     <string name="flickr_provider">Flickr</string>
     <string name="imgur_provider">IMGUR</string>
@@ -18,5 +19,10 @@
     <string name="giphy_provider">GIPHY</string>
 
     <string name="search_hint">Search</string>
+
+    <string name="share_image">Share image</string>
+    <string name="share_link">Share link</string>
+    <string name="copy_link">Copy link</string>
+    <string name="download">Download</string>
 
 </resources>

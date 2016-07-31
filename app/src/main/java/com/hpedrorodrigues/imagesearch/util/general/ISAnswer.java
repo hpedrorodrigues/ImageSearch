@@ -46,7 +46,7 @@ public class ISAnswer {
     public void logSearch(Api api, String search) {
         instance().logSearch(new SearchEvent()
                 .putQuery(search)
-                .putCustomAttribute("Api", api.name())
+                .putCustomAttribute("Api", api == null ? "ALL" : api.name())
         );
     }
 }

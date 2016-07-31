@@ -37,6 +37,11 @@ public class GenericView extends BaseView<GenericFragment> {
         gridView = (StaggeredGridView) view.findViewById(R.id.grid_view);
     }
 
+    public void setUpImageAdapter() {
+        imagesAdapter.setListener((item, image) -> {
+        });
+    }
+
     public void setContentFromGridView(List<Image> images) {
         imagesAdapter.setContent(images);
         gridView.setAdapter(imagesAdapter);
