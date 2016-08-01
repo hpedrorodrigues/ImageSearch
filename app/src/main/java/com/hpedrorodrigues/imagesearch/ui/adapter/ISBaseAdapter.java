@@ -7,14 +7,22 @@ import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 abstract class ISBaseAdapter<T> extends BaseAdapter {
 
+    @Setter(AccessLevel.NONE)
     private List<T> content;
+
+    public void setContent(List<T> content) {
+        this.content = content;
+        notifyDataSetChanged();
+    }
 
     public T getItemTyped(int i) {
         return (T) getItem(i);
@@ -26,11 +34,13 @@ abstract class ISBaseAdapter<T> extends BaseAdapter {
         }
 
         this.content.addAll(content);
+        notifyDataSetChanged();
     }
 
     public void clear() {
         if (!isEmpty()) {
             content.clear();
+            notifyDataSetChanged();
         }
     }
 

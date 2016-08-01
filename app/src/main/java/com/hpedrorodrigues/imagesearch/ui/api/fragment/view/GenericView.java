@@ -27,7 +27,7 @@ import lombok.EqualsAndHashCode;
 public class GenericView extends BaseView<GenericFragment> {
 
     @Inject
-    public ImageAdapter imagesAdapter;
+    public ImageAdapter imageAdapter;
 
     private StaggeredGridView gridView;
 
@@ -72,7 +72,7 @@ public class GenericView extends BaseView<GenericFragment> {
         moreListener = new OnLoadMoreListener(1, listener);
         moreListener.setCanLoadMore(true);
 
-        gridView.setAdapter(imagesAdapter);
+        gridView.setAdapter(imageAdapter);
 
         gridView.setOnScrollListener(moreListener);
     }
@@ -82,16 +82,15 @@ public class GenericView extends BaseView<GenericFragment> {
     }
 
     public void setUpImageAdapter(ImageAdapter.OnPopupItemClickListener listener) {
-        imagesAdapter.setListener(listener);
+        imageAdapter.setListener(listener);
     }
 
     public void addContentToGridView(List<Image> images) {
-        imagesAdapter.add(images);
-        imagesAdapter.notifyDataSetChanged();
+        imageAdapter.add(images);
     }
 
     public void clearImageAdapter() {
-        imagesAdapter.clear();
+        imageAdapter.clear();
     }
 
     public SearchView getSearchView(Menu menu) {

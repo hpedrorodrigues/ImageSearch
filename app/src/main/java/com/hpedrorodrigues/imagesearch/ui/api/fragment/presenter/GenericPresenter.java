@@ -264,19 +264,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        images -> {
-                            view.addContentToGridView(images);
-                            view.setCanLoadMore(true);
-
-                            if (smallLoading) {
-                                view.hideSmallProgress();
-                            } else {
-                                view.hideProgress();
-                            }
-
-                            Timber.i("Images loaded %s", images);
-                        },
-                        error -> Timber.e(error, "Error")
+                        images -> reloadContent(images, smallLoading),
+                        error -> Timber.e(error, "Error loading images")
                 );
 
         bindSubscription(searchSubscription);
@@ -289,18 +278,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .subscribe(
                         data -> {
                             List<Image> images = genericService.parse(api, data);
-                            view.addContentToGridView(images);
-                            view.setCanLoadMore(true);
-
-                            if (smallLoading) {
-                                view.hideSmallProgress();
-                            } else {
-                                view.hideProgress();
-                            }
-
-                            Timber.i("Images loaded %s", images);
+                            reloadContent(images, smallLoading);
                         },
-                        error -> Timber.e(error, "Error")
+                        error -> Timber.e(error, "Error loading images")
                 );
 
         bindSubscription(searchSubscription);
@@ -308,8 +288,26 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     private void cancelOldSearchSubscription() {
         if (searchSubscription != null && !searchSubscription.isUnsubscribed()) {
+            Timber.d("Cancelling old search subscription");
+
             searchSubscription.unsubscribe();
             searchSubscription = null;
         }
+    }
+
+    private void reloadContent(List<Image> images, boolean smallLoading) {
+        getActivity().runOnUiThread(() -> {
+
+            view.addContentToGridView(images);
+            view.setCanLoadMore(true);
+
+            if (smallLoading) {
+                view.hideSmallProgress();
+            } else {
+                view.hideProgress();
+            }
+
+            Timber.d("Images loaded %s", images);
+        });
     }
 }
