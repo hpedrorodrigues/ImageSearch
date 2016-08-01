@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
@@ -23,6 +24,15 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
         view.onView();
 
         setUpListeners();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            navigator.toActivityParent();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setUpListeners() {
