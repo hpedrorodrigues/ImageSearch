@@ -40,6 +40,7 @@
 
     <string name="ask_to_exit">Ask to exit</string>
     <string name="display_an_alert_to_exit">Display an alert asking if you want to leave</string>
+    <string name="back_again_to_exit">Press back again to exit</string>
 
     <string name="keep_screen_on">Keep screen on</string>
     <string name="keep_screen_on_description"> Keep screen on while reading posts</string>
@@ -59,7 +60,6 @@
 
     <string name="an_idea_to_improve">Help us improve</string>
     <string name="send_us_your_ideas_and_suggestions">Send suggestions and ideas</string>
-
 
     <string name="like_the_image_search">Liked Image Search?</string>
     <string name="send_us_your_feedback">Tell us your experiences and opinions</string>

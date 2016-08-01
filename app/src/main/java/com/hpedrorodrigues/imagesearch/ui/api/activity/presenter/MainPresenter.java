@@ -3,10 +3,13 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
+import com.hpedrorodrigues.imagesearch.constant.ISConstant;
+import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.AboutActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
@@ -21,6 +24,8 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
     private final MainView view;
     private BaseFragment currentFragment;
+
+    private boolean backPressedOnce = false;
 
     public MainPresenter(MainActivity activity, Navigator navigator) {
         super(activity, navigator);
@@ -47,6 +52,24 @@ public class MainPresenter extends BasePresenter<MainActivity> {
         if (view.isDrawerOpen()) {
             view.closeDrawer();
             return false;
+        } else if (preferences.getBoolean(PreferenceKey.ASK_TO_EXIT, ISConstant.DEFAULT_ASK_TO_EXIT)) {
+
+            if (backPressedOnce) {
+
+                return super.onBackPressed();
+            } else {
+
+                backPressedOnce = true;
+                Snackbar
+                        .make(view.getDrawer(), R.string.back_again_to_exit, Snackbar.LENGTH_SHORT)
+                        .setAction(activity.getString(android.R.string.ok), (v) -> {
+                        })
+                        .show();
+
+                new Handler().postDelayed(() -> backPressedOnce = false, 2000L);
+
+                return false;
+            }
         }
 
         return super.onBackPressed();
