@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/withoutNetwork"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/screens"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <ImageView
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_network_off"
+        android:tint="@color/colorAccent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/without_connection"
+        android:textColor="@color/colorAccent" />
+
+</LinearLayout>

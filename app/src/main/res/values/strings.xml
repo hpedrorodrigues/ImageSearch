@@ -69,4 +69,6 @@
 
     <string name="open_source_licenses">Open source licenses</string>
 
+    <string name="without_connection">Without network</string>
+
 </resources>

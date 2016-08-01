@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@color/screens">
 
     <com.etsy.android.grid.StaggeredGridView
         android:id="@+id/grid_view"
@@ -15,7 +14,21 @@
         app:column_count="2"
         app:item_margin="8dp" />
 
-    <include layout="@layout/loading" />
+    <include
+        layout="@layout/without_network"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+    <include
+        layout="@layout/loading"
+        android:layout_width="@dimen/loading_size"
+        android:layout_height="@dimen/loading_size"
+        android:layout_centerInParent="true" />
 
     <LinearLayout
         android:id="@+id/smallLoadingIndicatorView"

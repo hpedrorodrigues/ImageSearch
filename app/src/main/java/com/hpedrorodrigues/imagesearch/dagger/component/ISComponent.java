@@ -2,6 +2,7 @@ package com.hpedrorodrigues.imagesearch.dagger.component;
 
 import com.hpedrorodrigues.imagesearch.api.network.api.BaseApi;
 import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
+import com.hpedrorodrigues.imagesearch.component.receiver.NetworkStateChangedReceiver;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.activity.AboutActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
@@ -45,4 +46,6 @@ public interface ISComponent extends BaseComponent {
     void inject(SettingsPresenter presenter);
 
     void inject(AboutPresenter presenter);
+
+    void inject(NetworkStateChangedReceiver receiver);
 }

@@ -4,9 +4,11 @@ import android.app.DownloadManager;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 
+import com.hpedrorodrigues.imagesearch.component.receiver.observable.NetworkStateObservable;
 import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
 
 import javax.inject.Singleton;
@@ -51,5 +53,17 @@ public final class ISModule extends BaseModule {
     @Singleton
     public SharedPreferences providePreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    @Provides
+    @Singleton
+    public ConnectivityManager provideConnectivityManager(Context context) {
+        return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    }
+
+    @Provides
+    @Singleton
+    public NetworkStateObservable provideNetworkStateObservable() {
+        return new NetworkStateObservable();
     }
 }

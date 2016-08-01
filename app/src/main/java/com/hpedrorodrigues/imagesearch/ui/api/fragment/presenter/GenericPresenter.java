@@ -12,6 +12,8 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Feature;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.component.receiver.observable.NetworkStateObservable;
+import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
@@ -27,6 +29,7 @@ import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
 import java.util.List;
+import java.util.Observer;
 
 import javax.inject.Inject;
 
@@ -59,10 +62,18 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     @Inject
     public FeatureUtil featureUtil;
 
+    @Inject
+    public NetworkStateObservable observable;
+
+    @Inject
+    public ConnectionService connection;
+
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
     private int currentPage = ISConstant.INITIAL_PAGE;
 
     private Subscription searchSubscription;
+
+    private Observer observer = (observable, data) -> reloadNetworkView();
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -84,6 +95,16 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         search(ISConstant.DEFAULT_SEARCH, false);
         loadTitleByApi();
         setUpImageAdapter();
+        reloadNetworkView();
+
+        observable.addObserver(observer);
+    }
+
+    @Override
+    public void cancelPendingProcesses() {
+        super.cancelPendingProcesses();
+
+        observable.deleteObserver(observer);
     }
 
     @Override
@@ -309,5 +330,13 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
             Timber.d("Images loaded %s", images);
         });
+    }
+
+    private void reloadNetworkView() {
+        if (connection.hasConnection()) {
+            view.hideWithoutNetwork();
+        } else {
+            view.showWithoutNetwork();
+        }
     }
 }

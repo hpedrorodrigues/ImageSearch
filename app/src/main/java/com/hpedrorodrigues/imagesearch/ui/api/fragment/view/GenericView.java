@@ -5,6 +5,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import com.etsy.android.grid.StaggeredGridView;
@@ -37,6 +38,8 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private OnLoadMoreListener moreListener;
 
+    private LinearLayout withoutNetwork;
+
     public GenericView(GenericFragment fragment) {
         super(fragment);
     }
@@ -46,6 +49,16 @@ public class GenericView extends BaseView<GenericFragment> {
         gridView = (StaggeredGridView) view.findViewById(R.id.grid_view);
         loadingView = (AVLoadingIndicatorView) view.findViewById(R.id.loadingIndicatorView);
         smallLoadingView = (LinearLayout) view.findViewById(R.id.smallLoadingIndicatorView);
+        withoutNetwork = (LinearLayout) view.findViewById(R.id.withoutNetwork);
+    }
+
+    public void showWithoutNetwork() {
+        withoutNetwork.setVisibility(View.VISIBLE);
+        withoutNetwork.startAnimation(AnimationUtils.loadAnimation(context, R.anim.jump));
+    }
+
+    public void hideWithoutNetwork() {
+        withoutNetwork.setVisibility(View.GONE);
     }
 
     public void showSmallProgress() {

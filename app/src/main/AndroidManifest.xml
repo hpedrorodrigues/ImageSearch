@@ -45,6 +45,13 @@
             android:label="@string/about"
             android:theme="@style/AppTheme" />
 
+        <receiver android:name=".component.receiver.NetworkStateChangedReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
