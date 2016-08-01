@@ -62,6 +62,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
     private int currentPage = ISConstant.INITIAL_PAGE;
 
+    private Subscription searchSubscription;
+
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
         this.api = api;
@@ -155,6 +157,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         }
 
         answer.logSearch(api, query, currentPage);
+
+        cancelOldSearchSubscription();
 
         if (api == null) {
             searchAll(query, smallLoading);
@@ -256,7 +260,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     private void searchAll(String query, boolean smallLoading) {
-        genericService
+        searchSubscription = genericService
                 .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -274,10 +278,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         },
                         error -> Timber.e(error, "Error")
                 );
+
+        bindSubscription(searchSubscription);
     }
 
     private void searchByApi(String query, boolean smallLoading) {
-        genericService
+        searchSubscription = genericService
                 .search(api, query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
                 .compose(Rx.applySchedulers())
                 .subscribe(
@@ -296,5 +302,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         },
                         error -> Timber.e(error, "Error")
                 );
+
+        bindSubscription(searchSubscription);
+    }
+
+    private void cancelOldSearchSubscription() {
+        if (searchSubscription != null && !searchSubscription.isUnsubscribed()) {
+            searchSubscription.unsubscribe();
+            searchSubscription = null;
+        }
     }
 }

@@ -38,7 +38,7 @@ public class SearchViewObservable {
 
                 })
                 .filter(search -> !StringUtil.isEmpty(search))
-                .debounce(1000, TimeUnit.MILLISECONDS)
+                .debounce(400, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }
