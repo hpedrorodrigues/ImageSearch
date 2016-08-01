@@ -10,11 +10,13 @@
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/withoutNetwork"
         android:background="@color/screens"
         app:column_count="2"
         app:item_margin="8dp" />
 
     <include
+        android:id="@+id/withoutNetwork"
         layout="@layout/without_network"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

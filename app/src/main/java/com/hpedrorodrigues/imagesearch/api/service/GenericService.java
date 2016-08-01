@@ -20,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
+import timber.log.Timber;
 
 @Data
 public class GenericService {
@@ -92,6 +93,9 @@ public class GenericService {
         if (response.isSuccessful()) {
 
             return genericParser.parse(api, response.body());
+        } else {
+
+            Timber.e("Response of api %s is not successful: %s", api, response.errorBody().string());
         }
 
         return Collections.emptyList();
