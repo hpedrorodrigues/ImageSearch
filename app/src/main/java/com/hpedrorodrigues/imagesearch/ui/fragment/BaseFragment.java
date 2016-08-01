@@ -1,6 +1,5 @@
 package com.hpedrorodrigues.imagesearch.ui.fragment;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +12,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
+import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
 import javax.inject.Inject;
 
@@ -22,7 +22,7 @@ public abstract class BaseFragment extends Fragment {
     protected ISAnswer answer;
 
     @Inject
-    protected SharedPreferences preferences;
+    protected PreferenceUtil preferences;
 
     private Toolbar toolbar;
     private ISComponent component;
