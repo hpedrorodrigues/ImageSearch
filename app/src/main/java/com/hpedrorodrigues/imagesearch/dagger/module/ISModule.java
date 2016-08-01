@@ -3,6 +3,8 @@ package com.hpedrorodrigues.imagesearch.dagger.module;
 import android.app.DownloadManager;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 
 import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
@@ -43,5 +45,11 @@ public final class ISModule extends BaseModule {
     @Singleton
     public DownloadManager provideDownloadManager(Context context) {
         return (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+    }
+
+    @Provides
+    @Singleton
+    public SharedPreferences providePreferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 }

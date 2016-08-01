@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -19,6 +20,9 @@ public abstract class BaseActivity extends BaseTransitionActivity {
 
     @Inject
     protected ISAnswer answer;
+
+    @Inject
+    protected SharedPreferences preferences;
 
     private Toolbar toolbar;
     private ISComponent component;
