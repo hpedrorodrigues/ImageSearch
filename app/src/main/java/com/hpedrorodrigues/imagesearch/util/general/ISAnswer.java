@@ -47,7 +47,7 @@ public class ISAnswer {
         instance().logSearch(new SearchEvent()
                 .putQuery(query)
                 .putCustomAttribute("Api", api == null ? "ALL" : api.name())
-                .putCustomAttribute("Page", page)
+                .putCustomAttribute("Page", String.valueOf(page))
         );
     }
 }

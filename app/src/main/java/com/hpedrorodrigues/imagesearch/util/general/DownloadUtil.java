@@ -95,7 +95,8 @@ public class DownloadUtil {
 
     private String getFileFormat(String downloadUrl) {
         if (downloadUrl.contains(".")) {
-            String format = downloadUrl.substring(downloadUrl.lastIndexOf("."), downloadUrl.length());
+            int indexOfDot = downloadUrl.lastIndexOf(".") + 1;
+            String format = downloadUrl.substring(indexOfDot, downloadUrl.length());
             return "." + format;
         }
 
