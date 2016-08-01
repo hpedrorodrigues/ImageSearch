@@ -22,8 +22,8 @@ public class ISAnswer {
         instance().logCustom(new CustomEvent(message));
     }
 
-    public void log(String message, String value) {
-        instance().logCustom(new CustomEvent(message).putCustomAttribute("Value", value));
+    public void log(String message, Object value) {
+        instance().logCustom(new CustomEvent(message).putCustomAttribute("Value", String.valueOf(value)));
     }
 
     public void log(String message, String attrName, String value) {

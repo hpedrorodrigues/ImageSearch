@@ -6,6 +6,7 @@ import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
 import javax.inject.Inject;
@@ -14,6 +15,9 @@ abstract class BasePresenter<T extends BaseActivity> {
 
     protected final T activity;
     protected final Navigator navigator;
+
+    @Inject
+    protected ISAnswer answer;
 
     @Inject
     protected PreferenceUtil preferences;

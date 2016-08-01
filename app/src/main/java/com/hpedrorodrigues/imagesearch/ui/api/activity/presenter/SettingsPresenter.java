@@ -52,20 +52,30 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             view.getToggleCloseTheApp().setChecked(isChecked);
 
             preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+
+            answer.log("Close app check changed by container", isChecked);
         });
 
-        view.getToggleCloseTheApp().setOnCheckedChangeListener((compoundButton, isChecked) ->
-                preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked));
+        view.getToggleCloseTheApp().setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+
+            answer.log("Close app check changed by switch", isChecked);
+        });
 
         view.getKeepScreenOnContainer().setOnClickListener((v) -> {
             boolean isChecked = !view.getToggleKeepScreenOn().isChecked();
             view.getToggleKeepScreenOn().setChecked(isChecked);
 
             preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+
+            answer.log("Keep screen on check changed by container", isChecked);
         });
 
-        view.getToggleKeepScreenOn().setOnCheckedChangeListener((compoundButton, isChecked) ->
-                preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked));
+        view.getToggleKeepScreenOn().setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+
+            answer.log("Keep screen on check changed by switch", isChecked);
+        });
 
         view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));
     }
