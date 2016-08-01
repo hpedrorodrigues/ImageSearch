@@ -23,6 +23,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
     public void onCreate(Bundle savedInstanceState) {
         view.onView();
 
+        loadValues();
         setUpListeners();
     }
 
@@ -35,26 +36,36 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
         return super.onOptionsItemSelected(item);
     }
 
+    private void loadValues() {
+        boolean closeApp = preferences.getBoolean(PreferenceKey.ASK_TO_EXIT,
+                ISConstant.DEFAULT_ASK_TO_EXIT);
+        view.getToggleCloseTheApp().setChecked(closeApp);
+
+        boolean keepScreenOn = preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON,
+                ISConstant.DEFAULT_KEEP_SCREEN_ON);
+        view.getToggleKeepScreenOn().setChecked(keepScreenOn);
+    }
+
     private void setUpListeners() {
         view.getCloseAppContainer().setOnClickListener((v) -> {
             boolean isChecked = !view.getToggleCloseTheApp().isChecked();
             view.getToggleCloseTheApp().setChecked(isChecked);
 
-            preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, ISConstant.DEFAULT_ASK_TO_EXIT);
+            preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
         });
 
         view.getToggleCloseTheApp().setOnCheckedChangeListener((compoundButton, isChecked) ->
-                preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, ISConstant.DEFAULT_ASK_TO_EXIT));
+                preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked));
 
         view.getKeepScreenOnContainer().setOnClickListener((v) -> {
             boolean isChecked = !view.getToggleKeepScreenOn().isChecked();
             view.getToggleKeepScreenOn().setChecked(isChecked);
 
-            preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, ISConstant.DEFAULT_KEEP_SCREEN_ON);
+            preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
         });
 
-        view.getToggleKeepScreenOn().setOnCheckedChangeListener((compoundButton, b) ->
-                preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, ISConstant.DEFAULT_KEEP_SCREEN_ON));
+        view.getToggleKeepScreenOn().setOnCheckedChangeListener((compoundButton, isChecked) ->
+                preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked));
 
         view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));
     }
