@@ -122,7 +122,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
                             currentSearch = query;
 
-                            search(query, true);
+                            search(query, false);
 
                             Timber.d("Searching for query: %s", query);
                         },
