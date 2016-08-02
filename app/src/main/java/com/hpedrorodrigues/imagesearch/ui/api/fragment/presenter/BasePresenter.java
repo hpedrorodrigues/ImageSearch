@@ -11,6 +11,7 @@ import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
+import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
 import javax.inject.Inject;
 
@@ -28,6 +29,9 @@ abstract class BasePresenter<T extends BaseFragment> {
 
     @Inject
     public GenericService genericService;
+
+    @Inject
+    public PreferenceUtil preferences;
 
     @Inject
     protected ISAnswer answer;

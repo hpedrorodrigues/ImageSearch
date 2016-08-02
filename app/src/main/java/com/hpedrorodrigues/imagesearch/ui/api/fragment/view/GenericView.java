@@ -94,6 +94,10 @@ public class GenericView extends BaseView<GenericFragment> {
         moreListener.setCanLoadMore(canLoadMore);
     }
 
+    public void setShowImagesDescription(boolean showImagesDescription) {
+        imageAdapter.setShowImagesDescription(showImagesDescription);
+    }
+
     public void setUpImageAdapter(ImageAdapter.OnPopupItemClickListener listener) {
         imageAdapter.setListener(listener);
     }

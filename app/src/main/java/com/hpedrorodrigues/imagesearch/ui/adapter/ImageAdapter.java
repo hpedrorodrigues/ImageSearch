@@ -26,6 +26,8 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
     private OnPopupItemClickListener listener;
 
+    private boolean showImagesDescription = true;
+
     @Inject
     public ImageAdapter() {
     }
@@ -38,6 +40,8 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
         final ImageHolder holder = new ImageHolder(view);
         final Image image = getItemTyped(i);
+
+        holder.contentView.setVisibility(showImagesDescription ? View.VISIBLE : View.GONE);
 
         holder.titleView.setText(image.getTitle());
 
@@ -64,6 +68,10 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
     public void setListener(OnPopupItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setShowImagesDescription(boolean showImagesDescription) {
+        this.showImagesDescription = showImagesDescription;
     }
 
     public interface OnPopupItemClickListener {

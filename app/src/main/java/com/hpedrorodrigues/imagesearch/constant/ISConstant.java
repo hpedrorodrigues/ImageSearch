@@ -15,4 +15,5 @@ public interface ISConstant {
 
     boolean DEFAULT_ASK_TO_EXIT = true;
     boolean DEFAULT_KEEP_SCREEN_ON = true;
+    boolean DEFAULT_SHOW_IMAGES_DESCRIPTION = true;
 }
