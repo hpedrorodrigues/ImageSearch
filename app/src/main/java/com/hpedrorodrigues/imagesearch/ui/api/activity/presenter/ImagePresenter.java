@@ -2,6 +2,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
@@ -29,6 +30,16 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
         this.view.onView();
 
         loadImage();
+        setUpScreen();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            navigator.toActivityParent();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -57,5 +68,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                         loadingView.stopFailure();
                     }
                 });
+    }
+
+    private void setUpScreen() {
+        activity.setTitle(image.getTitle());
     }
 }

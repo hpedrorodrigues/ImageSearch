@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
@@ -18,7 +19,14 @@ public class ImageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         presenter.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return presenter.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     @Override

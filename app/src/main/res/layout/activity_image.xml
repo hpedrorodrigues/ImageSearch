@@ -7,6 +7,8 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar" />
+
     <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/loading_view"
         android:layout_width="250dp"
