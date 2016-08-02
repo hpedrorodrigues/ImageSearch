@@ -45,13 +45,12 @@ public abstract class BaseActivity extends BaseTransitionActivity {
 
         onView();
         setUpToolbar();
+        setUpPresenter();
+        inject();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
             onIntent(getIntent(), getIntent().getExtras());
         }
-
-        setUpPresenter();
-        inject();
     }
 
     @Override

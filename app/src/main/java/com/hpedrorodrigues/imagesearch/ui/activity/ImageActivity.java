@@ -3,66 +3,32 @@ package com.hpedrorodrigues.imagesearch.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.widget.ImageView;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
-import com.koushikdutta.ion.Ion;
-
-import is.arontibo.library.ElasticDownloadView;
-import timber.log.Timber;
+import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.ImagePresenter;
+import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
 
 public class ImageActivity extends BaseActivity {
 
-    private ImageView imageView;
-    private ElasticDownloadView downloadView;
-
-    protected Image image;
+    private ImagePresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        downloadView.startIntro();
-
-        Ion.with(this)
-                .load(image.getImageUrl())
-                .progressHandler((downloaded, total) -> {
-                    int percent = (int) (100 * downloaded / total) % 100;
-
-                    Timber.d("Progress: Total - %d - Downloaded - %d - Percent - %d", total, downloaded, percent);
-                    downloadView.setProgress(percent);
-                })
-                .intoImageView(imageView)
-                .setCallback((error, view) -> {
-                    if (error == null) {
-                        downloadView.success();
-                    } else {
-                        downloadView.fail();
-                    }
-                });
-    }
-
-    @Override
-    protected void onView() {
-        super.onView();
-
-        imageView = (ImageView) findViewById(R.id.image);
-        downloadView = (ElasticDownloadView) findViewById(R.id.elastic_download_view);
+        presenter.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onIntent(Intent intent, Bundle extras) {
-        super.onIntent(intent, extras);
-
-        image = (Image) extras.getSerializable(IntentKey.IMAGE);
+        presenter.onIntent(intent, extras);
     }
 
     @Override
     protected void setUpPresenter() {
+        presenter = new ImagePresenter(this, new AndroidNavigator(this));
     }
 
     @Override

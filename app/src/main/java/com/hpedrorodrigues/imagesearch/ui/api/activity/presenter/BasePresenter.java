@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -28,6 +29,9 @@ abstract class BasePresenter<T extends BaseActivity> {
     }
 
     public abstract void onCreate(Bundle savedInstanceState);
+
+    public void onIntent(Intent intent, Bundle extras) {
+    }
 
     public void onResume() {
     }
