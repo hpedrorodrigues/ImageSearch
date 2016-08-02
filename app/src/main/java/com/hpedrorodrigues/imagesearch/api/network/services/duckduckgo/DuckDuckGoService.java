@@ -11,15 +11,17 @@ public interface DuckDuckGoService {
 
     String ENDPOINT = "https://api.duckduckgo.com/";
 
+    int DEFAULT_IMAGES_COUNT = 35;
+
     @GET("/i.js")
     Observable<Map> search(@Query("q") String q,
-                           @Query("next") Integer next,
                            @Query("s") Integer s,
-                           @Query("safesearch") Boolean safeSearch);
+                           @Query("next") Integer next,
+                           @Query("kp") Integer safeSearch);
 
     @GET("/i.js")
     Call<Map> callSearch(@Query("q") String q,
-                         @Query("next") Integer next,
                          @Query("s") Integer s,
-                         @Query("safesearch") Boolean safeSearch);
+                         @Query("next") Integer next,
+                         @Query("kp") Integer safeSearch);
 }
