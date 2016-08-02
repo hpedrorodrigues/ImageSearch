@@ -94,12 +94,12 @@ dependencies {
     // - StaggeredGridView
     compile 'com.etsy.android.grid:library:1.0.5'
 
-    // - Image Loading
-    compile 'com.squareup.picasso:picasso:2.5.2'
-
     // - Loading Library
     compile 'com.wang.avi:library:1.0.5'
     compile 'com.nineoldandroids:library:2.4.0'
+
+    // - Image Loading
+    compile 'com.koushikdutta.ion:ion:2.1.8'
 
     // - Licenses Dialog
     compile('de.psdev.licensesdialog:licensesdialog:1.8.1') {

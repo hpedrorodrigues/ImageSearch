@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.activity.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -44,7 +45,11 @@ public abstract class BaseActivity extends BaseTransitionActivity {
 
         onView();
         setUpToolbar();
-        onIntent();
+
+        if (getIntent() != null && getIntent().getExtras() != null) {
+            onIntent(getIntent(), getIntent().getExtras());
+        }
+
         setUpPresenter();
         inject();
     }
@@ -79,7 +84,7 @@ public abstract class BaseActivity extends BaseTransitionActivity {
     protected void onView() {
     }
 
-    protected void onIntent() {
+    protected void onIntent(Intent intent, Bundle extras) {
     }
 
     protected abstract void setUpPresenter();

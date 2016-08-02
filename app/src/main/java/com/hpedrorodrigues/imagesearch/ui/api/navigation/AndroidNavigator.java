@@ -1,5 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.api.navigation;
 
+import android.os.Bundle;
+
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
@@ -25,6 +27,11 @@ public class AndroidNavigator implements Navigator {
     @Override
     public void toActivityScreen(Class<? extends BaseActivity> clazz) {
         activityNavigator.toScreen(clazz);
+    }
+
+    @Override
+    public void toActivityScreen(Class<? extends BaseActivity> clazz, Bundle arguments) {
+        activityNavigator.toScreen(clazz, arguments);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
@@ -16,6 +17,15 @@ public class AndroidActivityNavigator implements ActivityNavigator {
     @Override
     public void toScreen(Class<? extends BaseActivity> clazz) {
         activity.startActivity(new Intent(activity, clazz));
+    }
+
+    @Override
+    public void toScreen(Class<? extends BaseActivity> clazz, Bundle arguments) {
+        Intent intent = new Intent(activity, clazz);
+
+        intent.putExtras(arguments);
+
+        activity.startActivity(intent);
     }
 
     @Override

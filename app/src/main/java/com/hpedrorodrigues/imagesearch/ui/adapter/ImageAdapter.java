@@ -8,11 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hpedrorodrigues.imagesearch.BuildConfig;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.ui.adapter.holder.ImageHolder;
-import com.squareup.picasso.Picasso;
+import com.koushikdutta.ion.Ion;
 
 import javax.inject.Inject;
 
@@ -49,9 +48,7 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
         holder.moreView.setOnClickListener(v -> showPopup(v, image));
 
-        Picasso picasso = Picasso.with(context);
-        picasso.setIndicatorsEnabled(BuildConfig.DEBUG);
-        picasso.load(image.getThumbnailUrl()).into(holder.imageView);
+        Ion.with(context).load(image.getThumbnailUrl()).intoImageView(holder.imageView);
 
         view.setOnClickListener((v) -> {
             if (onImageClickListener != null) {

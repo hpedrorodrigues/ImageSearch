@@ -87,8 +87,5 @@
 
 -dontwarn java.beans.**
 
-# Picasso / OkHttp
--dontwarn com.squareup.okhttp.**
-
 # Licenses Dialog
 -dontwarn de.psdev.licensesdialog.**
