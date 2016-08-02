@@ -72,6 +72,8 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
     public void setShowImagesDescription(boolean showImagesDescription) {
         this.showImagesDescription = showImagesDescription;
+
+        notifyDataSetChanged();
     }
 
     public interface OnPopupItemClickListener {

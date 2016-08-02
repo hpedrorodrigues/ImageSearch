@@ -53,6 +53,10 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
         boolean keepScreenOn = preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON,
                 ISConstant.DEFAULT_KEEP_SCREEN_ON);
         view.getToggleKeepScreenOn().setChecked(keepScreenOn);
+
+        boolean showImagesDescription = preferences
+                .getBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, ISConstant.DEFAULT_SHOW_IMAGES_DESCRIPTION);
+        view.getToggleShowImagesDescription().setChecked(showImagesDescription);
     }
 
     private void setUpListeners() {
@@ -84,6 +88,21 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
 
             answer.log("Keep screen on check changed by switch", isChecked);
+        });
+
+        view.getShowImagesDescription().setOnClickListener((v) -> {
+            boolean isChecked = !view.getToggleShowImagesDescription().isChecked();
+            view.getToggleShowImagesDescription().setChecked(isChecked);
+
+            preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
+
+            answer.log("Show images description check changed by container", isChecked);
+        });
+
+        view.getToggleShowImagesDescription().setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
+
+            answer.log("Show images description check changed by switch", isChecked);
         });
 
         view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));

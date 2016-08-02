@@ -20,6 +20,9 @@ public class SettingsView extends BaseView<SettingsActivity> {
     private RelativeLayout keepScreenOnContainer;
     private Switch toggleKeepScreenOn;
 
+    private RelativeLayout showImagesDescription;
+    private Switch toggleShowImagesDescription;
+
     private LinearLayout aboutTheApp;
     private LinearLayout rateTheApp;
     private LinearLayout shareTheApp;
@@ -40,6 +43,9 @@ public class SettingsView extends BaseView<SettingsActivity> {
 
         keepScreenOnContainer = (RelativeLayout) activity.findViewById(R.id.keepScreenOn);
         toggleKeepScreenOn = (Switch) activity.findViewById(R.id.toggleKeepScreenOn);
+
+        showImagesDescription = (RelativeLayout) activity.findViewById(R.id.showImagesDescription);
+        toggleShowImagesDescription = (Switch) activity.findViewById(R.id.toggleShowImagesDescription);
 
         aboutTheApp = (LinearLayout) activity.findViewById(R.id.aboutTheApp);
         rateTheApp = (LinearLayout) activity.findViewById(R.id.rateTheApp);

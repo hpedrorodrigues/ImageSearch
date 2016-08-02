@@ -53,6 +53,9 @@ abstract class BasePresenter<T extends BaseFragment> {
                                            @NonNull int[] grantResults) {
     }
 
+    public void onResume() {
+    }
+
     protected void bindSubscription(Subscription subscription) {
         compositeSubscription.add(subscription);
     }

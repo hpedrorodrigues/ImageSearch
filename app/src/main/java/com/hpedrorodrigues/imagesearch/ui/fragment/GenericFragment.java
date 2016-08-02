@@ -69,6 +69,13 @@ public class GenericFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        genericPresenter.onResume();
+    }
+
+    @Override
     protected void setUpPresenter() {
         MainActivity activity = (MainActivity) getActivity();
         genericPresenter = new GenericPresenter(this, activity.getNavigator(), getApi());

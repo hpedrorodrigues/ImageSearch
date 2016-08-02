@@ -95,6 +95,41 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/showImagesDescription"
+                style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/toggleShowImagesDescription"
+                    android:layout_toStartOf="@+id/toggleShowImagesDescription"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemTitleTextView"
+                        android:text="@string/show_images_description" />
+
+                    <TextView
+                        style="@style/AppTheme.SettingsItemSubTitleTextView"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/display_images_description" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/toggleShowImagesDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center" />
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

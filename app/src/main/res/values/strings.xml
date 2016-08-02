@@ -42,6 +42,9 @@
     <string name="display_an_alert_to_exit">Display an alert asking if you want to leave</string>
     <string name="back_again_to_exit">Press back again to exit</string>
 
+    <string name="show_images_description">Show images description</string>
+    <string name="display_images_description">Display description of images loaded</string>
+
     <string name="keep_screen_on">Keep screen on</string>
     <string name="keep_screen_on_description"> Keep screen on while reading posts</string>
 

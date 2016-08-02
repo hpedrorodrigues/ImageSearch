@@ -98,11 +98,16 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         setUpImageAdapter();
         reloadNetworkView();
 
+        observable.addObserver(observer);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
         boolean showImagesDescription = preferences
                 .getBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, ISConstant.DEFAULT_SHOW_IMAGES_DESCRIPTION);
         this.view.setShowImagesDescription(showImagesDescription);
-
-        observable.addObserver(observer);
     }
 
     @Override
