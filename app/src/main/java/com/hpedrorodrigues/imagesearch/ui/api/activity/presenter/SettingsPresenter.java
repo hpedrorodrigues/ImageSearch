@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.AboutActivity;
@@ -12,6 +13,8 @@ import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.util.general.MailUtil;
 
 import javax.inject.Inject;
+
+import de.psdev.licensesdialog.LicensesDialogFragment;
 
 public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
@@ -107,6 +110,17 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             mailUtil.sendContactUsEmail(activity);
 
             answer.log("Contact us action triggered");
+        });
+
+        view.getOpenSourceLicenses().setOnClickListener((v) -> {
+            LicensesDialogFragment dialog = new LicensesDialogFragment
+                    .Builder(activity)
+                    .setNotices(R.raw.notices)
+                    .build();
+
+            dialog.show(activity.getSupportFragmentManager(), null);
+
+            answer.log("Open source licenses action triggered");
         });
     }
 }

@@ -101,6 +101,11 @@ dependencies {
     compile 'com.wang.avi:library:1.0.5'
     compile 'com.nineoldandroids:library:2.4.0'
 
+    // - Licenses Dialog
+    compile('de.psdev.licensesdialog:licensesdialog:1.8.1') {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
     // - Dagger 2
     compile 'com.google.dagger:dagger:2.2'
     apt 'com.google.dagger:dagger-compiler:2.2'
