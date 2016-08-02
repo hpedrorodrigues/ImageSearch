@@ -26,6 +26,8 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
     private OnPopupItemClickListener listener;
 
+    private OnImageClickListener onImageClickListener;
+
     private boolean showImagesDescription = true;
 
     @Inject
@@ -51,6 +53,12 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
         picasso.setIndicatorsEnabled(BuildConfig.DEBUG);
         picasso.load(image.getThumbnailUrl()).into(holder.imageView);
 
+        view.setOnClickListener((v) -> {
+            if (onImageClickListener != null) {
+                onImageClickListener.onClick(image);
+            }
+        });
+
         return view;
     }
 
@@ -70,6 +78,10 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
         this.listener = listener;
     }
 
+    public void setOnImageClickListener(OnImageClickListener onImageClickListener) {
+        this.onImageClickListener = onImageClickListener;
+    }
+
     public void setShowImagesDescription(boolean showImagesDescription) {
         this.showImagesDescription = showImagesDescription;
 
@@ -79,5 +91,10 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
     public interface OnPopupItemClickListener {
 
         void onClick(MenuItem item, Image image);
+    }
+
+    public interface OnImageClickListener {
+
+        void onClick(Image image);
     }
 }

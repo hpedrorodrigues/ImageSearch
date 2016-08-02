@@ -17,6 +17,8 @@ import com.hpedrorodrigues.imagesearch.component.receiver.observable.NetworkStat
 import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
+import com.hpedrorodrigues.imagesearch.ui.activity.GifActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.PhotoActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
@@ -99,6 +101,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         loadTitleByApi();
         setUpImageAdapter();
         reloadNetworkView();
+
+        this.view.setOnImageClickListener(image -> {
+            if (api != null && api.equals(Api.GIPHY)) {
+                navigator.toActivityScreen(GifActivity.class);
+            } else {
+                navigator.toActivityScreen(PhotoActivity.class);
+            }
+        });
 
         observable.addObserver(observer);
     }

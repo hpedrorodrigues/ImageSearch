@@ -102,6 +102,10 @@ public class GenericView extends BaseView<GenericFragment> {
         imageAdapter.setListener(listener);
     }
 
+    public void setOnImageClickListener(ImageAdapter.OnImageClickListener listener) {
+        imageAdapter.setOnImageClickListener(listener);
+    }
+
     public void addContentToGridView(List<Image> images) {
         imageAdapter.add(images);
     }
