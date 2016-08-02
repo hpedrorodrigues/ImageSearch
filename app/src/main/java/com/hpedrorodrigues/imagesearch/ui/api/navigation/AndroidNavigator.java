@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.api.navigation;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation.AndroidFragmentNavigator;

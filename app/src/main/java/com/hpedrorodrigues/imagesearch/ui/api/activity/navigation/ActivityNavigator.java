@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 
 public interface ActivityNavigator {
 

@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.activity;
+package com.hpedrorodrigues.imagesearch.ui.activity.base;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

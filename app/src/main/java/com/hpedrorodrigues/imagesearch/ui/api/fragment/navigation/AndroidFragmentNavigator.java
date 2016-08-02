@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
 
 public class AndroidFragmentNavigator implements FragmentNavigator {

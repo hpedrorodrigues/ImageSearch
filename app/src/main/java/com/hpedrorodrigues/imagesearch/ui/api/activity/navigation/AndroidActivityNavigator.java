@@ -2,8 +2,8 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 
 import android.content.Intent;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 
 public class AndroidActivityNavigator implements ActivityNavigator {
 
