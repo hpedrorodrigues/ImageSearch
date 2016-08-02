@@ -23,6 +23,9 @@ public class SettingsView extends BaseView<SettingsActivity> {
     private RelativeLayout showImagesDescription;
     private Switch toggleShowImagesDescription;
 
+    private RelativeLayout safeSearch;
+    private Switch toggleSafeSearch;
+
     private LinearLayout aboutTheApp;
     private LinearLayout rateTheApp;
     private LinearLayout shareTheApp;
@@ -46,6 +49,9 @@ public class SettingsView extends BaseView<SettingsActivity> {
 
         showImagesDescription = (RelativeLayout) activity.findViewById(R.id.showImagesDescription);
         toggleShowImagesDescription = (Switch) activity.findViewById(R.id.toggleShowImagesDescription);
+
+        safeSearch = (RelativeLayout) activity.findViewById(R.id.safeSearch);
+        toggleSafeSearch = (Switch) activity.findViewById(R.id.toggleSafeSearch);
 
         aboutTheApp = (LinearLayout) activity.findViewById(R.id.aboutTheApp);
         rateTheApp = (LinearLayout) activity.findViewById(R.id.rateTheApp);

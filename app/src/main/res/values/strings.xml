@@ -45,6 +45,9 @@
     <string name="show_images_description">Show images description</string>
     <string name="display_images_description">Display description of images loaded</string>
 
+    <string name="safe_search">Safe search</string>
+    <string name="safe_search_description">Enable only not offensive images</string>
+
     <string name="keep_screen_on">Keep screen on</string>
     <string name="keep_screen_on_description"> Keep screen on while reading posts</string>
 

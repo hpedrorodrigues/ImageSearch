@@ -213,10 +213,13 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
         cancelOldSearchSubscription();
 
+        boolean safeSearch = preferences
+                .getBoolean(PreferenceKey.SAFE_SEARCH, ISConstant.DEFAULT_SAFE_SEARCH);
+
         if (api == null) {
-            searchAll(query, smallLoading);
+            searchAll(query, smallLoading, safeSearch);
         } else {
-            searchByApi(query, smallLoading);
+            searchByApi(query, smallLoading, safeSearch);
         }
     }
 
@@ -312,9 +315,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         });
     }
 
-    private void searchAll(String query, boolean smallLoading) {
+    private void searchAll(String query, boolean smallLoading, boolean safeSearch) {
         searchSubscription = genericService
-                .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, safeSearch)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         images -> reloadContent(images, smallLoading),
@@ -324,9 +327,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         bindSubscription(searchSubscription);
     }
 
-    private void searchByApi(String query, boolean smallLoading) {
+    private void searchByApi(String query, boolean smallLoading, boolean safeSearch) {
         searchSubscription = genericService
-                .search(api, query, currentPage, ISConstant.IMAGES_PER_PAGE, false)
+                .search(api, query, currentPage, ISConstant.IMAGES_PER_PAGE, safeSearch)
                 .compose(Rx.applySchedulers())
                 .subscribe(
                         data -> {

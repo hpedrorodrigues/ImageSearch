@@ -57,6 +57,10 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
         boolean showImagesDescription = preferences
                 .getBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, ISConstant.DEFAULT_SHOW_IMAGES_DESCRIPTION);
         view.getToggleShowImagesDescription().setChecked(showImagesDescription);
+
+        boolean safeSearch = preferences
+                .getBoolean(PreferenceKey.SAFE_SEARCH, ISConstant.DEFAULT_SAFE_SEARCH);
+        view.getToggleSafeSearch().setChecked(safeSearch);
     }
 
     private void setUpListeners() {
@@ -103,6 +107,21 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
 
             answer.log("Show images description check changed by switch", isChecked);
+        });
+
+        view.getSafeSearch().setOnClickListener((v) -> {
+            boolean isChecked = !view.getToggleSafeSearch().isChecked();
+            view.getToggleSafeSearch().setChecked(isChecked);
+
+            preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
+
+            answer.log("Safe search check changed by container", isChecked);
+        });
+
+        view.getToggleSafeSearch().setOnCheckedChangeListener((compoundButton, isChecked) -> {
+            preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
+
+            answer.log("Safe search check changed by switch", isChecked);
         });
 
         view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));
