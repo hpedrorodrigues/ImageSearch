@@ -63,6 +63,8 @@ public class GenericService {
                             images.addAll(callSearchAnParse(api, search, page, perPage, safeSearch));
                         }
 
+                        Collections.shuffle(images);
+
                         subscriber.onNext(images);
                     } catch (Throwable t) {
 
