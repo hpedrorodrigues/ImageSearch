@@ -71,4 +71,9 @@
 
     <string name="without_connection">Without network</string>
 
+    <string name="suggestions">Suggestions</string>
+    <string name="new_bug">New bug</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact">Contact</string>
+
 </resources>
