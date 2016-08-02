@@ -101,6 +101,9 @@ dependencies {
     // - Image Loading
     compile 'com.koushikdutta.ion:ion:2.1.8'
 
+    // - Elastic Progress
+    compile 'com.github.tibolte:elasticdownload:1.0.4'
+
     // - Licenses Dialog
     compile('de.psdev.licensesdialog:licensesdialog:1.8.1') {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'

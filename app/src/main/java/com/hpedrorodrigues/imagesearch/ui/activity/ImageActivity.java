@@ -11,9 +11,13 @@ import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.koushikdutta.ion.Ion;
 
+import is.arontibo.library.ElasticDownloadView;
+import timber.log.Timber;
+
 public class ImageActivity extends BaseActivity {
 
     private ImageView imageView;
+    private ElasticDownloadView downloadView;
 
     protected Image image;
 
@@ -22,7 +26,24 @@ public class ImageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        Ion.with(this).load(image.getImageUrl()).intoImageView(imageView);
+        downloadView.startIntro();
+
+        Ion.with(this)
+                .load(image.getImageUrl())
+                .progressHandler((downloaded, total) -> {
+                    int percent = (int) (100 * downloaded / total) % 100;
+
+                    Timber.d("Progress: Total - %d - Downloaded - %d - Percent - %d", total, downloaded, percent);
+                    downloadView.setProgress(percent);
+                })
+                .intoImageView(imageView)
+                .setCallback((error, view) -> {
+                    if (error == null) {
+                        downloadView.success();
+                    } else {
+                        downloadView.fail();
+                    }
+                });
     }
 
     @Override
@@ -30,6 +51,7 @@ public class ImageActivity extends BaseActivity {
         super.onView();
 
         imageView = (ImageView) findViewById(R.id.image);
+        downloadView = (ElasticDownloadView) findViewById(R.id.elastic_download_view);
     }
 
     @Override
