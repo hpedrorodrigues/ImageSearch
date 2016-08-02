@@ -21,12 +21,14 @@ class GiphyApi extends BaseApi {
     @Override
     protected Observable<Map> search(final String text, final Integer page,
                                      final Integer perPage, final Boolean safeSearch) {
+        int offset = (page - 1) * perPage;
+
         return serviceFactory
                 .getGiphyService()
                 .search(
                         GiphyService.API_KEY,
                         text,
-                        page,
+                        offset,
                         perPage,
                         safeSearch ? GiphyRating.RESTRICTED.getValue() : GiphyRating.GENERAL_AUDIENCES.getValue()
                 );
@@ -35,12 +37,14 @@ class GiphyApi extends BaseApi {
     @Override
     protected Call<Map> callSearch(final String text, final Integer page,
                                    final Integer perPage, final Boolean safeSearch) {
+        int offset = (page - 1) * perPage;
+
         return serviceFactory
                 .getGiphyService()
                 .callSearch(
                         GiphyService.API_KEY,
                         text,
-                        page,
+                        offset,
                         perPage,
                         safeSearch ? GiphyRating.RESTRICTED.getValue() : GiphyRating.GENERAL_AUDIENCES.getValue()
                 );
