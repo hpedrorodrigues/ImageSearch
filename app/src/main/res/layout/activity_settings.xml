@@ -130,6 +130,16 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                style="@style/AppTheme.SettingsHeader"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.SettingsHeaderTextView"
+                    android:text="@string/search_settings" />
+
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/safeSearch"
                 style="@style/AppTheme.SettingsItem"
