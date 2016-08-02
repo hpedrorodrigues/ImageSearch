@@ -29,7 +29,7 @@ class CSEApi extends BaseApi {
                         CSESearchType.IMAGE.getValue(),
                         CSEService.CX,
                         text,
-                        page,
+                        getOffset(page, perPage),
                         perPage,
                         safeSearch ? CSESafeSearchType.ACTIVE.getValue() : CSESafeSearchType.OFF.getValue()
                 );
@@ -45,7 +45,7 @@ class CSEApi extends BaseApi {
                         CSESearchType.IMAGE.getValue(),
                         CSEService.CX,
                         text,
-                        page,
+                        getOffset(page, perPage),
                         perPage,
                         safeSearch ? CSESafeSearchType.ACTIVE.getValue() : CSESafeSearchType.OFF.getValue()
                 );
