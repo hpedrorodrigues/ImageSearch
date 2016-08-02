@@ -90,5 +90,5 @@
 # Picasso / OkHttp
 -dontwarn com.squareup.okhttp.**
 
-# Okio
--dontwarn okio.**
+# Licenses Dialog
+-dontwarn de.psdev.licensesdialog.**
