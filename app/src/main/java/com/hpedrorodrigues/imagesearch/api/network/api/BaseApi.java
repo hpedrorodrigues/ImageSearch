@@ -25,4 +25,8 @@ public abstract class BaseApi {
                                             final Integer page,
                                             final Integer perPage,
                                             final Boolean safeSearch);
+
+    protected int getOffset(int page, int perPage) {
+        return (page - 1) * perPage;
+    }
 }

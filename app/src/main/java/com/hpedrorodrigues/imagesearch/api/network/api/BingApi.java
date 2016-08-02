@@ -24,7 +24,7 @@ class BingApi extends BaseApi {
                 .getBingService()
                 .search(
                         text,
-                        page,
+                        getOffset(page, perPage),
                         perPage,
                         safeSearch ? BingSafeSearchType.STRICT.getValue() : BingSafeSearchType.OFF.getValue()
                 );
@@ -37,7 +37,7 @@ class BingApi extends BaseApi {
                 .getBingService()
                 .callSearch(
                         text,
-                        page,
+                        getOffset(page, perPage),
                         perPage,
                         safeSearch ? BingSafeSearchType.STRICT.getValue() : BingSafeSearchType.OFF.getValue()
                 );
