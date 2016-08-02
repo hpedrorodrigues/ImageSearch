@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,7 +18,7 @@ import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresente
 
 public class GenericFragment extends BaseFragment {
 
-    private GenericPresenter genericPresenter;
+    private GenericPresenter presenter;
 
     public static GenericFragment create() {
         return new GenericFragment();
@@ -60,32 +61,37 @@ public class GenericFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        genericPresenter.onViewCreated(view);
+        presenter.onViewCreated(view);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        genericPresenter.onCreateOptionsMenu(menu, inflater);
+        presenter.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return presenter.onOptionsItemSelected(item) && super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        genericPresenter.onResume();
+        presenter.onResume();
     }
 
     @Override
     protected void setUpPresenter() {
         MainActivity activity = (MainActivity) getActivity();
-        genericPresenter = new GenericPresenter(this, activity.getNavigator(), getApi());
-        getComponent().inject(genericPresenter);
+        presenter = new GenericPresenter(this, activity.getNavigator(), getApi());
+        getComponent().inject(presenter);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        genericPresenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -106,6 +112,6 @@ public class GenericFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
 
-        genericPresenter.cancelPendingProcesses();
+        presenter.cancelPendingProcesses();
     }
 }

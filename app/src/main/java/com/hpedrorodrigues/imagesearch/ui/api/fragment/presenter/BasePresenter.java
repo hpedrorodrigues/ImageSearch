@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.api.service.GenericService;
@@ -47,6 +48,10 @@ abstract class BasePresenter<T extends BaseFragment> {
     public abstract void onViewCreated(View view);
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return true;
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

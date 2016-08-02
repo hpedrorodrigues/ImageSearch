@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
@@ -16,6 +17,7 @@ import com.hpedrorodrigues.imagesearch.component.receiver.observable.NetworkStat
 import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
+import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
@@ -102,22 +104,6 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        boolean showImagesDescription = preferences
-                .getBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, ISConstant.DEFAULT_SHOW_IMAGES_DESCRIPTION);
-        this.view.setShowImagesDescription(showImagesDescription);
-    }
-
-    @Override
-    public void cancelPendingProcesses() {
-        super.cancelPendingProcesses();
-
-        observable.deleteObserver(observer);
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.generic_item, menu);
         SearchView searchView = view.getSearchView(menu);
@@ -143,9 +129,35 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            navigator.toActivityScreen(SettingsActivity.class);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         featureUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        boolean showImagesDescription = preferences
+                .getBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, ISConstant.DEFAULT_SHOW_IMAGES_DESCRIPTION);
+        this.view.setShowImagesDescription(showImagesDescription);
+    }
+
+    @Override
+    public void cancelPendingProcesses() {
+        super.cancelPendingProcesses();
+
+        observable.deleteObserver(observer);
     }
 
     private void loadTitleByApi() {
