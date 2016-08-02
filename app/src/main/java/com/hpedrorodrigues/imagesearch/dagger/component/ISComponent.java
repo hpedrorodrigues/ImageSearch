@@ -5,7 +5,9 @@ import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.component.receiver.NetworkStateChangedReceiver;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.activity.AboutActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.GifActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.activity.PhotoActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.AboutPresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.MainPresenter;
@@ -48,4 +50,8 @@ public interface ISComponent extends BaseComponent {
     void inject(AboutPresenter presenter);
 
     void inject(NetworkStateChangedReceiver receiver);
+
+    void inject(PhotoActivity activity);
+
+    void inject(GifActivity activity);
 }
