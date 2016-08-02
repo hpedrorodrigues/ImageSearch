@@ -10,6 +10,8 @@ import com.hpedrorodrigues.imagesearch.util.info.DeviceInfo;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class MailUtil {
 
     @Inject
@@ -39,17 +41,17 @@ public class MailUtil {
     }
 
     private void send(Activity activity, int resId) {
-        Intent intent = buildIntent(activity, resId);
-
         try {
+            Intent intent = buildIntent(activity, resId);
             intent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
             activity.startActivity(intent);
         } catch (ActivityNotFoundException e) {
-
+            Intent intent = buildIntent(activity, resId);
             if (intentUtil.isAvailable(activity, intent)) {
-
                 activity.startActivity(
                         Intent.createChooser(intent, activity.getString(R.string.choose_app)));
+            } else {
+                Timber.e(e, "This intent is not available");
             }
         }
     }

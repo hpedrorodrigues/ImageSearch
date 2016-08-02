@@ -9,10 +9,16 @@ import com.hpedrorodrigues.imagesearch.ui.activity.AboutActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.SettingsView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.util.general.MailUtil;
+
+import javax.inject.Inject;
 
 public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
     private final SettingsView view;
+
+    @Inject
+    public MailUtil mailUtil;
 
     public SettingsPresenter(SettingsActivity activity, Navigator navigator) {
         super(activity, navigator);
@@ -78,5 +84,29 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
         });
 
         view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));
+
+        view.getReportABug().setOnClickListener((v) -> {
+            mailUtil.sendReportBugEmail(activity);
+
+            answer.log("Report a bug action triggered");
+        });
+
+        view.getIdeaToImprove().setOnClickListener((v) -> {
+            mailUtil.sendImproveAppEmail(activity);
+
+            answer.log("Idea to improve action triggered");
+        });
+
+        view.getSendUsYourFeedback().setOnClickListener((v) -> {
+            mailUtil.sendFeedbackEmail(activity);
+
+            answer.log("Send us your feedback action triggered");
+        });
+
+        view.getContactUs().setOnClickListener((v) -> {
+            mailUtil.sendContactUsEmail(activity);
+
+            answer.log("Contact us action triggered");
+        });
     }
 }
