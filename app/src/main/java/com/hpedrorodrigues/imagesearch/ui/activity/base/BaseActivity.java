@@ -44,7 +44,11 @@ public abstract class BaseActivity extends BaseTransitionActivity {
         super.setContentView(layoutResID);
 
         onView();
-        setUpToolbar();
+
+        if (hasToolbar()) {
+            setUpToolbar();
+        }
+
         setUpPresenter();
         inject();
 
@@ -84,6 +88,10 @@ public abstract class BaseActivity extends BaseTransitionActivity {
     }
 
     protected void onIntent(Intent intent, Bundle extras) {
+    }
+
+    protected boolean hasToolbar() {
+        return true;
     }
 
     protected abstract void setUpPresenter();

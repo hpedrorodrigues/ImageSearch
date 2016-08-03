@@ -1,9 +1,9 @@
 package com.hpedrorodrigues.imagesearch.ui.api.activity.view;
 
 import android.view.View;
-import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
+import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
 
@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class LoadImageView extends BaseView<ImageActivity> {
 
-    private ImageView imageView;
+    private FlickableImageView imageView;
     private AnimatedCircleLoadingView loadingView;
 
     public LoadImageView(ImageActivity activity) {
@@ -23,12 +23,16 @@ public class LoadImageView extends BaseView<ImageActivity> {
 
     @Override
     public void onView() {
-        imageView = (ImageView) activity.findViewById(R.id.image);
+        imageView = (FlickableImageView) activity.findViewById(R.id.image);
         loadingView = (AnimatedCircleLoadingView) activity.findViewById(R.id.loading_view);
     }
 
     public void showImageView() {
         imageView.setVisibility(View.VISIBLE);
         loadingView.setVisibility(View.GONE);
+    }
+
+    public void hideImageView() {
+        imageView.setVisibility(View.GONE);
     }
 }

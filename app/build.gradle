@@ -100,7 +100,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 
     // - Image View
-    compile 'com.github.chrisbanes:PhotoView:1.3.0'
+    compile 'com.github.goka.flickableview:flickableview:1.0.0'
 
     // - Image Loading
     compile 'com.koushikdutta.ion:ion:2.1.8'

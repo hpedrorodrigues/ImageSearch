@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
+import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Feature;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
@@ -29,15 +30,12 @@ import com.koushikdutta.ion.Ion;
 import javax.inject.Inject;
 
 import timber.log.Timber;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     private LoadImageView view;
 
     private Image image;
-
-    private PhotoViewAttacher attacher;
 
     @Inject
     public FeatureUtil featureUtil;
@@ -66,10 +64,20 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     public void onCreate(Bundle savedInstanceState) {
         this.view.onView();
 
-        attacher = new PhotoViewAttacher(view.getImageView());
-
         loadImage();
         setUpScreen();
+
+        view.getImageView().setOnFlickListener(new FlickableImageView.OnFlickableImageViewFlickListener() {
+            @Override
+            public void onStartFlick() {
+            }
+
+            @Override
+            public void onFinishFlick() {
+                view.hideImageView();
+                navigator.toActivityParent();
+            }
+        });
     }
 
     @Override
@@ -144,7 +152,6 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                     if (error == null) {
                         loadingView.stopOk();
                         this.view.showImageView();
-                        attacher.update();
                     } else {
                         loadingView.stopFailure();
                     }
