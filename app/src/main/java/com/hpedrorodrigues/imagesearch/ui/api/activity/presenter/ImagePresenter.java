@@ -29,12 +29,15 @@ import com.koushikdutta.ion.Ion;
 import javax.inject.Inject;
 
 import timber.log.Timber;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     private LoadImageView view;
 
     private Image image;
+
+    private PhotoViewAttacher attacher;
 
     @Inject
     public FeatureUtil featureUtil;
@@ -62,6 +65,8 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         this.view.onView();
+
+        attacher = new PhotoViewAttacher(view.getImageView());
 
         loadImage();
         setUpScreen();
@@ -139,6 +144,7 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                     if (error == null) {
                         loadingView.stopOk();
                         this.view.showImageView();
+                        attacher.update();
                     } else {
                         loadingView.stopFailure();
                     }
