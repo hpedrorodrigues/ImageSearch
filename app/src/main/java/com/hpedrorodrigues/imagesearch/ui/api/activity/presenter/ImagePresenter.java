@@ -140,6 +140,8 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
         AnimatedCircleLoadingView loadingView = view.getLoadingView();
         loadingView.startDeterminate();
 
+        loadingView.setPercent(0);
+
         Ion.with(activity)
                 .load(image.getImageUrl())
                 .progressHandler((downloaded, total) -> {
