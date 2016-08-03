@@ -8,7 +8,6 @@ import com.hpedrorodrigues.imagesearch.api.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.util.EnumUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -56,16 +55,11 @@ public class GenericService {
                 .create((Subscriber<? super List<Image>> subscriber) -> {
 
                     try {
-                        List<Image> images = new ArrayList<>();
                         List<Api> apis = EnumUtil.valuesAsList(Api.class);
 
                         for (Api api : apis) {
-                            images.addAll(callSearchAnParse(api, search, page, perPage, safeSearch));
+                            subscriber.onNext(callSearchAnParse(api, search, page, perPage, safeSearch));
                         }
-
-                        Collections.shuffle(images);
-
-                        subscriber.onNext(images);
                     } catch (Throwable t) {
 
                         subscriber.onError(t);

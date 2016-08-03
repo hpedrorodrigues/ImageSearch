@@ -215,7 +215,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .getBoolean(PreferenceKey.SAFE_SEARCH, ISConstant.DEFAULT_SAFE_SEARCH);
 
         if (api == null) {
-            searchAll(query, smallLoading, safeSearch);
+            searchAll(query, safeSearch);
         } else {
             searchByApi(query, smallLoading, safeSearch);
         }
@@ -313,13 +313,24 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         });
     }
 
-    private void searchAll(String query, boolean smallLoading, boolean safeSearch) {
+    private void searchAll(String query, boolean safeSearch) {
         searchSubscription = genericService
                 .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, safeSearch)
                 .compose(Rx.applySchedulers())
                 .subscribe(
-                        images -> reloadContent(images, smallLoading),
-                        error -> Timber.e(error, "Error loading images")
+                        images -> getActivity().runOnUiThread(() -> {
+
+                            view.hideProgress();
+                            view.addContentToGridView(images);
+                            view.showSmallProgress();
+
+                            Timber.d("Images loaded %s", images);
+                        }),
+                        error -> Timber.e(error, "Error loading images"),
+                        () -> {
+                            view.setCanLoadMore(true);
+                            view.hideSmallProgress();
+                        }
                 );
 
         bindSubscription(searchSubscription);
@@ -332,7 +343,19 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                 .subscribe(
                         data -> {
                             List<Image> images = genericService.parse(api, data);
-                            reloadContent(images, smallLoading);
+                            getActivity().runOnUiThread(() -> {
+
+                                view.addContentToGridView(images);
+                                view.setCanLoadMore(true);
+
+                                if (smallLoading) {
+                                    view.hideSmallProgress();
+                                } else {
+                                    view.hideProgress();
+                                }
+
+                                Timber.d("Images loaded %s", images);
+                            });
                         },
                         error -> Timber.e(error, "Error loading images")
                 );
@@ -347,22 +370,6 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
             searchSubscription.unsubscribe();
             searchSubscription = null;
         }
-    }
-
-    private void reloadContent(List<Image> images, boolean smallLoading) {
-        getActivity().runOnUiThread(() -> {
-
-            view.addContentToGridView(images);
-            view.setCanLoadMore(true);
-
-            if (smallLoading) {
-                view.hideSmallProgress();
-            } else {
-                view.hideProgress();
-            }
-
-            Timber.d("Images loaded %s", images);
-        });
     }
 
     private void reloadNetworkView() {
