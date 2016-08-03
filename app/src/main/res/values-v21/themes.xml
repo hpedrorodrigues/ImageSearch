@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="AppTheme" parent="BaseTheme">
+
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/dark_gray</item>
+
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:navigationBarColor">@color/dark_gray</item>
+
+    </style>
+
+</resources>

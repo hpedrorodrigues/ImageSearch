@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 import android.Manifest;
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Menu;
@@ -160,6 +161,12 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     private void setUpScreen() {
         activity.setTitle(image.getTitle());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            int color = activity.getResources().getColor(R.color.black, activity.getTheme());
+            activity.getWindow().setNavigationBarColor(color);
+        }
     }
 
     private Feature createImageFeature(Image image) {
