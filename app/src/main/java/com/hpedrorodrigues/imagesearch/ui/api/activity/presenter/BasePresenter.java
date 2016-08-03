@@ -3,6 +3,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
@@ -29,6 +30,10 @@ abstract class BasePresenter<T extends BaseActivity> {
     }
 
     public abstract void onCreate(Bundle savedInstanceState);
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
 
     public void onIntent(Intent intent, Bundle extras) {
     }

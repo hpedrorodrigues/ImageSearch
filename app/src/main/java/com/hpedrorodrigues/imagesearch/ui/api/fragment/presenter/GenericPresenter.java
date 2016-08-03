@@ -44,8 +44,6 @@ import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
 
-    private static final int WRITE_EXTERNAL_STORAGE = 1;
-
     private final GenericView view;
 
     private final Api api;
@@ -233,7 +231,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         if (permissionGranted) {
                             shareImage(image);
                         } else {
-                            toastUtil.showLong("Permission not granted");
+                            toastUtil.showLong(context.getString(R.string.permission_not_granted));
                         }
                     });
                     break;
@@ -252,7 +250,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         if (permissionGranted) {
                             downloadImage(image);
                         } else {
-                            toastUtil.showLong("Permission not granted");
+                            toastUtil.showLong(context.getString(R.string.permission_not_granted));
                         }
                     });
                     break;
@@ -265,7 +263,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
         feature.setActivity(getActivity());
         feature.setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        feature.setRequestCode(WRITE_EXTERNAL_STORAGE);
+        feature.setRequestCode(9999);
         feature.setValue(image);
 
         return feature;
