@@ -6,6 +6,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screens"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -21,8 +22,10 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
-        app:itemIconTint="@drawable/activated_item"
-        app:itemTextColor="@drawable/activated_item"
-        app:menu="@menu/drawer" />
+        app:itemBackground="@drawable/drawer_item_background"
+        app:itemIconTint="@drawable/drawer_item"
+        app:itemTextColor="@drawable/drawer_item"
+        app:menu="@menu/drawer"
+        app:theme="@style/ThemeOverlay.AppCompat.Light" />
 
 </android.support.v4.widget.DrawerLayout>

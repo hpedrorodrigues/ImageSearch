@@ -11,7 +11,7 @@
     android:layout_marginTop="16dp"
     android:clickable="true"
     android:foreground="@drawable/selectable_item_background"
-    app:cardBackgroundColor="@color/screens"
+    app:cardBackgroundColor="@color/light_screens"
     app:cardCornerRadius="@dimen/spacing_xsmall"
     app:cardElevation="2sp">
 
@@ -25,8 +25,7 @@
             android:layout_height="match_parent"
             android:minHeight="@dimen/min_image_size"
             android:minWidth="@dimen/min_image_size"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:scaleType="centerCrop" />
 
         <ImageView
             android:id="@+id/more"
@@ -38,7 +37,7 @@
             android:clickable="true"
             android:padding="@dimen/spacing_medium"
             android:src="@mipmap/ic_more"
-            android:tint="@color/colorAccent" />
+            android:tint="@color/colorPrimaryDark" />
 
         <RelativeLayout
             android:id="@+id/content"
@@ -47,7 +46,7 @@
             android:layout_alignEnd="@+id/image"
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/image"
-            android:background="@color/opaque"
+            android:background="@color/colorAccentTransparent"
             android:orientation="vertical">
 
             <LinearLayout

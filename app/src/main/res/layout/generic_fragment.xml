@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/withoutNetwork"
         android:background="@color/screens"
-        app:column_count="2"
+        app:column_count="@integer/column_count"
         app:item_margin="8dp" />
 
     <include

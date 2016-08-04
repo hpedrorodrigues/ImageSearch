@@ -2,13 +2,14 @@
 
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#7E57C2</color>
+    <color name="colorPrimaryDark">#5E35B1</color>
+    <color name="colorAccent">#26C6DA</color>
+    <color name="colorAccentTransparent">#B326C6DA</color>
 
-    <color name="screens">#F5F5F5</color>
+    <color name="screens">#757575</color>
+    <color name="light_screens">#BDBDBD</color>
     <color name="white">#FFF</color>
-    <color name="opaque">#B3FF4081</color>
     <color name="transparent">#00000000</color>
     <color name="touch_background">#99000000</color>
     <color name="black">#212121</color>

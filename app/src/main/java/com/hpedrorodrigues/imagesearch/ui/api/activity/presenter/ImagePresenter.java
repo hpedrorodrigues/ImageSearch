@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -165,8 +166,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
         activity.setTitle(image.getTitle());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int color = ContextCompat.getColor(activity, R.color.dark_gray);
 
-            int color = activity.getResources().getColor(R.color.black, activity.getTheme());
+            activity.getWindow().setStatusBarColor(color);
             activity.getWindow().setNavigationBarColor(color);
         }
     }

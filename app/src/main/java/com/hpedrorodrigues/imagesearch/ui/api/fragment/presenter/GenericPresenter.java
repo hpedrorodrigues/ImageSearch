@@ -328,7 +328,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         }),
                         error -> Timber.e(error, "Error loading images"),
                         () -> {
-                            view.setCanLoadMore(true);
+                            view.enableLoadMore();
                             view.hideSmallProgress();
                         }
                 );
@@ -346,7 +346,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                             getActivity().runOnUiThread(() -> {
 
                                 view.addContentToGridView(images);
-                                view.setCanLoadMore(true);
+                                view.enableLoadMore();
 
                                 if (smallLoading) {
                                     view.hideSmallProgress();

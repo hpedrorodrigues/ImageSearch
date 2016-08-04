@@ -13,6 +13,7 @@ public class OnLoadMoreListener implements AbsListView.OnScrollListener {
     public OnLoadMoreListener(int leftItemsToLoadMore, OnLoadMoreListener.OnMoreListener onMoreListener) {
         this.leftItemsToLoadMore = leftItemsToLoadMore;
         this.onMoreListener = onMoreListener;
+        this.canLoadMore = true;
     }
 
     @Override
@@ -33,8 +34,8 @@ public class OnLoadMoreListener implements AbsListView.OnScrollListener {
         }
     }
 
-    public void setCanLoadMore(boolean canLoadMore) {
-        this.canLoadMore = canLoadMore;
+    public void enableLoadMore() {
+        this.canLoadMore = true;
     }
 
     public interface OnMoreListener {

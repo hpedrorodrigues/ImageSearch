@@ -83,15 +83,14 @@ public class GenericView extends BaseView<GenericFragment> {
 
     public void setUpGridView(OnLoadMoreListener.OnMoreListener listener) {
         moreListener = new OnLoadMoreListener(1, listener);
-        moreListener.setCanLoadMore(true);
 
         gridView.setAdapter(imageAdapter);
 
         gridView.setOnScrollListener(moreListener);
     }
 
-    public void setCanLoadMore(boolean canLoadMore) {
-        moreListener.setCanLoadMore(canLoadMore);
+    public void enableLoadMore() {
+        moreListener.enableLoadMore();
     }
 
     public void setShowImagesDescription(boolean showImagesDescription) {
