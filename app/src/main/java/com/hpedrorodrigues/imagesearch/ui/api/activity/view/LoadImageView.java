@@ -33,6 +33,6 @@ public class LoadImageView extends BaseView<ImageActivity> {
     }
 
     public void hideImageView() {
-        imageView.setVisibility(View.GONE);
+        imageView.setVisibility(View.INVISIBLE);
     }
 }
