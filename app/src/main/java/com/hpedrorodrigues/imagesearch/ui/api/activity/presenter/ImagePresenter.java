@@ -95,6 +95,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
             case R.id.action_download:
                 imageActionUtil.downloadImage(image, activity);
                 break;
+            case R.id.action_set_as_wallpaper:
+                imageActionUtil.changeWallpaper(image, activity);
+                break;
         }
 
         return super.onOptionsItemSelected(item);

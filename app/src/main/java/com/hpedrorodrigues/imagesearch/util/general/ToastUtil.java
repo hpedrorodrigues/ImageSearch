@@ -16,8 +16,16 @@ public class ToastUtil {
     public ToastUtil() {
     }
 
+    public void showShort(int resId) {
+        showShort(context.getString(resId));
+    }
+
     public void showShort(String message) {
         show(message, Toast.LENGTH_SHORT);
+    }
+
+    public void showLong(int resId) {
+        showLong(context.getString(resId));
     }
 
     public void showLong(String message) {

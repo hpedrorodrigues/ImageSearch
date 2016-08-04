@@ -35,6 +35,9 @@ public class ImageActionUtil {
     public FeatureUtil featureUtil;
 
     @Inject
+    public WallpaperUtil wallpaperUtil;
+
+    @Inject
     public ConnectionService connection;
 
     @Inject
@@ -44,6 +47,31 @@ public class ImageActionUtil {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         featureUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    public void shareImageUrl(Image image, Activity activity) {
+        shareUtil.shareText(activity, getImageUrlByConnection(image));
+    }
+
+    public void copyImageUrl(Image image) {
+        clipboardUtil.copy(getImageUrlByConnection(image));
+    }
+
+    public void changeWallpaper(Image image, Activity activity) {
+        Feature wallpaperFeature = new Feature();
+
+        wallpaperFeature.setActivity(activity);
+        wallpaperFeature.setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        wallpaperFeature.setRequestCode(9999);
+        wallpaperFeature.setValue(image);
+
+        featureUtil.requestFeature(wallpaperFeature, (feature, permissionGranted) -> {
+            if (permissionGranted) {
+                internalChangeWallpaper(image, activity);
+            } else {
+                toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+            }
+        });
     }
 
     public void shareImage(Image image, Activity activity) {
@@ -61,14 +89,6 @@ public class ImageActionUtil {
                 toastUtil.showLong(activity.getString(R.string.permission_not_granted));
             }
         });
-    }
-
-    public void shareImageUrl(Image image, Activity activity) {
-        shareUtil.shareText(activity, getImageUrlByConnection(image));
-    }
-
-    public void copyImageUrl(Image image) {
-        clipboardUtil.copy(getImageUrlByConnection(image));
     }
 
     public void downloadImage(Image image, Activity activity) {
@@ -90,6 +110,29 @@ public class ImageActionUtil {
 
     private String getImageUrlByConnection(Image image) {
         return connection.isConnectedFast() ? image.getImageUrl() : image.getThumbnailUrl();
+    }
+
+    private void internalChangeWallpaper(Image image, Activity activity) {
+        String imageUrl = getImageUrlByConnection(image);
+        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
+
+        toastUtil.showLong(activity.getString(R.string.downloading, image.getImageUrl()));
+
+        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
+            if (downloadUtil.isCompleted(imageId)) {
+
+                String path = downloadUtil.getPathById(imageId);
+                if (StringUtil.isEmpty(path)) {
+                    toastUtil.showLong(activity.getString(R.string.error_downloading_image));
+                } else {
+                    wallpaperUtil.change(path);
+                }
+
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void internalShareImage(Image image, Activity activity) {

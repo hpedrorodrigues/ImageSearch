@@ -200,21 +200,20 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     private void setUpImageAdapter() {
         this.view.setUpImageAdapter((item, image) -> {
             switch (item.getItemId()) {
-
                 case R.id.action_share:
                     imageActionUtil.shareImage(image, getActivity());
                     break;
-
                 case R.id.action_share_link:
                     imageActionUtil.shareImageUrl(image, getActivity());
                     break;
-
                 case R.id.action_copy_link:
                     imageActionUtil.copyImageUrl(image);
                     break;
-
                 case R.id.action_download:
                     imageActionUtil.downloadImage(image, getActivity());
+                    break;
+                case R.id.action_set_as_wallpaper:
+                    imageActionUtil.changeWallpaper(image, getActivity());
                     break;
             }
         });

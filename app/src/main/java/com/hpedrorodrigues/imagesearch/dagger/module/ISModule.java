@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.imagesearch.dagger.module;
 
 import android.app.DownloadManager;
+import android.app.WallpaperManager;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -65,5 +66,11 @@ public final class ISModule extends BaseModule {
     @Singleton
     public NetworkStateObservable provideNetworkStateObservable() {
         return new NetworkStateObservable();
+    }
+
+    @Provides
+    @Singleton
+    public WallpaperManager provideWallpaperManager(Context context) {
+        return WallpaperManager.getInstance(context);
     }
 }

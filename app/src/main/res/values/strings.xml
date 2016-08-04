@@ -28,7 +28,7 @@
     <string name="download">Download</string>
     <string name="set_as_wallpaper">Set as wallpaper</string>
 
-    <string name="text_copied_to_clipboard">Text copied to Clipboard "%s"</string>
+    <string name="text_copied_to_clipboard">Text copied "%s"</string>
 
     <string name="choose_app">Choose an app</string>
 
@@ -86,5 +86,8 @@
     <string name="contact">Contact</string>
 
     <string name="permission_not_granted">Permission not granted</string>
+
+    <string name="wallpaper_changed">Wallpaper changed</string>
+    <string name="error_changing_wallpaper">Error occurred changing wallpaper</string>
 
 </resources>
