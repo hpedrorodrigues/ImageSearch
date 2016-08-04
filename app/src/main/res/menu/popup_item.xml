@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_share"
+        android:id="@+id/action_copy_link"
         android:orderInCategory="1"
-        android:title="@string/share_image"
+        android:title="@string/copy_link"
         app:showAsAction="never" />
 
     <item
@@ -16,15 +16,21 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_copy_link"
+        android:id="@+id/action_share"
         android:orderInCategory="3"
-        android:title="@string/copy_link"
+        android:title="@string/share_image"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_download"
         android:orderInCategory="4"
         android:title="@string/download"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_set_as_wallpaper"
+        android:orderInCategory="5"
+        android:title="@string/set_as_wallpaper"
         app:showAsAction="never" />
 
 </menu>

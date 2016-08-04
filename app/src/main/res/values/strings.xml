@@ -26,6 +26,7 @@
     <string name="share_link">Share link</string>
     <string name="copy_link">Copy link</string>
     <string name="download">Download</string>
+    <string name="set_as_wallpaper">Set as wallpaper</string>
 
     <string name="text_copied_to_clipboard">Text copied to Clipboard "%s"</string>
 
