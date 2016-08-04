@@ -270,7 +270,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     private void downloadImage(Image image) {
-        long imageId = downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+        String imageUrl = connection.isConnectedFast() ? image.getImageUrl() : image.getThumbnailUrl();
+        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
 
         toastUtil.showLong(context.getString(R.string.downloading, image.getImageUrl()));
 
@@ -292,7 +293,8 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     private void shareImage(Image image) {
-        long imageId = downloadUtil.enqueueDownload(image.getImageUrl(), ISConstant.DEFAULT_DIRECTORY);
+        String imageUrl = connection.isConnectedFast() ? image.getImageUrl() : image.getThumbnailUrl();
+        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
 
         toastUtil.showLong(context.getString(R.string.downloading, image.getImageUrl()));
 
