@@ -82,6 +82,8 @@ public abstract class BaseActivity extends BaseTransitionActivity {
     protected void setUpToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     protected void onView() {

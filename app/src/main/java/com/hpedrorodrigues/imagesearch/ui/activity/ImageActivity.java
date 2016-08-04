@@ -21,8 +21,6 @@ public class ImageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         presenter.onCreate(savedInstanceState);
     }
 
