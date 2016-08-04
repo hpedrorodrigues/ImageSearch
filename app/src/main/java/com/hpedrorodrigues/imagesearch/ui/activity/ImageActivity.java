@@ -52,6 +52,13 @@ public class ImageActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+
+        super.onDestroy();
+    }
+
+    @Override
     protected void inject() {
         getComponent().inject(this);
     }

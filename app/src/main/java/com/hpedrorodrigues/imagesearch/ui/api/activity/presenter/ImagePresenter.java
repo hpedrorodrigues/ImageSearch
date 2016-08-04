@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.goka.flickableview.FlickableImageView;
@@ -17,6 +18,7 @@ import com.hpedrorodrigues.imagesearch.api.entity.Feature;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.IntentKey;
+import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.LoadImageView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
@@ -137,6 +139,13 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
         image = (Image) extras.getSerializable(IntentKey.IMAGE);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        unloadScreenOn();
+    }
+
     private void loadImage() {
         AnimatedCircleLoadingView loadingView = view.getLoadingView();
         loadingView.startDeterminate();
@@ -171,6 +180,8 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
             activity.getWindow().setStatusBarColor(color);
             activity.getWindow().setNavigationBarColor(color);
         }
+
+        loadScreenOn();
     }
 
     private Feature createImageFeature(Image image) {
@@ -226,5 +237,15 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
             return false;
         });
+    }
+
+    private void loadScreenOn() {
+        if (preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON, ISConstant.DEFAULT_KEEP_SCREEN_ON)) {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+    }
+
+    private void unloadScreenOn() {
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 }
