@@ -19,9 +19,9 @@
 <notices>
 
     <notice>
-        <name>Picasso</name>
-        <url>http://square.github.io/picasso/</url>
-        <copyright>Copyright 2013 Square, Inc.</copyright>
+        <name>Ion</name>
+        <url>https://github.com/koush/ion</url>
+        <copyright>Copyright 2013 Koushik Dutta (2013)</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
 
@@ -71,6 +71,20 @@
         <name>RxAndroid</name>
         <url>https://github.com/ReactiveX/RxAndroid</url>
         <copyright>Copyright 2015 The RxAndroid authors</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+
+    <notice>
+        <name>FlickableView</name>
+        <url>https://github.com/gotokatsuya/FlickableView</url>
+        <copyright>Copyright 2015 Gotokatsuya</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+
+    <notice>
+        <name>AnimatedCircleLoadingView</name>
+        <url>https://github.com/jlmd/AnimatedCircleLoadingView</url>
+        <copyright>Copyright 2015 José Luis Martín</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
 
