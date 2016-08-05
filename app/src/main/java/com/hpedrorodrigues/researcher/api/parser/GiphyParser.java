@@ -21,7 +21,7 @@ class GiphyParser extends BaseParser {
         Image image = new Image();
 
         Map images = (Map) info.get("images");
-        Map largeImage = (Map) images.get("fixed_height");
+        Map largeImage = (Map) images.get("downsized_large");
         Map smallImage = (Map) images.get("fixed_height_small");
 
         image.setTitle(asString(info.get("slug")));
