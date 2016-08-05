@@ -27,6 +27,7 @@
     <string name="copy_link">Copy link</string>
     <string name="download">Download</string>
     <string name="set_as_wallpaper">Set as wallpaper</string>
+    <string name="image_detail">Detail</string>
 
     <string name="text_copied_to_clipboard">Text copied "%s"</string>
 
@@ -89,5 +90,10 @@
 
     <string name="wallpaper_changed">Wallpaper changed</string>
     <string name="error_changing_wallpaper">Error occurred changing wallpaper</string>
+
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="size">Size</string>
+    <string name="api">API</string>
 
 </resources>

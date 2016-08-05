@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screens"
+    android:minHeight="400dp"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/search_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/AppTheme.ImageDetailTitle"
+            android:text="@string/title" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/AppTheme.ImageDetailSubtitle"
+            android:text="@string/app_name" />
+
+        <TextView
+            style="@style/AppTheme.ImageDetailTitle"
+            android:text="@string/description" />
+
+        <TextView
+            android:id="@+id/description"
+            style="@style/AppTheme.ImageDetailSubtitle"
+            android:text="@string/app_name" />
+
+        <TextView
+            style="@style/AppTheme.ImageDetailTitle"
+            android:text="@string/size" />
+
+        <TextView
+            android:id="@+id/size"
+            style="@style/AppTheme.ImageDetailSubtitle"
+            android:text="@string/app_name" />
+
+        <TextView
+            style="@style/AppTheme.ImageDetailTitle"
+            android:text="@string/api" />
+
+        <TextView
+            android:id="@+id/api"
+            style="@style/AppTheme.ImageDetailSubtitle"
+            android:text="@string/app_name" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -33,4 +33,10 @@
         android:title="@string/set_as_wallpaper"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_image_detail"
+        android:orderInCategory="6"
+        android:title="@string/image_detail"
+        app:showAsAction="never" />
+
 </menu>

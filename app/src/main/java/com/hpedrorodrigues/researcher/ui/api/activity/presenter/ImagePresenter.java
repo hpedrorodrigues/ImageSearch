@@ -19,6 +19,7 @@ import com.hpedrorodrigues.researcher.constant.PreferenceKey;
 import com.hpedrorodrigues.researcher.ui.activity.ImageActivity;
 import com.hpedrorodrigues.researcher.ui.api.activity.view.LoadImageView;
 import com.hpedrorodrigues.researcher.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.researcher.ui.component.ImageDetailDialog;
 import com.hpedrorodrigues.researcher.util.general.ImageActionUtil;
 import com.hpedrorodrigues.researcher.util.general.ToastUtil;
 import com.koushikdutta.ion.Ion;
@@ -97,6 +98,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                 break;
             case R.id.action_set_as_wallpaper:
                 imageActionUtil.changeWallpaper(image, activity);
+                break;
+            case R.id.action_image_detail:
+                ImageDetailDialog.create(image).show(activity.getSupportFragmentManager(), "");
                 break;
         }
 
