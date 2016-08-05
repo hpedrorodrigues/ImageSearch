@@ -26,13 +26,6 @@
     </notice>
 
     <notice>
-        <name>LicensesDialog</name>
-        <url>https://psdev.de/LicensesDialog/</url>
-        <copyright>Copyright 2013-2016 Philip Schiffer</copyright>
-        <license>Apache Software License 2.0</license>
-    </notice>
-
-    <notice>
         <name>AVLoadingIndicatorView</name>
         <url>https://github.com/81813780/AVLoadingIndicatorView</url>
         <copyright>Copyright 2015 jack wang</copyright>
