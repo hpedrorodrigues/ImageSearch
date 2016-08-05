@@ -60,7 +60,7 @@
     <string name="rate_the_app">Rate us</string>
     <string name="publish_a_review">Tell your opinion about the app</string>
 
-    <string name="share_app_message">Researcher</string>
+    <string name="share_app_message">Researcher %s</string>
     <string name="share_the_app">Share</string>
     <string name="share_the_app_with_your_friends">Share this app with your friends</string>
 

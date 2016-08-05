@@ -20,6 +20,13 @@ public class ShareUtil {
     public ShareUtil() {
     }
 
+    public void shareApp(Activity activity) {
+        String message = activity.getString(R.string.share_app_message,
+                "https://play.google.com/store/apps/details?id=" + activity.getPackageName());
+
+        shareText(activity, message);
+    }
+
     public void shareText(Activity activity, String text) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, text);

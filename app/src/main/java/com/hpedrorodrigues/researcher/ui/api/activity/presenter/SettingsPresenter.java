@@ -10,7 +10,9 @@ import com.hpedrorodrigues.researcher.ui.activity.AboutActivity;
 import com.hpedrorodrigues.researcher.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.researcher.ui.api.activity.view.SettingsView;
 import com.hpedrorodrigues.researcher.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.researcher.util.general.AppUtil;
 import com.hpedrorodrigues.researcher.util.general.MailUtil;
+import com.hpedrorodrigues.researcher.util.general.ShareUtil;
 
 import javax.inject.Inject;
 
@@ -22,6 +24,12 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
     @Inject
     public MailUtil mailUtil;
+
+    @Inject
+    public ShareUtil shareUtil;
+
+    @Inject
+    public AppUtil appUtil;
 
     public SettingsPresenter(SettingsActivity activity, Navigator navigator) {
         super(activity, navigator);
@@ -130,6 +138,18 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             mailUtil.sendReportBugEmail(activity);
 
             answer.log("Report a bug action triggered");
+        });
+
+        view.getRateTheApp().setOnClickListener((v) -> {
+            appUtil.viewOnPlayStore(activity);
+
+            answer.log("Rate the app action triggered");
+        });
+
+        view.getShareTheApp().setOnClickListener((v) -> {
+            shareUtil.shareApp(activity);
+
+            answer.logShare("Share the app action triggered");
         });
 
         view.getIdeaToImprove().setOnClickListener((v) -> {
