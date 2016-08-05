@@ -31,10 +31,6 @@ import timber.log.Timber;
 
 public class ImagePresenter extends BasePresenter<ImageActivity> {
 
-    private LoadImageView view;
-
-    private Image image;
-
     @Inject
     public ImageActionUtil imageActionUtil;
 
@@ -43,6 +39,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     @Inject
     public AppUtil appUtil;
+
+    private LoadImageView view;
+    private Image image;
 
     public ImagePresenter(ImageActivity activity, Navigator navigator) {
         super(activity, navigator);

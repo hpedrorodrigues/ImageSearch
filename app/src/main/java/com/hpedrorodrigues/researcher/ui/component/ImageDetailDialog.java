@@ -21,19 +21,18 @@ import javax.inject.Inject;
 
 public class ImageDetailDialog extends DialogFragment {
 
-    private Image image;
-
-    private ImageView imageView;
-    private TextView titleView;
-    private TextView descriptionView;
-    private TextView sizeView;
-    private TextView apiView;
-
     @Inject
     public Context context;
 
     @Inject
     public ApiUtil apiUtil;
+
+    private Image image;
+    private ImageView imageView;
+    private TextView titleView;
+    private TextView descriptionView;
+    private TextView sizeView;
+    private TextView apiView;
 
     public static ImageDetailDialog create(Image image) {
         ImageDetailDialog dialog = new ImageDetailDialog();
