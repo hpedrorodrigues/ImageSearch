@@ -26,7 +26,7 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:background="@color/black"
-        app:mainColor="@color/colorPrimary"
+        app:mainColor="@color/colorPrimaryLight"
         app:secondaryColor="@color/colorAccent"
         app:textColor="@color/white" />
 

@@ -11,7 +11,7 @@
     android:layout_marginTop="16dp"
     android:clickable="true"
     android:foreground="@drawable/selectable_item_background"
-    app:cardBackgroundColor="@color/light_screens"
+    app:cardBackgroundColor="@color/colorPrimaryLight"
     app:cardCornerRadius="@dimen/spacing_xsmall"
     app:cardElevation="2sp">
 
@@ -37,7 +37,7 @@
             android:clickable="true"
             android:padding="@dimen/spacing_medium"
             android:src="@mipmap/ic_more"
-            android:tint="@color/colorPrimaryDark" />
+            android:tint="@color/colorAccent" />
 
         <RelativeLayout
             android:id="@+id/content"
