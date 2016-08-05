@@ -21,6 +21,7 @@ import com.hpedrorodrigues.researcher.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.researcher.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.researcher.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.researcher.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.researcher.util.general.ApiUtil;
 import com.hpedrorodrigues.researcher.util.general.ImageActionUtil;
 import com.hpedrorodrigues.researcher.util.rx.Rx;
 import com.hpedrorodrigues.researcher.util.rx.SearchViewObservable;
@@ -47,6 +48,9 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     @Inject
     public ConnectionService connection;
+
+    @Inject
+    public ApiUtil apiUtil;
 
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
     private int currentPage = ISConstant.INITIAL_PAGE;
@@ -145,34 +149,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     private void loadTitleByApi() {
-        String title;
-
-        if (api == null) {
-
-            title = context.getString(R.string.all_provider);
-        } else if (api.equals(Api.FLICKR)) {
-
-            title = context.getString(R.string.flickr_provider);
-        } else if (api.equals(Api.CSE)) {
-
-            title = context.getString(R.string.google_provider);
-        } else if (api.equals(Api.IMGUR)) {
-
-            title = context.getString(R.string.imgur_provider);
-        } else if (api.equals(Api.DUCK_DUCK_GO)) {
-
-            title = context.getString(R.string.duck_duck_go_provider);
-        } else if (api.equals(Api.BING)) {
-
-            title = context.getString(R.string.bing_provider);
-        } else if (api.equals(Api.PIXABAY)) {
-
-            title = context.getString(R.string.pixabay_provider);
-        } else {
-
-            title = context.getString(R.string.giphy_provider);
-        }
-
+        String title = context.getString(apiUtil.getProviderNameByApi(api));
         fragment.getToolbar().setTitle(title);
     }
 

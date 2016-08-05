@@ -36,6 +36,11 @@ public class ImageActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return presenter.onPrepareOptionsMenu(menu) || super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return presenter.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }

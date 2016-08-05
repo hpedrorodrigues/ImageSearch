@@ -1,5 +1,6 @@
 package com.hpedrorodrigues.researcher.ui.component;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -13,7 +14,10 @@ import android.widget.TextView;
 import com.hpedrorodrigues.researcher.R;
 import com.hpedrorodrigues.researcher.api.entity.Image;
 import com.hpedrorodrigues.researcher.constant.BundleKey;
+import com.hpedrorodrigues.researcher.util.general.ApiUtil;
 import com.koushikdutta.ion.Ion;
+
+import javax.inject.Inject;
 
 public class ImageDetailDialog extends DialogFragment {
 
@@ -24,6 +28,12 @@ public class ImageDetailDialog extends DialogFragment {
     private TextView descriptionView;
     private TextView sizeView;
     private TextView apiView;
+
+    @Inject
+    public Context context;
+
+    @Inject
+    public ApiUtil apiUtil;
 
     public static ImageDetailDialog create(Image image) {
         ImageDetailDialog dialog = new ImageDetailDialog();
@@ -66,13 +76,14 @@ public class ImageDetailDialog extends DialogFragment {
     }
 
     private void fillView() {
-        Ion.with(getActivity()).load(image.getThumbnailUrl()).intoImageView(imageView);
+        Ion.with(context).load(image.getThumbnailUrl()).intoImageView(imageView);
 
         titleView.setText(image.getTitle());
         descriptionView.setText(image.getDescription());
 
         sizeView.setText(String.format("%s x %s", image.getWidth(), image.getHeight()));
 
-        apiView.setText(image.getApi().name());
+        String providerName = context.getString(apiUtil.getProviderNameByApi(image.getApi()));
+        apiView.setText(providerName);
     }
 }

@@ -39,4 +39,10 @@
         android:title="@string/image_detail"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_view_website"
+        android:orderInCategory="7"
+        android:title="@string/view_website"
+        app:showAsAction="never" />
+
 </menu>

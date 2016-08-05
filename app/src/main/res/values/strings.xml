@@ -28,6 +28,7 @@
     <string name="download">Download</string>
     <string name="set_as_wallpaper">Set as wallpaper</string>
     <string name="image_detail">Detail</string>
+    <string name="view_website">Open page</string>
 
     <string name="text_copied_to_clipboard">Text copied "%s"</string>
 

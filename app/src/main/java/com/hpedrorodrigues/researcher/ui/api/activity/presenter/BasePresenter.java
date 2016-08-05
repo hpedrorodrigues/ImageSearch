@@ -35,6 +35,14 @@ abstract class BasePresenter<T extends BaseActivity> {
         return true;
     }
 
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return true;
+    }
+
     public void onIntent(Intent intent, Bundle extras) {
     }
 
@@ -52,10 +60,6 @@ abstract class BasePresenter<T extends BaseActivity> {
     }
 
     public boolean onBackPressed() {
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
         return true;
     }
 }

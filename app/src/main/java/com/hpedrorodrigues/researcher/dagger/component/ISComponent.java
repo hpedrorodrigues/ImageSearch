@@ -15,6 +15,7 @@ import com.hpedrorodrigues.researcher.ui.api.activity.presenter.SettingsPresente
 import com.hpedrorodrigues.researcher.ui.api.activity.view.MainView;
 import com.hpedrorodrigues.researcher.ui.api.fragment.presenter.GenericPresenter;
 import com.hpedrorodrigues.researcher.ui.api.fragment.view.GenericView;
+import com.hpedrorodrigues.researcher.ui.component.ImageDetailDialog;
 import com.hpedrorodrigues.researcher.ui.fragment.GenericFragment;
 
 import javax.inject.Singleton;
@@ -54,4 +55,6 @@ public interface ISComponent extends BaseComponent {
     void inject(ImageActivity activity);
 
     void inject(ImagePresenter presenter);
+
+    void inject(ImageDetailDialog dialog);
 }

@@ -20,6 +20,7 @@ import com.hpedrorodrigues.researcher.ui.activity.ImageActivity;
 import com.hpedrorodrigues.researcher.ui.api.activity.view.LoadImageView;
 import com.hpedrorodrigues.researcher.ui.api.navigation.Navigator;
 import com.hpedrorodrigues.researcher.ui.component.ImageDetailDialog;
+import com.hpedrorodrigues.researcher.util.general.AppUtil;
 import com.hpedrorodrigues.researcher.util.general.ImageActionUtil;
 import com.hpedrorodrigues.researcher.util.general.ToastUtil;
 import com.koushikdutta.ion.Ion;
@@ -39,6 +40,9 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     @Inject
     public ToastUtil toastUtil;
+
+    @Inject
+    public AppUtil appUtil;
 
     public ImagePresenter(ImageActivity activity, Navigator navigator) {
         super(activity, navigator);
@@ -66,6 +70,12 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        imageActionUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         activity.getMenuInflater().inflate(R.menu.image, menu);
 
@@ -73,9 +83,14 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        imageActionUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem viewWebsiteItem = menu.findItem(R.id.action_view_website);
+
+        if (viewWebsiteItem != null) {
+            viewWebsiteItem.setVisible(image.getWebSiteUrl() != null);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
@@ -100,7 +115,12 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                 imageActionUtil.changeWallpaper(image, activity);
                 break;
             case R.id.action_image_detail:
-                ImageDetailDialog.create(image).show(activity.getSupportFragmentManager(), "");
+                ImageDetailDialog dialog = ImageDetailDialog.create(image);
+                activity.getComponent().inject(dialog);
+                dialog.show(activity.getSupportFragmentManager(), "");
+                break;
+            case R.id.action_view_website:
+                appUtil.openBrowser(activity, image.getWebSiteUrl());
                 break;
         }
 

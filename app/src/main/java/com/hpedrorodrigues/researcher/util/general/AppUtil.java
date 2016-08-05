@@ -15,6 +15,10 @@ public class AppUtil {
     public AppUtil() {
     }
 
+    public void openBrowser(Activity activity, String url) {
+        activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+    }
+
     public void viewOnPlayStore(Activity activity) {
         String packageName = activity.getPackageName();
         Intent intent = new Intent(Intent.ACTION_VIEW);
