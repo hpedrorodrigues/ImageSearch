@@ -1,4 +1,4 @@
-# Image Search
+# Researcher
 
 [![Build Status][travis-image]][travis-url]
 

@@ -60,9 +60,9 @@
     <string name="rate_the_app">Rate us</string>
     <string name="publish_a_review">Tell your opinion about the app</string>
 
-    <string name="share_app_message">Image Search</string>
+    <string name="share_app_message">Researcher</string>
     <string name="share_the_app">Share</string>
-    <string name="share_the_app_with_your_friends">Share Image Search with your friends</string>
+    <string name="share_the_app_with_your_friends">Share this app with your friends</string>
 
     <string name="report_a_bug">Report a bug</string>
     <string name="tell_us_about_a_crash">Tell us about a crash, a design problem, lags…</string>
@@ -70,7 +70,7 @@
     <string name="an_idea_to_improve">Help us improve</string>
     <string name="send_us_your_ideas_and_suggestions">Send suggestions and ideas</string>
 
-    <string name="like_the_image_search">Liked Image Search?</string>
+    <string name="like_the_image_search">Liked this app?</string>
     <string name="send_us_your_feedback">Tell us your experiences and opinions</string>
 
     <string name="contact_us">Contact us</string>
