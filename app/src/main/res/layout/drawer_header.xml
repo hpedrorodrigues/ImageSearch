@@ -17,17 +17,21 @@
         android:paddingRight="@dimen/spacing_medium"
         android:paddingStart="@dimen/spacing_medium"
         android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/app_version"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_medium"
         android:paddingEnd="@dimen/spacing_medium"
         android:paddingLeft="@dimen/spacing_medium"
         android:paddingRight="@dimen/spacing_medium"
         android:paddingStart="@dimen/spacing_medium"
-        android:text="@string/app_name" />
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/white" />
 
 </LinearLayout>
