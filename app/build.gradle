@@ -7,6 +7,11 @@ def getApiProperty(String key) {
     return hasProperty(key) ? getProperty(key) : System.getenv(key)
 }
 
+def getStoreFilePath() {
+    def storeFilePath = System.getenv("IMAGE_SEARCH_STORE_FILE")
+    return (storeFilePath == null || storeFilePath.isEmpty()) ? "image_search_debug.keystore" : storeFilePath
+}
+
 android {
 
     compileSdkVersion 24
@@ -31,9 +36,22 @@ android {
         buildConfigField "String", "GIPHY_API_KEY", getApiProperty('giphyApiKey')
     }
 
+    signingConfigs {
+
+        release {
+
+            storeFile file(getStoreFilePath())
+            storePassword System.getenv("IMAGE_SEARCH_STORE_PASSWORD")
+            keyAlias System.getenv("IMAGE_SEARCH_STORE_KEY_ALIAS")
+            keyPassword System.getenv("IMAGE_SEARCH_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
 
         release {
+
+            signingConfig signingConfigs.release
 
             shrinkResources true
             useProguard true
