@@ -63,12 +63,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="250dp"
-            android:layout_height="300dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_action_no_results" />
 
@@ -77,7 +76,8 @@
             android:layout_height="wrap_content"
             android:text="@string/no_results"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/white_smoke" />
+            android:textColor="@color/white_smoke"
+            android:textStyle="italic" />
 
     </LinearLayout>
 

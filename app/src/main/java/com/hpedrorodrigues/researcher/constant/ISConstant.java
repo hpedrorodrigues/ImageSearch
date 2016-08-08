@@ -6,7 +6,7 @@ public interface ISConstant {
 
     String EMAIL = "hs.pedro.rodrigues@gmail.com";
 
-    String DEFAULT_SEARCH = "cats";
+    String DEFAULT_SEARCH = "tree";
 
     String DEFAULT_DIRECTORY = Environment.DIRECTORY_DOWNLOADS;
 
