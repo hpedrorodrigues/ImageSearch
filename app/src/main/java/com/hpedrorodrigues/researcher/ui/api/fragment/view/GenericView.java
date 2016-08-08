@@ -14,6 +14,7 @@ import com.hpedrorodrigues.researcher.api.entity.Image;
 import com.hpedrorodrigues.researcher.ui.adapter.ImageAdapter;
 import com.hpedrorodrigues.researcher.ui.component.OnLoadMoreListener;
 import com.hpedrorodrigues.researcher.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.researcher.util.CollectionUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.List;
@@ -40,6 +41,8 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private LinearLayout withoutNetwork;
 
+    private LinearLayout noResultsContainer;
+
     public GenericView(GenericFragment fragment) {
         super(fragment);
     }
@@ -50,6 +53,7 @@ public class GenericView extends BaseView<GenericFragment> {
         loadingView = (AVLoadingIndicatorView) view.findViewById(R.id.loadingIndicatorView);
         smallLoadingView = (LinearLayout) view.findViewById(R.id.smallLoadingIndicatorView);
         withoutNetwork = (LinearLayout) view.findViewById(R.id.withoutNetwork);
+        noResultsContainer = (LinearLayout) view.findViewById(R.id.no_results_container);
     }
 
     public void showWithoutNetwork() {
@@ -64,6 +68,7 @@ public class GenericView extends BaseView<GenericFragment> {
     public void showSmallProgress() {
         loadingView.setVisibility(View.GONE);
         smallLoadingView.setVisibility(View.VISIBLE);
+        hideNoResultsView();
     }
 
     public void hideSmallProgress() {
@@ -74,11 +79,27 @@ public class GenericView extends BaseView<GenericFragment> {
     public void showProgress() {
         loadingView.setVisibility(View.VISIBLE);
         gridView.setVisibility(View.GONE);
+        hideNoResultsView();
     }
 
     public void hideProgress() {
         loadingView.setVisibility(View.GONE);
         gridView.setVisibility(View.VISIBLE);
+    }
+
+    public void hideNoResultsView() {
+        noResultsContainer.setVisibility(View.GONE);
+    }
+
+    public void showNoResultsView() {
+        hideProgress();
+        hideSmallProgress();
+
+        noResultsContainer.setVisibility(View.VISIBLE);
+    }
+
+    public boolean isEmpty() {
+        return CollectionUtil.isEmpty(imageAdapter.getContent());
     }
 
     public void setUpGridView(OnLoadMoreListener.OnMoreListener listener) {

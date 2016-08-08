@@ -213,6 +213,12 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                         () -> {
                             view.enableLoadMore();
                             view.hideSmallProgress();
+
+                            if (view.isEmpty()) {
+                                view.showNoResultsView();
+                            } else {
+                                view.hideNoResultsView();
+                            }
                         }
                 );
 
@@ -240,7 +246,14 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
                                 Timber.d("Images loaded %s", images);
                             });
                         },
-                        error -> Timber.e(error, "Error loading images")
+                        error -> Timber.e(error, "Error loading images"),
+                        () -> {
+                            if (view.isEmpty()) {
+                                view.showNoResultsView();
+                            } else {
+                                view.hideNoResultsView();
+                            }
+                        }
                 );
 
         bindSubscription(searchSubscription);

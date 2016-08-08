@@ -53,4 +53,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/no_results_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_action_no_results" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_results"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white_smoke" />
+
+    </LinearLayout>
+
 </RelativeLayout>

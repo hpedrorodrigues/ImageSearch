@@ -97,4 +97,6 @@
     <string name="size">Size</string>
     <string name="api">API</string>
 
+    <string name="no_results">No results</string>
+
 </resources>
