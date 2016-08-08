@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import com.hpedrorodrigues.researcher.R;
 import com.hpedrorodrigues.researcher.constant.ISConstant;
 import com.hpedrorodrigues.researcher.constant.PreferenceKey;
-import com.hpedrorodrigues.researcher.ui.activity.AboutActivity;
 import com.hpedrorodrigues.researcher.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.researcher.ui.api.activity.view.SettingsView;
 import com.hpedrorodrigues.researcher.ui.api.navigation.Navigator;
@@ -131,8 +130,6 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             answer.log("Safe search check changed by switch", isChecked);
         });
-
-        view.getAboutTheApp().setOnClickListener((v) -> navigator.toActivityScreen(AboutActivity.class));
 
         view.getReportABug().setOnClickListener((v) -> {
             mailUtil.sendReportBugEmail(activity);

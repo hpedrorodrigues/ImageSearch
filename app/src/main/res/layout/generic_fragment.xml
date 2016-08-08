@@ -41,7 +41,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:background="@color/colorPrimaryLight"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:visibility="gone">
 

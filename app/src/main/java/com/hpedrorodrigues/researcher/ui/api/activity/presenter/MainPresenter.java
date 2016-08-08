@@ -10,7 +10,6 @@ import com.hpedrorodrigues.researcher.R;
 import com.hpedrorodrigues.researcher.constant.DrawerItem;
 import com.hpedrorodrigues.researcher.constant.ISConstant;
 import com.hpedrorodrigues.researcher.constant.PreferenceKey;
-import com.hpedrorodrigues.researcher.ui.activity.AboutActivity;
 import com.hpedrorodrigues.researcher.ui.activity.MainActivity;
 import com.hpedrorodrigues.researcher.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.researcher.ui.api.activity.view.MainView;
@@ -85,10 +84,7 @@ public class MainPresenter extends BasePresenter<MainActivity> {
 
     private void setUpDrawerListener() {
         view.setDrawerItemSelectedListener(item -> new Handler().postDelayed(() -> {
-            if (item.equals(DrawerItem.ABOUT)) {
-
-                navigator.toActivityScreen(AboutActivity.class);
-            } else if (item.equals(DrawerItem.SETTINGS)) {
+            if (item.equals(DrawerItem.SETTINGS)) {
 
                 navigator.toActivityScreen(SettingsActivity.class);
             } else {

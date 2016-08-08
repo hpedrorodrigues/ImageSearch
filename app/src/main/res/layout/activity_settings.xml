@@ -193,28 +193,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/aboutTheApp"
-                style="@style/AppTheme.SettingsItem"
-                android:background="@drawable/selectable_item_background"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <ImageView
-                    style="@style/AppTheme.SettingsItemImageView"
-                    android:src="@mipmap/ic_action_info" />
-
-                <TextView
-                    style="@style/AppTheme.SettingsItemTitleTextView"
-                    android:layout_width="0dp"
-                    android:layout_marginLeft="@dimen/spacing_xlarge"
-                    android:layout_marginStart="@dimen/spacing_xlarge"
-                    android:layout_weight="9"
-                    android:text="@string/about_the_app" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/rateTheApp"
                 style="@style/AppTheme.SettingsItem"
                 android:background="@drawable/selectable_item_background"

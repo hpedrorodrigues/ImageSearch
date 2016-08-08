@@ -4,11 +4,9 @@ import com.hpedrorodrigues.researcher.api.network.api.BaseApi;
 import com.hpedrorodrigues.researcher.api.parser.BaseParser;
 import com.hpedrorodrigues.researcher.component.receiver.NetworkStateChangedReceiver;
 import com.hpedrorodrigues.researcher.dagger.module.ISModule;
-import com.hpedrorodrigues.researcher.ui.activity.AboutActivity;
 import com.hpedrorodrigues.researcher.ui.activity.ImageActivity;
 import com.hpedrorodrigues.researcher.ui.activity.MainActivity;
 import com.hpedrorodrigues.researcher.ui.activity.SettingsActivity;
-import com.hpedrorodrigues.researcher.ui.api.activity.presenter.AboutPresenter;
 import com.hpedrorodrigues.researcher.ui.api.activity.presenter.ImagePresenter;
 import com.hpedrorodrigues.researcher.ui.api.activity.presenter.MainPresenter;
 import com.hpedrorodrigues.researcher.ui.api.activity.presenter.SettingsPresenter;
@@ -44,11 +42,7 @@ public interface ISComponent extends BaseComponent {
 
     void inject(SettingsActivity activity);
 
-    void inject(AboutActivity activity);
-
     void inject(SettingsPresenter presenter);
-
-    void inject(AboutPresenter presenter);
 
     void inject(NetworkStateChangedReceiver receiver);
 

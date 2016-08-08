@@ -26,7 +26,6 @@ public class SettingsView extends BaseView<SettingsActivity> {
     private RelativeLayout safeSearch;
     private Switch toggleSafeSearch;
 
-    private LinearLayout aboutTheApp;
     private LinearLayout rateTheApp;
     private LinearLayout shareTheApp;
     private LinearLayout reportABug;
@@ -53,7 +52,6 @@ public class SettingsView extends BaseView<SettingsActivity> {
         safeSearch = (RelativeLayout) activity.findViewById(R.id.safeSearch);
         toggleSafeSearch = (Switch) activity.findViewById(R.id.toggleSafeSearch);
 
-        aboutTheApp = (LinearLayout) activity.findViewById(R.id.aboutTheApp);
         rateTheApp = (LinearLayout) activity.findViewById(R.id.rateTheApp);
         shareTheApp = (LinearLayout) activity.findViewById(R.id.shareTheApp);
         reportABug = (LinearLayout) activity.findViewById(R.id.reportABug);

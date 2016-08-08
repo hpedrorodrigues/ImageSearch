@@ -49,11 +49,6 @@
         <menu>
 
             <item
-                android:id="@+id/about_item"
-                android:icon="@mipmap/ic_action_info"
-                android:title="@string/about" />
-
-            <item
                 android:id="@+id/settings_item"
                 android:icon="@mipmap/ic_action_settings"
                 android:title="@string/settings" />
