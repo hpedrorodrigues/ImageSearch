@@ -1,4 +1,4 @@
-# Researcher
+# Image Search
 
 [![Build Status][travis-image]][travis-url]
 
@@ -18,8 +18,8 @@
 - API responses [here][docs]
 - More APIs [here][more-apis]
 
-[travis-image]: https://travis-ci.org/hpedrorodrigues/Researcher.svg?branch=master
-[travis-url]: https://travis-ci.org/hpedrorodrigues/Researcher
+[travis-image]: https://travis-ci.org/hpedrorodrigues/ImageSearch.svg?branch=master
+[travis-url]: https://travis-ci.org/hpedrorodrigues/ImageSearch
 
 [flickr-docs]: https://www.flickr.com/services/api/flickr.photos.search.html
 [imgur-docs]: https://api.imgur.com/endpoints/gallery#gallery-search
