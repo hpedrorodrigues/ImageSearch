@@ -4,7 +4,7 @@ import android.os.Environment;
 
 public interface ISConstant {
 
-    String EMAIL = "hs.pedro.rodrigues@gmail.com";
+    String EMAIL = "drivateam@gmail.com";
 
     String DEFAULT_SEARCH = "tree";
 
