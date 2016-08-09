@@ -6,7 +6,7 @@ A simple android app to image search.
 
 Currently available on the Play store.
 
-[![Play Store Badge](./assets/general/en-play-badge.png)][app-url]
+[![Play Store Badge](./assets/images/general/en-play-badge.png)][app-url]
 
 ## Docs
 
