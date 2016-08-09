@@ -54,8 +54,8 @@ android {
             signingConfig signingConfigs.release
 
             shrinkResources true
-            useProguard true
-            minifyEnabled true
+            useProguard false
+            minifyEnabled false
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
         }
@@ -63,8 +63,8 @@ android {
         debug {
 
             shrinkResources true
-            useProguard true
-            minifyEnabled true
+            useProguard false
+            minifyEnabled false
             zipAlignEnabled true
             proguardFiles 'proguard-rules.pro'
         }
