@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">Busca de Imagens</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="settings">Configurações</string>
+
+    <string name="all_provider">Todos</string>
+    <string name="google_provider">Google</string>
+    <string name="flickr_provider">Flickr</string>
+    <string name="imgur_provider">imgur</string>
+    <string name="duck_duck_go_provider" tools:ignore="Typos">Duck Duck Go</string>
+    <string name="bing_provider">Bing</string>
+    <string name="pixabay_provider">Pixabay</string>
+    <string name="giphy_provider">GIPHY</string>
+
+    <string name="search_hint">Pesquisar</string>
+
+    <string name="search_settings">Configurações de busca</string>
+
+    <string name="share_image">Compartilhar imagem</string>
+    <string name="share_link">Compartilhar link</string>
+    <string name="copy_link">Copiar link</string>
+    <string name="download">Baixar</string>
+    <string name="set_as_wallpaper">Colocar como plano de fundo</string>
+    <string name="image_detail">Detalhes</string>
+    <string name="view_website">Abrir página</string>
+
+    <string name="text_copied_to_clipboard">Texto copiado "%s"</string>
+
+    <string name="choose_app">Escolha um aplicativo</string>
+
+    <string name="downloading">Baixando "%s"</string>
+
+    <string name="error_downloading_image">Ocorreu um erro ao baixar a imagem</string>
+    <string name="image_downloaded_successful">Imagem salva em "%s"</string>
+
+    <string name="general">Geral</string>
+
+    <string name="interface_settings">Configurações de interface</string>
+
+    <string name="ask_to_exit">Perguntar ao sair</string>
+    <string name="display_an_alert_to_exit">Exibir um alerta perguntando se deseja sair</string>
+    <string name="back_again_to_exit">Pressione voltar novamente para sair</string>
+
+    <string name="show_images_description">Exibir descrição de imagens</string>
+    <string name="display_images_description">Exibir descrição ao carregar as imagens</string>
+
+    <string name="safe_search">Busca segura</string>
+    <string name="safe_search_description">Habilitar somente imagens não ofensivas</string>
+
+    <string name="keep_screen_on">Manter tela ativa</string>
+    <string name="keep_screen_on_description">Manter tela ativa enquanto estiver vendo detalhes de uma imagem</string>
+
+    <string name="about">Sobre</string>
+    <string name="about_the_app">Sobre esse aplicativo</string>
+
+    <string name="rate_the_app">Avalie-nos</string>
+    <string name="publish_a_review">Dê sua opinião sobre o app</string>
+
+    <string name="share_app_message">Busca de imagens, um aplicativo simples que ajuda você a encontrar as melhores imagens na Internet, e compartilhá-las em redes sociais.\n\n%s</string>
+    <string name="share_the_app">Compartilhar</string>
+    <string name="share_the_app_with_your_friends">Compartilhe esse app com seus amigos</string>
+
+    <string name="report_a_bug">Reporte um bug</string>
+    <string name="tell_us_about_a_crash">Conte-nos sobre um acidente, um problema de interface, travamentos…</string>
+
+    <string name="an_idea_to_improve">Ajude-nos a melhorar</string>
+    <string name="send_us_your_ideas_and_suggestions">Envie sugestões e idéias</string>
+
+    <string name="like_the_image_search">Gostou desse app?</string>
+    <string name="send_us_your_feedback">Fale-nos sobre suas experiências e opiniões</string>
+
+    <string name="contact_us">Contate-nos</string>
+    <string name="send_us_a_email">Envie-nos um email</string>
+
+    <string name="open_source_licenses">Licenças de código aberto</string>
+
+    <string name="without_connection">Sem conexão</string>
+
+    <string name="suggestions">Sugestões</string>
+    <string name="new_bug">Novo bug</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact">Contato</string>
+
+    <string name="permission_not_granted">Permissão não concedida</string>
+
+    <string name="wallpaper_changed">Plano de fundo alterado</string>
+    <string name="error_changing_wallpaper">Ocorreu um erro ao alterar o plano de fundo</string>
+
+    <string name="title">Título</string>
+    <string name="description">Descrição</string>
+    <string name="size">Tamanho</string>
+    <string name="api">API</string>
+
+    <string name="no_results">Sem resultados</string>
+
+</resources>
