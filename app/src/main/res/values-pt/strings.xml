@@ -62,7 +62,7 @@
     <string name="rate_the_app">Avalie-nos</string>
     <string name="publish_a_review">Dê sua opinião sobre o app</string>
 
-    <string name="share_app_message">Busca de imagens, um aplicativo simples que ajuda você a encontrar as melhores imagens na Internet, e compartilhá-las em redes sociais.\n\n%s</string>
+    <string name="share_app_message">- Busca de imagens\n\nUm aplicativo simples que ajuda você a encontrar as melhores imagens na Internet, e compartilhá-las em redes sociais.\n\n%s</string>
     <string name="share_the_app">Compartilhar</string>
     <string name="share_the_app_with_your_friends">Compartilhe esse app com seus amigos</string>
 

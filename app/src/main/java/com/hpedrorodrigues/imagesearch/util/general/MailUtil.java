@@ -59,7 +59,7 @@ public class MailUtil {
     private Intent buildIntent(Activity activity, int resId) {
         Intent intent = new Intent(Intent.ACTION_SEND);
 
-        intent.putExtra(Intent.EXTRA_EMAIL, ISConstant.EMAIL);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{ISConstant.EMAIL});
 
         String subject = activity.getString(R.string.app_name) + " - " + activity.getString(resId);
 

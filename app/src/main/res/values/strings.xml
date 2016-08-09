@@ -54,7 +54,7 @@
     <string name="safe_search_description">Enable only not offensive images</string>
 
     <string name="keep_screen_on">Keep screen on</string>
-    <string name="keep_screen_on_description">Keep screen on while seeing image detail</string>
+    <string name="keep_screen_on_description">Keep screen on while seeing image details</string>
 
     <string name="about">About</string>
     <string name="about_the_app">About this app</string>
@@ -62,7 +62,7 @@
     <string name="rate_the_app">Rate us</string>
     <string name="publish_a_review">Tell your opinion about the app</string>
 
-    <string name="share_app_message">Image search, a simple application that helps you find the best images on the Internet, and share them on social networks.\n\n%s</string>
+    <string name="share_app_message">- Image search\n\nA simple application that helps you find the best images on the Internet, and share them on social networks.\n\n%s</string>
     <string name="share_the_app">Share</string>
     <string name="share_the_app_with_your_friends">Share this app with your friends</string>
 
