@@ -1,7 +1,10 @@
-*.iml
+# Folder
 .gradle
-local.properties
 .idea
-.DS_Store
 build
 captures
+
+# File
+*.iml
+local.properties
+.DS_Store
