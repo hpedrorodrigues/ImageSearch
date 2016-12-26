@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 
 public class SearchViewObservable {
 
@@ -20,24 +21,33 @@ public class SearchViewObservable {
 
     public Observable<String> create() {
         return Observable
-                .create((Subscriber<? super String> subscriber) -> {
+                .create(new Observable.OnSubscribe<String>() {
 
-                    searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                        @Override
-                        public boolean onQueryTextSubmit(String query) {
-                            subscriber.onNext(query);
-                            return false;
-                        }
+                    @Override
+                    public void call(final Subscriber<? super String> subscriber) {
 
-                        @Override
-                        public boolean onQueryTextChange(String newText) {
-                            subscriber.onNext(newText);
-                            return true;
-                        }
-                    });
+                        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
+                            @Override
+                            public boolean onQueryTextSubmit(String query) {
+                                subscriber.onNext(query);
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onQueryTextChange(String newText) {
+                                subscriber.onNext(newText);
+                                return true;
+                            }
+                        });
+                    }
                 })
-                .filter(search -> !StringUtil.isEmpty(search))
+                .filter(new Func1<String, Boolean>() {
+                    @Override
+                    public Boolean call(String search) {
+                        return !StringUtil.isEmpty(search);
+                    }
+                })
                 .debounce(400, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread());
     }

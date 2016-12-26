@@ -26,7 +26,7 @@ abstract class ISBaseAdapter<T> extends BaseAdapter {
 
     public void add(List<T> content) {
         if (isEmpty()) {
-            setContent(new ArrayList<>());
+            setContent(new ArrayList<T>());
         }
 
         this.content.addAll(content);

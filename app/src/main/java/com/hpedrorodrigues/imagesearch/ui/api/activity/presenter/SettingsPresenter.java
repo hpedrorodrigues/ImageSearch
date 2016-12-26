@@ -2,6 +2,8 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
@@ -71,111 +73,159 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
     }
 
     private void setUpListeners() {
-        view.getCloseAppContainer().setOnClickListener((v) -> {
-            boolean isChecked = !view.getToggleCloseTheApp().isChecked();
-            view.getToggleCloseTheApp().setChecked(isChecked);
+        view.getCloseAppContainer().setOnClickListener(new View.OnClickListener() {
 
-            preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = !view.getToggleCloseTheApp().isChecked();
 
-            answer.log("Close app check changed by container", isChecked);
+                view.getToggleCloseTheApp().setChecked(isChecked);
+                preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+                answer.log("Close app check changed by container", isChecked);
+            }
         });
 
-        view.getToggleCloseTheApp().setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+        view.getToggleCloseTheApp()
+                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            answer.log("Close app check changed by switch", isChecked);
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
+                        answer.log("Close app check changed by switch", isChecked);
+                    }
+                });
+
+        view.getKeepScreenOnContainer().setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = !view.getToggleKeepScreenOn().isChecked();
+
+                view.getToggleKeepScreenOn().setChecked(isChecked);
+                preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+                answer.log("Keep screen on check changed by container", isChecked);
+            }
         });
 
-        view.getKeepScreenOnContainer().setOnClickListener((v) -> {
-            boolean isChecked = !view.getToggleKeepScreenOn().isChecked();
-            view.getToggleKeepScreenOn().setChecked(isChecked);
+        view.getToggleKeepScreenOn()
+                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+                        answer.log("Keep screen on check changed by switch", isChecked);
+                    }
+                });
 
-            answer.log("Keep screen on check changed by container", isChecked);
+        view.getShowImagesDescription().setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = !view.getToggleShowImagesDescription().isChecked();
+
+                view.getToggleShowImagesDescription().setChecked(isChecked);
+                preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
+                answer.log("Show images description check changed by container", isChecked);
+            }
         });
 
-        view.getToggleKeepScreenOn().setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
+        view.getToggleShowImagesDescription()
+                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            answer.log("Keep screen on check changed by switch", isChecked);
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
+                        answer.log("Show images description check changed by switch", isChecked);
+                    }
+                });
+
+        view.getSafeSearch().setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                boolean isChecked = !view.getToggleSafeSearch().isChecked();
+
+                view.getToggleSafeSearch().setChecked(isChecked);
+                preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
+                answer.log("Safe search check changed by container", isChecked);
+            }
         });
 
-        view.getShowImagesDescription().setOnClickListener((v) -> {
-            boolean isChecked = !view.getToggleShowImagesDescription().isChecked();
-            view.getToggleShowImagesDescription().setChecked(isChecked);
+        view.getToggleSafeSearch().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
-
-            answer.log("Show images description check changed by container", isChecked);
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
+                answer.log("Safe search check changed by switch", isChecked);
+            }
         });
 
-        view.getToggleShowImagesDescription().setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
+        view.getReportABug().setOnClickListener(new View.OnClickListener() {
 
-            answer.log("Show images description check changed by switch", isChecked);
+            @Override
+            public void onClick(View v) {
+                mailUtil.sendReportBugEmail(activity);
+                answer.log("Report a bug action triggered");
+            }
         });
 
-        view.getSafeSearch().setOnClickListener((v) -> {
-            boolean isChecked = !view.getToggleSafeSearch().isChecked();
-            view.getToggleSafeSearch().setChecked(isChecked);
+        view.getRateTheApp().setOnClickListener(new View.OnClickListener() {
 
-            preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
-
-            answer.log("Safe search check changed by container", isChecked);
+            @Override
+            public void onClick(View v) {
+                appUtil.viewOnPlayStore(activity);
+                answer.log("Rate the app action triggered");
+            }
         });
 
-        view.getToggleSafeSearch().setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
+        view.getShareTheApp().setOnClickListener(new View.OnClickListener() {
 
-            answer.log("Safe search check changed by switch", isChecked);
+            @Override
+            public void onClick(View v) {
+                shareUtil.shareApp(activity);
+                answer.logShare("Share the app action triggered");
+            }
         });
 
-        view.getReportABug().setOnClickListener((v) -> {
-            mailUtil.sendReportBugEmail(activity);
+        view.getIdeaToImprove().setOnClickListener(new View.OnClickListener() {
 
-            answer.log("Report a bug action triggered");
+            @Override
+            public void onClick(View v) {
+                mailUtil.sendImproveAppEmail(activity);
+                answer.log("Idea to improve action triggered");
+            }
         });
 
-        view.getRateTheApp().setOnClickListener((v) -> {
-            appUtil.viewOnPlayStore(activity);
+        view.getSendUsYourFeedback().setOnClickListener(new View.OnClickListener() {
 
-            answer.log("Rate the app action triggered");
+            @Override
+            public void onClick(View v) {
+                mailUtil.sendFeedbackEmail(activity);
+                answer.log("Send us your feedback action triggered");
+            }
         });
 
-        view.getShareTheApp().setOnClickListener((v) -> {
-            shareUtil.shareApp(activity);
+        view.getContactUs().setOnClickListener(new View.OnClickListener() {
 
-            answer.logShare("Share the app action triggered");
+            @Override
+            public void onClick(View v) {
+                mailUtil.sendContactUsEmail(activity);
+                answer.log("Contact us action triggered");
+            }
         });
 
-        view.getIdeaToImprove().setOnClickListener((v) -> {
-            mailUtil.sendImproveAppEmail(activity);
+        view.getOpenSourceLicenses().setOnClickListener(new View.OnClickListener() {
 
-            answer.log("Idea to improve action triggered");
-        });
+            @Override
+            public void onClick(View v) {
+                LicensesDialogFragment dialog = new LicensesDialogFragment
+                        .Builder(activity)
+                        .setNotices(R.raw.notices)
+                        .build();
 
-        view.getSendUsYourFeedback().setOnClickListener((v) -> {
-            mailUtil.sendFeedbackEmail(activity);
-
-            answer.log("Send us your feedback action triggered");
-        });
-
-        view.getContactUs().setOnClickListener((v) -> {
-            mailUtil.sendContactUsEmail(activity);
-
-            answer.log("Contact us action triggered");
-        });
-
-        view.getOpenSourceLicenses().setOnClickListener((v) -> {
-            LicensesDialogFragment dialog = new LicensesDialogFragment
-                    .Builder(activity)
-                    .setNotices(R.raw.notices)
-                    .build();
-
-            dialog.show(activity.getSupportFragmentManager(), null);
-
-            answer.log("Open source licenses action triggered");
+                dialog.show(activity.getSupportFragmentManager(), null);
+                answer.log("Open source licenses action triggered");
+            }
         });
     }
 }

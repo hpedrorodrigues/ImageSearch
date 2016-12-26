@@ -3,6 +3,8 @@ package com.hpedrorodrigues.imagesearch.util.general;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DownloadManager;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import com.hpedrorodrigues.imagesearch.R;
@@ -57,7 +59,7 @@ public class ImageActionUtil {
         clipboardUtil.copy(getImageUrlByConnection(image));
     }
 
-    public void changeWallpaper(Image image, Activity activity) {
+    public void changeWallpaper(final Image image, final Activity activity) {
         Feature wallpaperFeature = new Feature();
 
         wallpaperFeature.setActivity(activity);
@@ -65,16 +67,20 @@ public class ImageActionUtil {
         wallpaperFeature.setRequestCode(9999);
         wallpaperFeature.setValue(image);
 
-        featureUtil.requestFeature(wallpaperFeature, (feature, permissionGranted) -> {
-            if (permissionGranted) {
-                internalChangeWallpaper(image, activity);
-            } else {
-                toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+        featureUtil.requestFeature(wallpaperFeature, new FeatureUtil.onFeaturePermittedListener() {
+
+            @Override
+            public void onPermitted(Feature feature, boolean permissionGranted) {
+                if (permissionGranted) {
+                    internalChangeWallpaper(image, activity);
+                } else {
+                    toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+                }
             }
         });
     }
 
-    public void shareImage(Image image, Activity activity) {
+    public void shareImage(final Image image, final Activity activity) {
         Feature shareFeature = new Feature();
 
         shareFeature.setActivity(activity);
@@ -82,16 +88,20 @@ public class ImageActionUtil {
         shareFeature.setRequestCode(9999);
         shareFeature.setValue(image);
 
-        featureUtil.requestFeature(shareFeature, (feature, permissionGranted) -> {
-            if (permissionGranted) {
-                internalShareImage(image, activity);
-            } else {
-                toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+        featureUtil.requestFeature(shareFeature, new FeatureUtil.onFeaturePermittedListener() {
+
+            @Override
+            public void onPermitted(Feature feature, boolean permissionGranted) {
+                if (permissionGranted) {
+                    internalShareImage(image, activity);
+                } else {
+                    toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+                }
             }
         });
     }
 
-    public void downloadImage(Image image, Activity activity) {
+    public void downloadImage(final Image image, final Activity activity) {
         Feature downloadFeature = new Feature();
 
         downloadFeature.setActivity(activity);
@@ -99,11 +109,15 @@ public class ImageActionUtil {
         downloadFeature.setRequestCode(9998);
         downloadFeature.setValue(image);
 
-        featureUtil.requestFeature(downloadFeature, (feature, permissionGranted) -> {
-            if (permissionGranted) {
-                internalDownloadImage(image, activity);
-            } else {
-                toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+        featureUtil.requestFeature(downloadFeature, new FeatureUtil.onFeaturePermittedListener() {
+
+            @Override
+            public void onPermitted(Feature feature, boolean permissionGranted) {
+                if (permissionGranted) {
+                    internalDownloadImage(image, activity);
+                } else {
+                    toastUtil.showLong(activity.getString(R.string.permission_not_granted));
+                }
             }
         });
     }
@@ -112,72 +126,85 @@ public class ImageActionUtil {
         return connection.isConnectedFast() ? image.getImageUrl() : image.getThumbnailUrl();
     }
 
-    private void internalChangeWallpaper(Image image, Activity activity) {
-        String imageUrl = getImageUrlByConnection(image);
-        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
+    private void internalChangeWallpaper(final Image image, final Activity activity) {
+        final String imageUrl = getImageUrlByConnection(image);
+        final long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
 
         toastUtil.showLong(activity.getString(R.string.downloading, image.getImageUrl()));
 
-        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
-            if (downloadUtil.isCompleted(imageId)) {
+        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE,
+                new BroadcastUtil.OnReceive() {
 
-                String path = downloadUtil.getPathById(imageId);
-                if (StringUtil.isEmpty(path)) {
-                    toastUtil.showLong(activity.getString(R.string.error_downloading_image));
-                } else {
-                    wallpaperUtil.change(path);
-                }
+                    @Override
+                    public boolean receive(Context context, Intent intent) {
+                        if (downloadUtil.isCompleted(imageId)) {
 
-                return true;
-            }
+                            String path = downloadUtil.getPathById(imageId);
+                            if (StringUtil.isEmpty(path)) {
+                                toastUtil.showLong(activity.getString(R.string.error_downloading_image));
+                            } else {
+                                wallpaperUtil.change(path);
+                            }
 
-            return false;
-        });
+                            return true;
+                        }
+
+                        return false;
+                    }
+                });
     }
 
-    private void internalShareImage(Image image, Activity activity) {
-        String imageUrl = getImageUrlByConnection(image);
-        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
+    private void internalShareImage(final Image image, final Activity activity) {
+        final String imageUrl = getImageUrlByConnection(image);
+        final long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
 
         toastUtil.showLong(activity.getString(R.string.downloading, image.getImageUrl()));
 
-        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
-            if (downloadUtil.isCompleted(imageId)) {
+        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE,
+                new BroadcastUtil.OnReceive() {
 
-                String path = downloadUtil.getPathById(imageId);
-                if (StringUtil.isEmpty(path)) {
-                    toastUtil.showLong(activity.getString(R.string.error_downloading_image));
-                } else {
-                    shareUtil.shareImage(activity, path);
-                }
+                    @Override
+                    public boolean receive(Context context, Intent intent) {
+                        if (downloadUtil.isCompleted(imageId)) {
 
-                return true;
-            }
+                            String path = downloadUtil.getPathById(imageId);
+                            if (StringUtil.isEmpty(path)) {
+                                toastUtil.showLong(activity.getString(R.string.error_downloading_image));
+                            } else {
+                                shareUtil.shareImage(activity, path);
+                            }
 
-            return false;
-        });
+                            return true;
+                        }
+
+                        return false;
+                    }
+                });
     }
 
-    private void internalDownloadImage(Image image, Activity activity) {
-        String imageUrl = getImageUrlByConnection(image);
-        long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
+    private void internalDownloadImage(final Image image, final Activity activity) {
+        final String imageUrl = getImageUrlByConnection(image);
+        final long imageId = downloadUtil.enqueueDownload(imageUrl, ISConstant.DEFAULT_DIRECTORY);
 
         toastUtil.showLong(activity.getString(R.string.downloading, image.getImageUrl()));
 
-        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE, (context1, intent) -> {
-            if (downloadUtil.isCompleted(imageId)) {
+        broadcastUtil.register(activity, DownloadManager.ACTION_DOWNLOAD_COMPLETE, new BroadcastUtil.OnReceive() {
+            @Override
+            public boolean receive(Context context, Intent intent) {
+                if (downloadUtil.isCompleted(imageId)) {
 
-                String path = downloadUtil.getPathById(imageId);
-                String message = StringUtil.isEmpty(path)
-                        ? activity.getString(R.string.error_downloading_image)
-                        : activity.getString(R.string.image_downloaded_successful, path);
+                    String path = downloadUtil.getPathById(imageId);
+                    String message = StringUtil.isEmpty(path)
+                            ? activity.getString(R.string.error_downloading_image)
+                            : activity.getString(R.string.image_downloaded_successful, path);
 
-                toastUtil.showLong(message);
+                    toastUtil.showLong(message);
 
-                return true;
+                    return true;
+                }
+
+                return false;
             }
-
-            return false;
         });
     }
 }

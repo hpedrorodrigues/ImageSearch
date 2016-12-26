@@ -50,20 +50,23 @@ public class GenericService {
                                              final boolean safeSearch) {
 
         return Observable
-                .create((Subscriber<? super List<Image>> subscriber) -> {
+                .create(new Observable.OnSubscribe<List<Image>>() {
 
-                    try {
-                        List<Api> apis = EnumUtil.valuesAsList(Api.class);
+                    @Override
+                    public void call(Subscriber<? super List<Image>> subscriber) {
+                        try {
+                            List<Api> apis = EnumUtil.valuesAsList(Api.class);
 
-                        for (Api api : apis) {
-                            subscriber.onNext(callSearchAnParse(api, search, page, perPage, safeSearch));
+                            for (Api api : apis) {
+                                subscriber.onNext(callSearchAnParse(api, search, page, perPage, safeSearch));
+                            }
+                        } catch (Throwable t) {
+
+                            subscriber.onError(t);
+                        } finally {
+
+                            subscriber.onCompleted();
                         }
-                    } catch (Throwable t) {
-
-                        subscriber.onError(t);
-                    } finally {
-
-                        subscriber.onCompleted();
                     }
                 });
     }

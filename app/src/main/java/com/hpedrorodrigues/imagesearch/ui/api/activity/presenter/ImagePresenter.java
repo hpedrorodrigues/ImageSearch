@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.goka.flickableview.FlickableImageView;
@@ -23,7 +24,9 @@ import com.hpedrorodrigues.imagesearch.ui.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
+import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.ProgressCallback;
 
 import javax.inject.Inject;
 
@@ -139,26 +142,33 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     }
 
     private void loadImage() {
-        AnimatedCircleLoadingView loadingView = view.getLoadingView();
-        loadingView.startDeterminate();
+        final AnimatedCircleLoadingView loadingView = view.getLoadingView();
 
+        loadingView.startDeterminate();
         loadingView.setPercent(0);
 
         Ion.with(activity)
                 .load(image.getImageUrl())
-                .progressHandler((downloaded, total) -> {
-                    int percent = (int) (100 * downloaded / total) % 100;
+                .progressHandler(new ProgressCallback() {
+                    @Override
+                    public void onProgress(long downloaded, long total) {
+                        int percent = (int) (100 * downloaded / total) % 100;
 
-                    Timber.d("Progress: Total - %d - Downloaded - %d - Percent - %d", total, downloaded, percent);
-                    loadingView.setPercent(percent);
+                        Timber.d("Progress: Total - %d - Downloaded - %d - Percent - %d", total, downloaded, percent);
+                        loadingView.setPercent(percent);
+                    }
                 })
                 .intoImageView(view.getImageView())
-                .then((error, view) -> {
-                    if (error == null) {
-                        loadingView.stopOk();
-                        this.view.showImageView();
-                    } else {
-                        loadingView.stopFailure();
+                .then(new FutureCallback<ImageView>() {
+
+                    @Override
+                    public void onCompleted(Exception error, ImageView result) {
+                        if (error == null) {
+                            loadingView.stopOk();
+                            view.showImageView();
+                        } else {
+                            loadingView.stopFailure();
+                        }
                     }
                 });
     }

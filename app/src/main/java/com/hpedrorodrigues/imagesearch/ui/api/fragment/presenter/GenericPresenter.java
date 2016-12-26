@@ -18,8 +18,10 @@ import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
+import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.component.OnLoadMoreListener;
 import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
 import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;
@@ -27,11 +29,15 @@ import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Observable;
 import java.util.Observer;
 
 import javax.inject.Inject;
 
 import rx.Subscription;
+import rx.functions.Action0;
+import rx.functions.Action1;
 import timber.log.Timber;
 
 public class GenericPresenter extends BasePresenter<GenericFragment> {
@@ -57,7 +63,13 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
     private Subscription searchSubscription;
 
-    private Observer observer = (observable, data) -> reloadNetworkView();
+    private Observer observer = new Observer() {
+
+        @Override
+        public void update(Observable o, Object arg) {
+            reloadNetworkView();
+        }
+    };
 
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
@@ -71,9 +83,13 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     public void onViewCreated(View view) {
         this.view.onView(view);
 
-        this.view.setUpGridView(() -> {
-            currentPage++;
-            search(currentSearch, true);
+        this.view.setUpGridView(new OnLoadMoreListener.OnMoreListener() {
+
+            @Override
+            public void onMore() {
+                currentPage++;
+                search(currentSearch, true);
+            }
         });
 
         search(ISConstant.DEFAULT_SEARCH, false);
@@ -81,11 +97,15 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         setUpImageAdapter();
         reloadNetworkView();
 
-        this.view.setOnImageClickListener(image -> {
-            Bundle arguments = new Bundle();
-            arguments.putSerializable(IntentKey.IMAGE, image);
+        this.view.setOnImageClickListener(new ImageAdapter.OnImageClickListener() {
 
-            navigator.toActivityScreen(ImageActivity.class, arguments);
+            @Override
+            public void onClick(Image image) {
+                Bundle arguments = new Bundle();
+                arguments.putSerializable(IntentKey.IMAGE, image);
+
+                navigator.toActivityScreen(ImageActivity.class, arguments);
+            }
         });
 
         observable.addObserver(observer);
@@ -98,19 +118,28 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
 
         Subscription subscription = new SearchViewObservable(searchView)
                 .create()
-                .subscribe(
-                        query -> {
-                            view.clearImageAdapter();
+                .subscribe(new Action1<String>() {
 
-                            currentPage = ISConstant.INITIAL_PAGE;
+                               @Override
+                               public void call(String query) {
+                                   view.clearImageAdapter();
 
-                            currentSearch = query;
+                                   currentPage = ISConstant.INITIAL_PAGE;
 
-                            search(query, false);
+                                   currentSearch = query;
 
-                            Timber.d("Searching for query: %s", query);
-                        },
-                        error -> Timber.e(error, "Error searching images")
+                                   search(query, false);
+
+                                   Timber.d("Searching for query: %s", query);
+                               }
+                           },
+                        new Action1<Throwable>() {
+
+                            @Override
+                            public void call(Throwable error) {
+                                Timber.e(error, "Error searching images");
+                            }
+                        }
                 );
 
         bindSubscription(subscription);
@@ -175,23 +204,27 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     }
 
     private void setUpImageAdapter() {
-        this.view.setUpImageAdapter((item, image) -> {
-            switch (item.getItemId()) {
-                case R.id.action_share:
-                    imageActionUtil.shareImage(image, getActivity());
-                    break;
-                case R.id.action_share_link:
-                    imageActionUtil.shareImageUrl(image, getActivity());
-                    break;
-                case R.id.action_copy_link:
-                    imageActionUtil.copyImageUrl(image);
-                    break;
-                case R.id.action_download:
-                    imageActionUtil.downloadImage(image, getActivity());
-                    break;
-                case R.id.action_set_as_wallpaper:
-                    imageActionUtil.changeWallpaper(image, getActivity());
-                    break;
+        this.view.setUpImageAdapter(new ImageAdapter.OnPopupItemClickListener() {
+
+            @Override
+            public void onClick(MenuItem item, Image image) {
+                switch (item.getItemId()) {
+                    case R.id.action_share:
+                        imageActionUtil.shareImage(image, getActivity());
+                        break;
+                    case R.id.action_share_link:
+                        imageActionUtil.shareImageUrl(image, getActivity());
+                        break;
+                    case R.id.action_copy_link:
+                        imageActionUtil.copyImageUrl(image);
+                        break;
+                    case R.id.action_download:
+                        imageActionUtil.downloadImage(image, getActivity());
+                        break;
+                    case R.id.action_set_as_wallpaper:
+                        imageActionUtil.changeWallpaper(image, getActivity());
+                        break;
+                }
             }
         });
     }
@@ -199,25 +232,43 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     private void searchAll(String query, boolean safeSearch) {
         searchSubscription = genericService
                 .searchAll(query, currentPage, ISConstant.IMAGES_PER_PAGE, safeSearch)
-                .compose(Rx.applySchedulers())
+                .compose(Rx.<List<Image>>applySchedulers())
                 .subscribe(
-                        images -> getActivity().runOnUiThread(() -> {
+                        new Action1<List<Image>>() {
+                            @Override
+                            public void call(final List<Image> images) {
+                                getActivity().runOnUiThread(new Runnable() {
 
-                            view.hideProgress();
-                            view.addContentToGridView(images);
-                            view.showSmallProgress();
+                                    @Override
+                                    public void run() {
+                                        view.hideProgress();
+                                        view.addContentToGridView(images);
+                                        view.showSmallProgress();
 
-                            Timber.d("Images loaded %s", images);
-                        }),
-                        error -> Timber.e(error, "Error loading images"),
-                        () -> {
-                            view.enableLoadMore();
-                            view.hideSmallProgress();
+                                        Timber.d("Images loaded %s", images);
+                                    }
+                                });
+                            }
+                        },
+                        new Action1<Throwable>() {
 
-                            if (view.isEmpty()) {
-                                view.showNoResultsView();
-                            } else {
-                                view.hideNoResultsView();
+                            @Override
+                            public void call(Throwable error) {
+                                Timber.e(error, "Error loading images");
+                            }
+                        },
+                        new Action0() {
+
+                            @Override
+                            public void call() {
+                                view.enableLoadMore();
+                                view.hideSmallProgress();
+
+                                if (view.isEmpty()) {
+                                    view.showNoResultsView();
+                                } else {
+                                    view.hideNoResultsView();
+                                }
                             }
                         }
                 );
@@ -225,33 +276,50 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
         bindSubscription(searchSubscription);
     }
 
-    private void searchByApi(String query, boolean smallLoading, boolean safeSearch) {
+    private void searchByApi(String query, final boolean smallLoading, boolean safeSearch) {
         searchSubscription = genericService
                 .search(api, query, currentPage, ISConstant.IMAGES_PER_PAGE, safeSearch)
-                .compose(Rx.applySchedulers())
+                .compose(Rx.<Map>applySchedulers())
                 .subscribe(
-                        data -> {
-                            List<Image> images = genericService.parse(api, data);
-                            getActivity().runOnUiThread(() -> {
+                        new Action1<Map>() {
 
-                                view.addContentToGridView(images);
-                                view.enableLoadMore();
+                            @Override
+                            public void call(Map data) {
+                                final List<Image> images = genericService.parse(api, data);
+                                getActivity().runOnUiThread(new Runnable() {
 
-                                if (smallLoading) {
-                                    view.hideSmallProgress();
-                                } else {
-                                    view.hideProgress();
-                                }
+                                    @Override
+                                    public void run() {
+                                        view.addContentToGridView(images);
+                                        view.enableLoadMore();
 
-                                Timber.d("Images loaded %s", images);
-                            });
+                                        if (smallLoading) {
+                                            view.hideSmallProgress();
+                                        } else {
+                                            view.hideProgress();
+                                        }
+
+                                        Timber.d("Images loaded %s", images);
+                                    }
+                                });
+                            }
                         },
-                        error -> Timber.e(error, "Error loading images"),
-                        () -> {
-                            if (view.isEmpty()) {
-                                view.showNoResultsView();
-                            } else {
-                                view.hideNoResultsView();
+                        new Action1<Throwable>() {
+
+                            @Override
+                            public void call(Throwable error) {
+                                Timber.e(error, "Error loading images");
+                            }
+                        },
+                        new Action0() {
+
+                            @Override
+                            public void call() {
+                                if (view.isEmpty()) {
+                                    view.showNoResultsView();
+                                } else {
+                                    view.hideNoResultsView();
+                                }
                             }
                         }
                 );

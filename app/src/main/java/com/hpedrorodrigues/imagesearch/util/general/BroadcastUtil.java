@@ -14,7 +14,7 @@ public class BroadcastUtil {
     public BroadcastUtil() {
     }
 
-    public void register(Activity activity, String action, OnReceive onReceive) {
+    public void register(final Activity activity, final String action, final OnReceive onReceive) {
         IntentFilter filter = new IntentFilter(action);
 
         activity.registerReceiver(new BroadcastReceiver() {

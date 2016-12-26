@@ -56,19 +56,24 @@ public class MainView extends BaseView<MainActivity> {
     }
 
     public void setUpNavigationView() {
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() != R.id.settings_item) {
-                item.setChecked(true);
-            }
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
 
-            closeDrawer();
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem item) {
+                        if (item.getItemId() != R.id.settings_item) {
+                            item.setChecked(true);
+                        }
 
-            if (drawerItemSelectedListener != null) {
-                drawerItemSelectedListener.onSelected(DrawerItem.find(item.getItemId()));
-            }
+                        closeDrawer();
 
-            return true;
-        });
+                        if (drawerItemSelectedListener != null) {
+                            drawerItemSelectedListener.onSelected(DrawerItem.find(item.getItemId()));
+                        }
+
+                        return true;
+                    }
+                });
 
         View headerView = navigationView.getHeaderView(0);
         TextView appVersionView = (TextView) headerView.findViewById(R.id.app_version);

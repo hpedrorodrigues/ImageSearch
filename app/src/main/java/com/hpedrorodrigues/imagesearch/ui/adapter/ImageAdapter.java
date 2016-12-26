@@ -46,28 +46,42 @@ public class ImageAdapter extends ISBaseAdapter<Image> {
 
         holder.titleView.setText(image.getTitle());
 
-        holder.moreView.setOnClickListener(v -> showPopup(v, image));
+        holder.moreView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                showPopup(v, image);
+            }
+        });
 
         Ion.with(context).load(image.getThumbnailUrl()).intoImageView(holder.imageView);
 
-        view.setOnClickListener((v) -> {
-            if (onImageClickListener != null) {
-                onImageClickListener.onClick(image);
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (onImageClickListener != null) {
+                    onImageClickListener.onClick(image);
+                }
             }
         });
 
         return view;
     }
 
-    public void showPopup(View view, Image image) {
+    public void showPopup(final View view, final Image image) {
         Context wrapper = new ContextThemeWrapper(context, R.style.PopupMenu);
         PopupMenu popupMenu = new PopupMenu(wrapper, view);
         popupMenu.getMenuInflater().inflate(R.menu.popup_item, popupMenu.getMenu());
         popupMenu.show();
 
-        popupMenu.setOnMenuItemClickListener(item -> {
-            listener.onClick(item, image);
-            return true;
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                listener.onClick(item, image);
+                return true;
+            }
         });
     }
 

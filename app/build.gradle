@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 
 def getApiProperty(String key) {
@@ -62,18 +61,12 @@ android {
 
         debug {
 
-            shrinkResources true
+            shrinkResources false
             useProguard false
             minifyEnabled false
-            zipAlignEnabled true
+            zipAlignEnabled false
             proguardFiles 'proguard-rules.pro'
         }
-    }
-
-    compileOptions {
-
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {

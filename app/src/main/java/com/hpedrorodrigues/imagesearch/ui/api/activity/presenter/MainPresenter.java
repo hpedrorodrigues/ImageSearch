@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
@@ -61,11 +62,20 @@ public class MainPresenter extends BasePresenter<MainActivity> {
                 backPressedOnce = true;
                 Snackbar
                         .make(view.getDrawer(), R.string.back_again_to_exit, Snackbar.LENGTH_SHORT)
-                        .setAction(activity.getString(android.R.string.ok), (v) -> {
+                        .setAction(activity.getString(android.R.string.ok), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
                         })
                         .show();
 
-                new Handler().postDelayed(() -> backPressedOnce = false, 2000L);
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        backPressedOnce = false;
+                    }
+                }, 2000L);
 
                 return false;
             }
@@ -83,16 +93,27 @@ public class MainPresenter extends BasePresenter<MainActivity> {
     }
 
     private void setUpDrawerListener() {
-        view.setDrawerItemSelectedListener(item -> new Handler().postDelayed(() -> {
-            if (item.equals(DrawerItem.SETTINGS)) {
+        view.setDrawerItemSelectedListener(new MainView.OnDrawerItemSelectedListener() {
 
-                navigator.toActivityScreen(SettingsActivity.class);
-            } else {
+            @Override
+            public void onSelected(final DrawerItem item) {
 
-                GenericFragment fragment = GenericFragment.create(item.getApi());
-                navigator.toFragmentScreen(fragment);
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        if (item.equals(DrawerItem.SETTINGS)) {
+
+                            navigator.toActivityScreen(SettingsActivity.class);
+                        } else {
+
+                            GenericFragment fragment = GenericFragment.create(item.getApi());
+                            navigator.toFragmentScreen(fragment);
+                        }
+                    }
+                }, DRAWER_REPLACE_SCREEN_DELAY);
             }
-        }, DRAWER_REPLACE_SCREEN_DELAY));
+        });
     }
 
     private void setUpFirstFragment() {
