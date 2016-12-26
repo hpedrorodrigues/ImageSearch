@@ -7,17 +7,13 @@ import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
-
-@EqualsAndHashCode(callSuper = true)
-@Data
 abstract class ISBaseAdapter<T> extends BaseAdapter {
 
-    @Setter(AccessLevel.NONE)
     private List<T> content;
+
+    public List<T> getContent() {
+        return content;
+    }
 
     public void setContent(List<T> content) {
         this.content = content;

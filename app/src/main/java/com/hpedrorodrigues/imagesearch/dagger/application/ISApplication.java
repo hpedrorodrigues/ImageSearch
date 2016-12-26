@@ -13,12 +13,8 @@ import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
 
 import io.fabric.sdk.android.Fabric;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import timber.log.Timber;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class ISApplication extends Application {
 
     private ISComponent component;
@@ -46,5 +42,13 @@ public class ISApplication extends Application {
 
         tracker = analytics.newTracker(R.xml.global_tracker);
         tracker.enableAdvertisingIdCollection(true);
+    }
+
+    public ISComponent getComponent() {
+        return component;
+    }
+
+    public Tracker getTracker() {
+        return tracker;
     }
 }

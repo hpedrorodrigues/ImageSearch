@@ -7,11 +7,6 @@ import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class LoadImageView extends BaseView<ImageActivity> {
 
     private FlickableImageView imageView;
@@ -34,5 +29,13 @@ public class LoadImageView extends BaseView<ImageActivity> {
 
     public void hideImageView() {
         imageView.setVisibility(View.INVISIBLE);
+    }
+
+    public FlickableImageView getImageView() {
+        return imageView;
+    }
+
+    public AnimatedCircleLoadingView getLoadingView() {
+        return loadingView;
     }
 }

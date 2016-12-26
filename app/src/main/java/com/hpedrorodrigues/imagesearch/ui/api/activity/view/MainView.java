@@ -16,11 +16,6 @@ import com.hpedrorodrigues.imagesearch.util.general.VersionInfo;
 
 import javax.inject.Inject;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class MainView extends BaseView<MainActivity> {
 
     @Inject
@@ -94,6 +89,22 @@ public class MainView extends BaseView<MainActivity> {
 
     public void closeDrawer() {
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    public DrawerLayout getDrawer() {
+        return drawer;
+    }
+
+    public NavigationView getNavigationView() {
+        return navigationView;
+    }
+
+    public ActionBarDrawerToggle getDrawerToggle() {
+        return drawerToggle;
+    }
+
+    public void setDrawerItemSelectedListener(OnDrawerItemSelectedListener drawerItemSelectedListener) {
+        this.drawerItemSelectedListener = drawerItemSelectedListener;
     }
 
     public interface OnDrawerItemSelectedListener {

@@ -7,11 +7,6 @@ import android.widget.Switch;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class SettingsView extends BaseView<SettingsActivity> {
 
     private RelativeLayout closeAppContainer;
@@ -34,7 +29,7 @@ public class SettingsView extends BaseView<SettingsActivity> {
     private LinearLayout contactUs;
     private LinearLayout openSourceLicenses;
 
-    public SettingsView(SettingsActivity activity) {
+    public SettingsView(final SettingsActivity activity) {
         super(activity);
     }
 
@@ -59,5 +54,65 @@ public class SettingsView extends BaseView<SettingsActivity> {
         sendUsYourFeedback = (LinearLayout) activity.findViewById(R.id.sendUsYourFeedback);
         contactUs = (LinearLayout) activity.findViewById(R.id.contactUs);
         openSourceLicenses = (LinearLayout) activity.findViewById(R.id.openSourceLicenses);
+    }
+
+    public RelativeLayout getCloseAppContainer() {
+        return closeAppContainer;
+    }
+
+    public Switch getToggleCloseTheApp() {
+        return toggleCloseTheApp;
+    }
+
+    public RelativeLayout getKeepScreenOnContainer() {
+        return keepScreenOnContainer;
+    }
+
+    public Switch getToggleKeepScreenOn() {
+        return toggleKeepScreenOn;
+    }
+
+    public RelativeLayout getShowImagesDescription() {
+        return showImagesDescription;
+    }
+
+    public Switch getToggleShowImagesDescription() {
+        return toggleShowImagesDescription;
+    }
+
+    public RelativeLayout getSafeSearch() {
+        return safeSearch;
+    }
+
+    public Switch getToggleSafeSearch() {
+        return toggleSafeSearch;
+    }
+
+    public LinearLayout getRateTheApp() {
+        return rateTheApp;
+    }
+
+    public LinearLayout getShareTheApp() {
+        return shareTheApp;
+    }
+
+    public LinearLayout getReportABug() {
+        return reportABug;
+    }
+
+    public LinearLayout getIdeaToImprove() {
+        return ideaToImprove;
+    }
+
+    public LinearLayout getSendUsYourFeedback() {
+        return sendUsYourFeedback;
+    }
+
+    public LinearLayout getContactUs() {
+        return contactUs;
+    }
+
+    public LinearLayout getOpenSourceLicenses() {
+        return openSourceLicenses;
     }
 }

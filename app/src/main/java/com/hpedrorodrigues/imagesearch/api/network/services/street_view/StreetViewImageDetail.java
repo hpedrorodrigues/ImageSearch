@@ -1,8 +1,5 @@
 package com.hpedrorodrigues.imagesearch.api.network.services.street_view;
 
-import lombok.Data;
-
-@Data
 public class StreetViewImageDetail {
 
     private Integer width;
@@ -18,4 +15,60 @@ public class StreetViewImageDetail {
     private Double heading;
 
     private Double pitch;
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public Integer getScale() {
+        return scale;
+    }
+
+    public void setScale(Integer scale) {
+        this.scale = scale;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getHeading() {
+        return heading;
+    }
+
+    public void setHeading(Double heading) {
+        this.heading = heading;
+    }
+
+    public Double getPitch() {
+        return pitch;
+    }
+
+    public void setPitch(Double pitch) {
+        this.pitch = pitch;
+    }
 }

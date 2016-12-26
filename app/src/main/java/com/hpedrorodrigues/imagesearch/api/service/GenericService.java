@@ -14,14 +14,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import lombok.Data;
 import retrofit2.Call;
 import retrofit2.Response;
 import rx.Observable;
 import rx.Subscriber;
 import timber.log.Timber;
 
-@Data
 public class GenericService {
 
     @Inject

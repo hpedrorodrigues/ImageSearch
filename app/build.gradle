@@ -136,10 +136,6 @@ dependencies {
     apt 'com.google.dagger:dagger-compiler:2.2'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 
-    // - Lombok
-    provided "org.projectlombok:lombok:1.12.6"
-    apt "org.projectlombok:lombok:1.12.6"
-
     // - Networking dependencies
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
