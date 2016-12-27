@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
+package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.content.Intent;
 import android.os.Build;
@@ -17,9 +17,9 @@ import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
-import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.LoadImageView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.ui.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;

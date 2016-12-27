@@ -2,12 +2,12 @@ package com.hpedrorodrigues.imagesearch.ui.api.navigation;
 
 import android.os.Bundle;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation.AndroidFragmentNavigator;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation.FragmentNavigator;
-import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 
 public class AndroidNavigator implements Navigator {
 

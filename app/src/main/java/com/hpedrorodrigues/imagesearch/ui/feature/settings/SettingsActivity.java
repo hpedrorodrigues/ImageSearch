@@ -1,13 +1,12 @@
-package com.hpedrorodrigues.imagesearch.ui.activity;
+package com.hpedrorodrigues.imagesearch.ui.feature.settings;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
-import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.SettingsPresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
 
 public class SettingsActivity extends BaseActivity {
 

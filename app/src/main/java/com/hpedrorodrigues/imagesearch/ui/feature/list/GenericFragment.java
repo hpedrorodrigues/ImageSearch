@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.fragment;
+package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 import com.hpedrorodrigues.imagesearch.constant.BundleKey;
-import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 
 public class GenericFragment extends BaseFragment {
 

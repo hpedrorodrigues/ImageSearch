@@ -2,8 +2,8 @@ package com.hpedrorodrigues.imagesearch.ui.api.navigation;
 
 import android.os.Bundle;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
-import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 
 public interface Navigator {
 

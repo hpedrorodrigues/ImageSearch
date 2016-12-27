@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.fragment;
+package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,6 @@ import com.crashlytics.android.answers.ContentViewEvent;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 

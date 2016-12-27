@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
-import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity;
 import com.hpedrorodrigues.imagesearch.util.general.VersionInfo;
 
 import javax.inject.Inject;

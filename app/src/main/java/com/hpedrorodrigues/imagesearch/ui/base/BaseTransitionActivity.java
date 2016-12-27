@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.activity.base;
+package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.content.Intent;
 import android.os.Bundle;

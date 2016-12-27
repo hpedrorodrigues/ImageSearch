@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.activity;
+package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
-import com.hpedrorodrigues.imagesearch.ui.api.activity.presenter.ImagePresenter;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
 
 public class ImageActivity extends BaseActivity {
 

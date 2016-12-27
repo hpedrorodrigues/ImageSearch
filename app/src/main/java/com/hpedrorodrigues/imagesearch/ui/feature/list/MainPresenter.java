@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
+package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,12 +11,11 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
-import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
-import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.ui.fragment.BaseFragment;
-import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
+import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 
 public class MainPresenter extends BasePresenter<MainActivity> {
 

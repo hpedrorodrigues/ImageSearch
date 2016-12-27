@@ -3,8 +3,8 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.MainActivity;
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity;
 
 public class AndroidActivityNavigator implements ActivityNavigator {
 

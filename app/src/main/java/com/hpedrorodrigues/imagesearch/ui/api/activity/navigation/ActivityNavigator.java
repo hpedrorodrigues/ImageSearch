@@ -2,7 +2,7 @@ package com.hpedrorodrigues.imagesearch.ui.api.activity.navigation;
 
 import android.os.Bundle;
 
-import com.hpedrorodrigues.imagesearch.ui.activity.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
 
 public interface ActivityNavigator {
 

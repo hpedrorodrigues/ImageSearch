@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.activity.presenter;
+package com.hpedrorodrigues.imagesearch.ui.feature.settings;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,9 +8,9 @@ import android.widget.CompoundButton;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
-import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.api.activity.view.SettingsView;
 import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
 import com.hpedrorodrigues.imagesearch.util.general.MailUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;

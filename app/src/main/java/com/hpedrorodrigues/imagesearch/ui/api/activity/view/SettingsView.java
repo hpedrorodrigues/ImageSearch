@@ -5,7 +5,7 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.activity.SettingsActivity;
+import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 
 public class SettingsView extends BaseView<SettingsActivity> {
 

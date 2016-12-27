@@ -5,7 +5,7 @@ import android.view.View;
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.activity.ImageActivity;
+import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 
 public class LoadImageView extends BaseView<ImageActivity> {
 

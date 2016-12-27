@@ -13,7 +13,7 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.component.OnLoadMoreListener;
-import com.hpedrorodrigues.imagesearch.ui.fragment.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragment;
 import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
