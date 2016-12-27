@@ -114,7 +114,7 @@ dependencies {
     compile 'com.github.goka.flickableview:flickableview:1.0.0'
 
     // - Image Loading
-    compile 'com.koushikdutta.ion:ion:2.1.8'
+    compile 'com.koushikdutta.ion:ion:2.1.9'
 
     // - Progress
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5'
@@ -125,8 +125,8 @@ dependencies {
     }
 
     // - Dagger 2
-    compile 'com.google.dagger:dagger:2.2'
-    apt 'com.google.dagger:dagger-compiler:2.2'
+    compile 'com.google.dagger:dagger:2.8'
+    apt 'com.google.dagger:dagger-compiler:2.8'
     provided 'org.glassfish:javax.annotation:10.0-b28'
 
     // - Networking dependencies
@@ -135,14 +135,14 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 
     // - GSON
-    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.code.gson:gson:2.8.0'
 
     // - RX
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
 
     // - Log
-    compile 'com.jakewharton.timber:timber:4.1.2'
+    compile 'com.jakewharton.timber:timber:4.4.0'
 
     // - Crashlytics
     compile('com.crashlytics.sdk.android:crashlytics:2.6.1@aar') {
@@ -159,7 +159,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     androidTestCompile 'commons-io:commons-io:2.4'
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
