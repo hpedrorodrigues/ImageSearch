@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.fragment.view;
+package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import com.etsy.android.grid.StaggeredGridView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
-import com.hpedrorodrigues.imagesearch.ui.component.OnLoadMoreListener;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragmentView;
+import com.hpedrorodrigues.imagesearch.ui.common.component.OnLoadMoreListener;
+import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -21,7 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class GenericView extends BaseView<GenericFragment> {
+public class GenericFragmentView extends BaseFragmentView<GenericFragment> {
 
     @Inject
     public ImageAdapter imageAdapter;
@@ -38,7 +38,7 @@ public class GenericView extends BaseView<GenericFragment> {
 
     private LinearLayout noResultsContainer;
 
-    public GenericView(GenericFragment fragment) {
+    public GenericFragmentView(GenericFragment fragment) {
         super(fragment);
     }
 

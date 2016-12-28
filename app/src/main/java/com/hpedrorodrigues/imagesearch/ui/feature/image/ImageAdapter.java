@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.adapter;
+package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.content.Context;
 import android.support.v7.view.ContextThemeWrapper;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.ui.adapter.holder.ImageHolder;
+import com.hpedrorodrigues.imagesearch.ui.base.ISBaseAdapter;
 import com.koushikdutta.ion.Ion;
 
 import javax.inject.Inject;

@@ -4,15 +4,15 @@ import com.hpedrorodrigues.imagesearch.api.network.api.BaseApi;
 import com.hpedrorodrigues.imagesearch.api.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.component.receiver.NetworkStateChangedReceiver;
 import com.hpedrorodrigues.imagesearch.dagger.module.ISModule;
-import com.hpedrorodrigues.imagesearch.ui.api.activity.view.MainView;
-import com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter.GenericPresenter;
-import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
-import com.hpedrorodrigues.imagesearch.ui.component.ImageDetailDialog;
+import com.hpedrorodrigues.imagesearch.ui.common.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImagePresenter;
 import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragmentView;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericPresenter;
 import com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.list.MainPresenter;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.MainView;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsPresenter;
 
@@ -36,7 +36,7 @@ public interface ISComponent extends BaseComponent {
 
     void inject(GenericPresenter presenter);
 
-    void inject(GenericView view);
+    void inject(GenericFragmentView view);
 
     void inject(MainView view);
 

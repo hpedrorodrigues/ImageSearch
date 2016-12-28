@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.navigation;
+package com.hpedrorodrigues.imagesearch.ui.common.navigation;
 
 import android.os.Bundle;
 
@@ -10,10 +10,6 @@ public interface Navigator {
     void toActivityScreen(Class<? extends BaseActivity> clazz);
 
     void toActivityScreen(Class<? extends BaseActivity> clazz, Bundle arguments);
-
-    void toActivityScreenWithClearedHistory(Class<? extends BaseActivity> clazz);
-
-    void toMainActivityScreen();
 
     void toActivityParent();
 

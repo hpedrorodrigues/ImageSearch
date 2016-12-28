@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
+import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 

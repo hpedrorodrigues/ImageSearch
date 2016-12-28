@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.component;
+package com.hpedrorodrigues.imagesearch.ui.common.component;
 
 import android.content.Context;
 import android.os.Bundle;

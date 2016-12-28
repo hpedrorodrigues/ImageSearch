@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.adapter;
+package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.widget.BaseAdapter;
 
@@ -7,7 +7,7 @@ import com.hpedrorodrigues.imagesearch.util.CollectionUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class ISBaseAdapter<T> extends BaseAdapter {
+public abstract class ISBaseAdapter<T> extends BaseAdapter {
 
     private List<T> content;
 

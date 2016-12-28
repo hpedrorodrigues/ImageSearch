@@ -1,11 +1,7 @@
-package com.hpedrorodrigues.imagesearch.ui.api.navigation;
+package com.hpedrorodrigues.imagesearch.ui.common.navigation;
 
 import android.os.Bundle;
 
-import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.ActivityNavigator;
-import com.hpedrorodrigues.imagesearch.ui.api.activity.navigation.AndroidActivityNavigator;
-import com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation.AndroidFragmentNavigator;
-import com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation.FragmentNavigator;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 
@@ -32,16 +28,6 @@ public class AndroidNavigator implements Navigator {
     @Override
     public void toActivityScreen(Class<? extends BaseActivity> clazz, Bundle arguments) {
         activityNavigator.toScreen(clazz, arguments);
-    }
-
-    @Override
-    public void toActivityScreenWithClearedHistory(Class<? extends BaseActivity> clazz) {
-        activityNavigator.toScreenWithClearedHistory(clazz);
-    }
-
-    @Override
-    public void toMainActivityScreen() {
-        activityNavigator.toMainScreen();
     }
 
     @Override

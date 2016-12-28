@@ -1,11 +1,11 @@
-package com.hpedrorodrigues.imagesearch.ui.api.activity.view;
+package com.hpedrorodrigues.imagesearch.ui.feature.settings;
 
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseView;
 
 public class SettingsView extends BaseView<SettingsActivity> {
 

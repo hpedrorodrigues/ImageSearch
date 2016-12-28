@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.adapter.holder;
+package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseHolder;
 
 public class ImageHolder extends BaseHolder {
 

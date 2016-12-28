@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
+package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,9 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.api.service.GenericService;
-import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
-import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
 import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
@@ -19,7 +17,7 @@ import javax.inject.Inject;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
-abstract class BasePresenter<T extends BaseFragment> {
+public abstract class BaseFragmentPresenter<T extends BaseFragment> {
 
     protected final T fragment;
 
@@ -39,7 +37,7 @@ abstract class BasePresenter<T extends BaseFragment> {
 
     private CompositeSubscription compositeSubscription;
 
-    protected BasePresenter(T fragment, Navigator navigator) {
+    protected BaseFragmentPresenter(T fragment, Navigator navigator) {
         this.fragment = fragment;
         this.navigator = navigator;
         this.compositeSubscription = new CompositeSubscription();

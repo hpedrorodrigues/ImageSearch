@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.activity.view;
+package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseView;
 import com.hpedrorodrigues.imagesearch.util.general.VersionInfo;
 
 import javax.inject.Inject;

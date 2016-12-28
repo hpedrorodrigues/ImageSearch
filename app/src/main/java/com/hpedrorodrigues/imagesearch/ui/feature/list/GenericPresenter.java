@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.fragment.presenter;
+package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,12 +16,11 @@ import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
-import com.hpedrorodrigues.imagesearch.ui.adapter.ImageAdapter;
-import com.hpedrorodrigues.imagesearch.ui.api.fragment.view.GenericView;
-import com.hpedrorodrigues.imagesearch.ui.api.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.ui.component.OnLoadMoreListener;
+import com.hpedrorodrigues.imagesearch.ui.base.BaseFragmentPresenter;
+import com.hpedrorodrigues.imagesearch.ui.common.component.OnLoadMoreListener;
+import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;
@@ -40,9 +39,9 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 import timber.log.Timber;
 
-public class GenericPresenter extends BasePresenter<GenericFragment> {
+public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
 
-    private final GenericView view;
+    private final GenericFragmentView view;
 
     private final Api api;
 
@@ -74,7 +73,7 @@ public class GenericPresenter extends BasePresenter<GenericFragment> {
     public GenericPresenter(GenericFragment fragment, Navigator navigator, Api api) {
         super(fragment, navigator);
         this.api = api;
-        this.view = new GenericView(fragment);
+        this.view = new GenericFragmentView(fragment);
 
         getActivity().getComponent().inject(view);
     }

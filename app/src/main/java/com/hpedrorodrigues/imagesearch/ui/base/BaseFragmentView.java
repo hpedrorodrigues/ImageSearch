@@ -1,20 +1,18 @@
-package com.hpedrorodrigues.imagesearch.ui.api.fragment.view;
+package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.content.Context;
 import android.view.View;
 
-import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
-
 import javax.inject.Inject;
 
-abstract class BaseView<T extends BaseFragment> {
+public abstract class BaseFragmentView<T extends BaseFragment> {
 
     protected final T fragment;
 
     @Inject
     public Context context;
 
-    protected BaseView(T fragment) {
+    protected BaseFragmentView(T fragment) {
         this.fragment = fragment;
     }
 

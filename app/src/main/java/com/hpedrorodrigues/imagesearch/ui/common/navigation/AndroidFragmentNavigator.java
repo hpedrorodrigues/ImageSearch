@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.api.fragment.navigation;
+package com.hpedrorodrigues.imagesearch.ui.common.navigation;
 
 import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;

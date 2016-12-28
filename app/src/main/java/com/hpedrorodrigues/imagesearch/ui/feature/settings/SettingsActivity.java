@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.ui.api.navigation.AndroidNavigator;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseActivity;
+import com.hpedrorodrigues.imagesearch.ui.common.navigation.AndroidNavigator;
 
 public class SettingsActivity extends BaseActivity {
 
