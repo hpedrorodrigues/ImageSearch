@@ -15,14 +15,14 @@ import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
+import com.hpedrorodrigues.imagesearch.data.manager.ApiManager;
+import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragmentPresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.component.OnLoadMoreListener;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
-import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
-import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
@@ -54,7 +54,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     public ConnectionService connection;
 
     @Inject
-    public ApiUtil apiUtil;
+    public ApiManager apiManager;
 
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
     private int currentPage = ISConstant.INITIAL_PAGE;
@@ -170,7 +170,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     }
 
     private void loadTitleByApi() {
-        String title = context.getString(apiUtil.getProviderNameByApi(api));
+        String title = context.getString(apiManager.getProviderNameByApi(api));
         fragment.getToolbar().setTitle(title);
     }
 

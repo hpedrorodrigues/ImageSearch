@@ -1,17 +1,17 @@
-package com.hpedrorodrigues.imagesearch.util.general;
+package com.hpedrorodrigues.imagesearch.data.manager;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.network.api.Api;
 
 import javax.inject.Inject;
 
-public class ApiUtil {
+public class ApiManager {
 
     @Inject
-    public ApiUtil() {
+    public ApiManager() {
     }
 
-    public int getProviderNameByApi(Api api) {
+    public int getProviderNameByApi(final Api api) {
         if (api == null) {
 
             return R.string.all_provider;
