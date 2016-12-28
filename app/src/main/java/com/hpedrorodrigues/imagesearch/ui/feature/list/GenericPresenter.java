@@ -1,7 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +22,7 @@ import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
-import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;
+import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
 import com.hpedrorodrigues.imagesearch.util.rx.Rx;
 import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
 
@@ -46,7 +45,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     private final Api api;
 
     @Inject
-    public ImageActionUtil imageActionUtil;
+    public ImageActionManager imageActionManager;
 
     @Inject
     public NetworkStateObservable observable;
@@ -155,12 +154,6 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        imageActionUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
 
@@ -209,19 +202,19 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
             public void onClick(MenuItem item, Image image) {
                 switch (item.getItemId()) {
                     case R.id.action_share:
-                        imageActionUtil.shareImage(image, getActivity());
+                        imageActionManager.shareImage(image, getActivity());
                         break;
                     case R.id.action_share_link:
-                        imageActionUtil.shareImageUrl(image, getActivity());
+                        imageActionManager.shareImageUrl(image, getActivity());
                         break;
                     case R.id.action_copy_link:
-                        imageActionUtil.copyImageUrl(image);
+                        imageActionManager.copyImageUrl(image);
                         break;
                     case R.id.action_download:
-                        imageActionUtil.downloadImage(image, getActivity());
+                        imageActionManager.downloadImage(image, getActivity());
                         break;
                     case R.id.action_set_as_wallpaper:
-                        imageActionUtil.changeWallpaper(image, getActivity());
+                        imageActionManager.changeWallpaper(image, getActivity());
                         break;
                 }
             }

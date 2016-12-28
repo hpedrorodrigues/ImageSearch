@@ -3,7 +3,6 @@ package com.hpedrorodrigues.imagesearch.ui.feature.image;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +20,7 @@ import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
-import com.hpedrorodrigues.imagesearch.util.general.ImageActionUtil;
+import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
 import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -34,7 +33,7 @@ import timber.log.Timber;
 public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     @Inject
-    public ImageActionUtil imageActionUtil;
+    public ImageActionManager imageActionManager;
 
     @Inject
     public ToastUtil toastUtil;
@@ -71,12 +70,6 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        imageActionUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         activity.getMenuInflater().inflate(R.menu.image, menu);
 
@@ -101,19 +94,19 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                 navigator.toActivityParent();
                 break;
             case R.id.action_share:
-                imageActionUtil.shareImage(image, activity);
+                imageActionManager.shareImage(image, activity);
                 break;
             case R.id.action_share_link:
-                imageActionUtil.shareImageUrl(image, activity);
+                imageActionManager.shareImageUrl(image, activity);
                 break;
             case R.id.action_copy_link:
-                imageActionUtil.copyImageUrl(image);
+                imageActionManager.copyImageUrl(image);
                 break;
             case R.id.action_download:
-                imageActionUtil.downloadImage(image, activity);
+                imageActionManager.downloadImage(image, activity);
                 break;
             case R.id.action_set_as_wallpaper:
-                imageActionUtil.changeWallpaper(image, activity);
+                imageActionManager.changeWallpaper(image, activity);
                 break;
             case R.id.action_image_detail:
                 ImageDetailDialog dialog = ImageDetailDialog.create(image);
