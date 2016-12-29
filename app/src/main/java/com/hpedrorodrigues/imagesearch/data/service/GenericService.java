@@ -1,9 +1,9 @@
 package com.hpedrorodrigues.imagesearch.data.service;
 
 import com.hpedrorodrigues.imagesearch.data.model.Image;
-import com.hpedrorodrigues.imagesearch.data.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 import com.hpedrorodrigues.imagesearch.data.remote.api.GenericApi;
+import com.hpedrorodrigues.imagesearch.data.remote.parser.GenericParser;
 import com.hpedrorodrigues.imagesearch.data.remote.services.street_view.StreetViewImageDetail;
 import com.hpedrorodrigues.imagesearch.util.EnumUtil;
 

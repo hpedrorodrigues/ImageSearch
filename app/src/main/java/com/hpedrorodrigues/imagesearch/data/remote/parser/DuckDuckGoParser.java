@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.data.parser;
+package com.hpedrorodrigues.imagesearch.data.remote.parser;
 
 import com.hpedrorodrigues.imagesearch.data.model.Image;
 import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
@@ -6,9 +6,9 @@ import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 import java.util.List;
 import java.util.Map;
 
-class CSEParser extends BaseParser {
+class DuckDuckGoParser extends BaseParser {
 
-    public CSEParser() {
+    public DuckDuckGoParser() {
     }
 
     @Override
@@ -20,13 +20,13 @@ class CSEParser extends BaseParser {
     protected Image asImage(Map info) {
         Image image = new Image();
 
-        image.setTitle(asString(info.get("titleNoFormatting")));
-        image.setDescription(asString(info.get("contentNoFormatting")));
+        image.setTitle(asString(info.get("title")));
+        image.setDescription(asString(info.get("source")));
         image.setWidth(asInteger(info.get("width")));
         image.setHeight(asInteger(info.get("height")));
-        image.setWebSiteUrl(asString(info.get("originalContextUrl")));
-        image.setThumbnailUrl(asString(info.get("tbUrl")));
-        image.setImageUrl(asString(info.get("unescapedUrl")));
+        image.setWebSiteUrl(asString(info.get("url")));
+        image.setThumbnailUrl(asString(info.get("thumbnail")));
+        image.setImageUrl(asString(info.get("image")));
 
         return image;
     }
@@ -38,6 +38,6 @@ class CSEParser extends BaseParser {
 
     @Override
     protected Api getApi() {
-        return Api.CSE;
+        return Api.DUCK_DUCK_GO;
     }
 }

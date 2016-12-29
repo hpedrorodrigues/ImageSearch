@@ -1,8 +1,8 @@
 package com.hpedrorodrigues.imagesearch.injection.component;
 
-import com.hpedrorodrigues.imagesearch.data.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.data.receiver.NetworkStateChangedReceiver;
 import com.hpedrorodrigues.imagesearch.data.remote.api.BaseApi;
+import com.hpedrorodrigues.imagesearch.data.remote.parser.BaseParser;
 import com.hpedrorodrigues.imagesearch.injection.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.common.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;

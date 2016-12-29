@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.data.parser;
+package com.hpedrorodrigues.imagesearch.data.remote.parser;
 
 import com.hpedrorodrigues.imagesearch.data.model.Image;
 import com.hpedrorodrigues.imagesearch.data.remote.api.Api;

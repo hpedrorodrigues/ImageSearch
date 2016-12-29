@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.data.parser;
+package com.hpedrorodrigues.imagesearch.data.remote.parser;
 
 import com.hpedrorodrigues.imagesearch.data.model.Image;
 import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
@@ -6,27 +6,27 @@ import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 import java.util.List;
 import java.util.Map;
 
-class BingParser extends BaseParser {
+class CSEParser extends BaseParser {
 
-    public BingParser() {
+    public CSEParser() {
     }
 
     @Override
     protected List<Map> getImages(Map data) {
-        return (List<Map>) data.get("value");
+        return (List<Map>) data.get("results");
     }
 
     @Override
     protected Image asImage(Map info) {
         Image image = new Image();
 
-        image.setTitle(asString(info.get("name")));
-        image.setDescription(asString(info.get("datePublished")));
+        image.setTitle(asString(info.get("titleNoFormatting")));
+        image.setDescription(asString(info.get("contentNoFormatting")));
         image.setWidth(asInteger(info.get("width")));
         image.setHeight(asInteger(info.get("height")));
-        image.setWebSiteUrl(asString(info.get("hostPageUrl")));
-        image.setThumbnailUrl(asString(info.get("thumbnailUrl")));
-        image.setImageUrl(asString(info.get("contentUrl")));
+        image.setWebSiteUrl(asString(info.get("originalContextUrl")));
+        image.setThumbnailUrl(asString(info.get("tbUrl")));
+        image.setImageUrl(asString(info.get("unescapedUrl")));
 
         return image;
     }
@@ -38,6 +38,6 @@ class BingParser extends BaseParser {
 
     @Override
     protected Api getApi() {
-        return Api.BING;
+        return Api.CSE;
     }
 }
