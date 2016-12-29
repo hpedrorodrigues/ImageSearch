@@ -8,10 +8,10 @@ import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
-import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
 import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
+import com.hpedrorodrigues.imagesearch.injection.application.ISApplication;
+import com.hpedrorodrigues.imagesearch.injection.component.ISComponent;
 
 import javax.inject.Inject;
 

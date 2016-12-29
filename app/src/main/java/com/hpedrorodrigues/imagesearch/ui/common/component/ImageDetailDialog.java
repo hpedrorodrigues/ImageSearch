@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.constant.BundleKey;
+import com.hpedrorodrigues.imagesearch.data.constant.BundleKey;
+import com.hpedrorodrigues.imagesearch.data.model.Image;
 import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
 import com.koushikdutta.ion.Ion;
 

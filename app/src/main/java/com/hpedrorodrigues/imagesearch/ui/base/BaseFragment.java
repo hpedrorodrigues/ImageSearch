@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
 import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
 import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
+import com.hpedrorodrigues.imagesearch.injection.component.ISComponent;
 
 import javax.inject.Inject;
 

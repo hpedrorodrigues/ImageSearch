@@ -1,6 +1,6 @@
 package com.hpedrorodrigues.imagesearch.data.event_tracker;
 
-import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 
 import javax.inject.Inject;
 

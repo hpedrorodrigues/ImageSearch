@@ -7,8 +7,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.entity.Image;
-import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
+import com.hpedrorodrigues.imagesearch.data.model.Image;
+import com.hpedrorodrigues.imagesearch.data.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.util.StringUtil;
 import com.hpedrorodrigues.imagesearch.util.general.DownloadUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;

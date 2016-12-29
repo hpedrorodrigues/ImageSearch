@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
+import com.hpedrorodrigues.imagesearch.data.constant.DrawerItem;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseView;
 import com.hpedrorodrigues.imagesearch.util.general.VersionInfo;
 

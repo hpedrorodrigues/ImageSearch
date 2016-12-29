@@ -5,7 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.constant.ISConstant;
+import com.hpedrorodrigues.imagesearch.data.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.util.general.DeviceInfoUtil;
 import com.hpedrorodrigues.imagesearch.util.general.IntentUtil;
 

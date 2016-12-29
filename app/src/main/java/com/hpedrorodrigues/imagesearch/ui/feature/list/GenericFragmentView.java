@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.entity.Image;
+import com.hpedrorodrigues.imagesearch.data.model.Image;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragmentView;
 import com.hpedrorodrigues.imagesearch.ui.common.component.OnLoadMoreListener;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;

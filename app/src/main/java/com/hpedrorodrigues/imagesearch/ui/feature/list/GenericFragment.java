@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.network.api.Api;
-import com.hpedrorodrigues.imagesearch.constant.BundleKey;
+import com.hpedrorodrigues.imagesearch.data.constant.BundleKey;
+import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 
 public class GenericFragment extends BaseFragment {

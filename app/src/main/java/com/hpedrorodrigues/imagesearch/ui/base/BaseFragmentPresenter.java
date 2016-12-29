@@ -6,9 +6,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.hpedrorodrigues.imagesearch.api.service.GenericService;
 import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
 import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
+import com.hpedrorodrigues.imagesearch.data.service.GenericService;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 
 import javax.inject.Inject;

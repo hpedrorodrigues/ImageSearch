@@ -7,9 +7,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.constant.DrawerItem;
-import com.hpedrorodrigues.imagesearch.constant.ISConstant;
-import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
+import com.hpedrorodrigues.imagesearch.data.constant.DrawerItem;
+import com.hpedrorodrigues.imagesearch.data.constant.ISConstant;
+import com.hpedrorodrigues.imagesearch.data.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
 import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;

@@ -1,7 +1,7 @@
 package com.hpedrorodrigues.imagesearch.util.general;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.api.network.api.Api;
+import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 
 import javax.inject.Inject;
 

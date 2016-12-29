@@ -8,17 +8,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.hpedrorodrigues.imagesearch.R;
-import com.hpedrorodrigues.imagesearch.constant.AnimationInfo;
-import com.hpedrorodrigues.imagesearch.constant.BundleKey;
-import com.hpedrorodrigues.imagesearch.constant.ISAnimation;
+import com.hpedrorodrigues.imagesearch.data.constant.AnimationInfo;
+import com.hpedrorodrigues.imagesearch.data.constant.BundleKey;
+import com.hpedrorodrigues.imagesearch.data.constant.ISAnimation;
 
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.FADE;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.SLIDE_DOWN;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.SLIDE_LEFT;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.SLIDE_RIGHT;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.SLIDE_UP;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.ZOOM;
-import static com.hpedrorodrigues.imagesearch.constant.ISAnimation.find;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.FADE;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.SLIDE_DOWN;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.SLIDE_LEFT;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.SLIDE_RIGHT;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.SLIDE_UP;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.ZOOM;
+import static com.hpedrorodrigues.imagesearch.data.constant.ISAnimation.find;
 
 abstract class BaseTransitionActivity extends AppCompatActivity {
 
