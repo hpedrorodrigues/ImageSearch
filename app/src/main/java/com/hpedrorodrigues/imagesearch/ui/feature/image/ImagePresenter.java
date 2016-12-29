@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
-import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.data.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.data.constant.IntentKey;
@@ -29,6 +28,7 @@ import com.koushikdutta.ion.ProgressCallback;
 import javax.inject.Inject;
 
 import timber.log.Timber;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImagePresenter extends BasePresenter<ImageActivity> {
 
@@ -44,6 +44,8 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     private LoadImageView view;
     private Image image;
 
+    PhotoViewAttacher attacher;
+
     public ImagePresenter(ImageActivity activity, Navigator navigator) {
         super(activity, navigator);
         this.view = new LoadImageView(activity);
@@ -55,18 +57,6 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
         loadImage();
         setUpScreen();
-
-        view.getImageView().setOnFlickListener(new FlickableImageView.OnFlickableImageViewFlickListener() {
-            @Override
-            public void onStartFlick() {
-            }
-
-            @Override
-            public void onFinishFlick() {
-                view.hideImageView();
-                navigator.toActivityParent();
-            }
-        });
     }
 
     @Override
@@ -135,6 +125,7 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
 
     private void loadImage() {
         final AnimatedCircleLoadingView loadingView = view.getLoadingView();
+        attacher = new PhotoViewAttacher(view.getImageView());
 
         loadingView.startDeterminate();
         loadingView.setPercent(0);
@@ -158,6 +149,7 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                         if (error == null) {
                             loadingView.stopOk();
                             view.showImageView();
+                            attacher.update();
                         } else {
                             loadingView.stopFailure();
                         }

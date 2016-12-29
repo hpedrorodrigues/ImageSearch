@@ -1,15 +1,15 @@
 package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
-import com.goka.flickableview.FlickableImageView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseView;
 
 public class LoadImageView extends BaseView<ImageActivity> {
 
-    private FlickableImageView imageView;
+    private ImageView imageView;
     private AnimatedCircleLoadingView loadingView;
 
     public LoadImageView(ImageActivity activity) {
@@ -18,7 +18,7 @@ public class LoadImageView extends BaseView<ImageActivity> {
 
     @Override
     public void onView() {
-        imageView = (FlickableImageView) activity.findViewById(R.id.image);
+        imageView = (ImageView) activity.findViewById(R.id.image);
         loadingView = (AnimatedCircleLoadingView) activity.findViewById(R.id.loading_view);
     }
 
@@ -31,7 +31,7 @@ public class LoadImageView extends BaseView<ImageActivity> {
         imageView.setVisibility(View.INVISIBLE);
     }
 
-    public FlickableImageView getImageView() {
+    public ImageView getImageView() {
         return imageView;
     }
 
