@@ -2,13 +2,12 @@ package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
+import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
-import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
 import javax.inject.Inject;
 
@@ -18,10 +17,10 @@ public abstract class BasePresenter<T extends BaseActivity> {
     protected final Navigator navigator;
 
     @Inject
-    protected ISAnswer answer;
+    protected EventTracker eventTracker;
 
     @Inject
-    protected PreferenceUtil preferences;
+    protected PreferenceManager preferences;
 
     public BasePresenter(T activity, Navigator navigator) {
         this.activity = activity;
@@ -52,10 +51,6 @@ public abstract class BasePresenter<T extends BaseActivity> {
     }
 
     public void onDestroy() {
-    }
-
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
     }
 
     public boolean onBackPressed() {

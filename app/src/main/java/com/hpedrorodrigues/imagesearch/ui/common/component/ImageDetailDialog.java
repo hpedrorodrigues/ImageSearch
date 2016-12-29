@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.constant.BundleKey;
-import com.hpedrorodrigues.imagesearch.data.manager.ApiManager;
+import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
 import com.koushikdutta.ion.Ion;
 
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ public class ImageDetailDialog extends DialogFragment {
     public Context context;
 
     @Inject
-    public ApiManager apiManager;
+    public ApiUtil apiUtil;
 
     private Image image;
     private ImageView imageView;
@@ -82,7 +82,7 @@ public class ImageDetailDialog extends DialogFragment {
 
         sizeView.setText(String.format("%s x %s", image.getWidth(), image.getHeight()));
 
-        String providerName = context.getString(apiManager.getProviderNameByApi(image.getApi()));
+        String providerName = context.getString(apiUtil.getProviderNameByApi(image.getApi()));
         apiView.setText(providerName);
     }
 }

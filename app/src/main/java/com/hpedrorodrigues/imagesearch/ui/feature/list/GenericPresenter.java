@@ -15,16 +15,16 @@ import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.IntentKey;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
-import com.hpedrorodrigues.imagesearch.data.manager.ApiManager;
 import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
+import com.hpedrorodrigues.imagesearch.data.transformer.Rx;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragmentPresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.component.OnLoadMoreListener;
+import com.hpedrorodrigues.imagesearch.ui.common.component.SearchViewObservable;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageAdapter;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
-import com.hpedrorodrigues.imagesearch.util.rx.Rx;
-import com.hpedrorodrigues.imagesearch.util.rx.SearchViewObservable;
+import com.hpedrorodrigues.imagesearch.util.general.ApiUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -54,7 +54,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     public ConnectionService connection;
 
     @Inject
-    public ApiManager apiManager;
+    public ApiUtil apiUtil;
 
     private String currentSearch = ISConstant.DEFAULT_SEARCH;
     private int currentPage = ISConstant.INITIAL_PAGE;
@@ -170,7 +170,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
     }
 
     private void loadTitleByApi() {
-        String title = context.getString(apiManager.getProviderNameByApi(api));
+        String title = context.getString(apiUtil.getProviderNameByApi(api));
         fragment.getToolbar().setTitle(title);
     }
 
@@ -181,7 +181,7 @@ public class GenericPresenter extends BaseFragmentPresenter<GenericFragment> {
             view.showProgress();
         }
 
-        answer.logSearch(api, query, currentPage);
+        eventTracker.trackSearch(api, query, currentPage);
 
         cancelOldSearchSubscription();
 

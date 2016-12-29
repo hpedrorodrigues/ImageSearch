@@ -1,16 +1,15 @@
 package com.hpedrorodrigues.imagesearch.ui.base;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.hpedrorodrigues.imagesearch.api.service.GenericService;
+import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
+import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
-import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
 
 import javax.inject.Inject;
 
@@ -30,10 +29,10 @@ public abstract class BaseFragmentPresenter<T extends BaseFragment> {
     public GenericService genericService;
 
     @Inject
-    public PreferenceUtil preferences;
+    public PreferenceManager preferences;
 
     @Inject
-    protected ISAnswer answer;
+    protected EventTracker eventTracker;
 
     private CompositeSubscription compositeSubscription;
 
@@ -50,10 +49,6 @@ public abstract class BaseFragmentPresenter<T extends BaseFragment> {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         return true;
-    }
-
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
     }
 
     public void onResume() {

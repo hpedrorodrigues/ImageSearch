@@ -10,8 +10,8 @@ import com.hpedrorodrigues.imagesearch.constant.ISConstant;
 import com.hpedrorodrigues.imagesearch.constant.PreferenceKey;
 import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
-import com.hpedrorodrigues.imagesearch.util.general.MailUtil;
+import com.hpedrorodrigues.imagesearch.util.external.EmailSender;
+import com.hpedrorodrigues.imagesearch.util.external.ExternalApp;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
 
 import javax.inject.Inject;
@@ -23,13 +23,13 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
     private final SettingsView view;
 
     @Inject
-    public MailUtil mailUtil;
+    public EmailSender emailSender;
 
     @Inject
     public ShareUtil shareUtil;
 
     @Inject
-    public AppUtil appUtil;
+    public ExternalApp externalApp;
 
     public SettingsPresenter(SettingsActivity activity, Navigator navigator) {
         super(activity, navigator);
@@ -80,7 +80,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
                 view.getToggleCloseTheApp().setChecked(isChecked);
                 preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
-                answer.log("Close app check changed by container", isChecked);
+                eventTracker.track("Close app check changed by container", isChecked);
             }
         });
 
@@ -90,7 +90,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
-                        answer.log("Close app check changed by switch", isChecked);
+                        eventTracker.track("Close app check changed by switch", isChecked);
                     }
                 });
 
@@ -102,7 +102,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
                 view.getToggleKeepScreenOn().setChecked(isChecked);
                 preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
-                answer.log("Keep screen on check changed by container", isChecked);
+                eventTracker.track("Keep screen on check changed by container", isChecked);
             }
         });
 
@@ -112,7 +112,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         preferences.putBoolean(PreferenceKey.KEEP_SCREEN_ON, isChecked);
-                        answer.log("Keep screen on check changed by switch", isChecked);
+                        eventTracker.track("Keep screen on check changed by switch", isChecked);
                     }
                 });
 
@@ -124,7 +124,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
                 view.getToggleShowImagesDescription().setChecked(isChecked);
                 preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
-                answer.log("Show images description check changed by container", isChecked);
+                eventTracker.track("Show images description check changed by container", isChecked);
             }
         });
 
@@ -134,7 +134,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         preferences.putBoolean(PreferenceKey.SHOW_IMAGES_DESCRIPTION, isChecked);
-                        answer.log("Show images description check changed by switch", isChecked);
+                        eventTracker.track("Show images description check changed by switch", isChecked);
                     }
                 });
 
@@ -146,7 +146,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
                 view.getToggleSafeSearch().setChecked(isChecked);
                 preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
-                answer.log("Safe search check changed by container", isChecked);
+                eventTracker.track("Safe search check changed by container", isChecked);
             }
         });
 
@@ -155,7 +155,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 preferences.putBoolean(PreferenceKey.SAFE_SEARCH, isChecked);
-                answer.log("Safe search check changed by switch", isChecked);
+                eventTracker.track("Safe search check changed by switch", isChecked);
             }
         });
 
@@ -163,8 +163,8 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             @Override
             public void onClick(View v) {
-                mailUtil.sendReportBugEmail(activity);
-                answer.log("Report a bug action triggered");
+                emailSender.sendReportBugEmail(activity);
+                eventTracker.track("Report a bug action triggered");
             }
         });
 
@@ -172,8 +172,8 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             @Override
             public void onClick(View v) {
-                appUtil.viewOnPlayStore(activity);
-                answer.log("Rate the app action triggered");
+                externalApp.openPlayStore(activity);
+                eventTracker.track("Rate the app action triggered");
             }
         });
 
@@ -182,7 +182,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
             @Override
             public void onClick(View v) {
                 shareUtil.shareApp(activity);
-                answer.logShare("Share the app action triggered");
+                eventTracker.trackShare("Share the app action triggered");
             }
         });
 
@@ -190,8 +190,8 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             @Override
             public void onClick(View v) {
-                mailUtil.sendImproveAppEmail(activity);
-                answer.log("Idea to improve action triggered");
+                emailSender.sendImproveAppEmail(activity);
+                eventTracker.track("Idea to improve action triggered");
             }
         });
 
@@ -199,8 +199,8 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             @Override
             public void onClick(View v) {
-                mailUtil.sendFeedbackEmail(activity);
-                answer.log("Send us your feedback action triggered");
+                emailSender.sendFeedbackEmail(activity);
+                eventTracker.track("Send us your feedback action triggered");
             }
         });
 
@@ -208,8 +208,8 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
 
             @Override
             public void onClick(View v) {
-                mailUtil.sendContactUsEmail(activity);
-                answer.log("Contact us action triggered");
+                emailSender.sendContactUsEmail(activity);
+                eventTracker.track("Contact us action triggered");
             }
         });
 
@@ -223,7 +223,7 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
                         .build();
 
                 dialog.show(activity.getSupportFragmentManager(), null);
-                answer.log("Open source licenses action triggered");
+                eventTracker.track("Open source licenses action triggered");
             }
         });
     }

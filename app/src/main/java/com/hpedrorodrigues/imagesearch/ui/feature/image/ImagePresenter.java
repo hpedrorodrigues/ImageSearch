@@ -20,7 +20,7 @@ import com.hpedrorodrigues.imagesearch.data.manager.ImageActionManager;
 import com.hpedrorodrigues.imagesearch.ui.base.BasePresenter;
 import com.hpedrorodrigues.imagesearch.ui.common.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.ui.common.navigation.Navigator;
-import com.hpedrorodrigues.imagesearch.util.general.AppUtil;
+import com.hpedrorodrigues.imagesearch.util.external.ExternalApp;
 import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -39,7 +39,7 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
     public ToastUtil toastUtil;
 
     @Inject
-    public AppUtil appUtil;
+    public ExternalApp externalApp;
 
     private LoadImageView view;
     private Image image;
@@ -114,7 +114,7 @@ public class ImagePresenter extends BasePresenter<ImageActivity> {
                 dialog.show(activity.getSupportFragmentManager(), "");
                 break;
             case R.id.action_view_website:
-                appUtil.openBrowser(activity, image.getWebSiteUrl());
+                externalApp.openBrowser(activity, image.getWebSiteUrl());
                 break;
         }
 

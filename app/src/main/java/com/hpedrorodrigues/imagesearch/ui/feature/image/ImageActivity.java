@@ -2,7 +2,6 @@ package com.hpedrorodrigues.imagesearch.ui.feature.image;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +20,6 @@ public class ImageActivity extends BaseActivity {
         setContentView(R.layout.activity_image);
 
         presenter.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

@@ -6,24 +6,22 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 
-import com.crashlytics.android.answers.ContentViewEvent;
-import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
 import com.hpedrorodrigues.imagesearch.dagger.component.ISComponent;
-import com.hpedrorodrigues.imagesearch.util.general.ISAnswer;
-import com.hpedrorodrigues.imagesearch.util.general.PreferenceUtil;
+import com.hpedrorodrigues.imagesearch.data.event_tracker.EventTracker;
+import com.hpedrorodrigues.imagesearch.data.manager.PreferenceManager;
 
 import javax.inject.Inject;
 
 public abstract class BaseActivity extends BaseTransitionActivity {
 
     @Inject
-    protected ISAnswer answer;
+    protected EventTracker eventTracker;
 
     @Inject
-    protected PreferenceUtil preferences;
+    protected PreferenceManager preferences;
 
     private Toolbar toolbar;
     private ISComponent component;
@@ -36,7 +34,6 @@ public abstract class BaseActivity extends BaseTransitionActivity {
         ISApplication application = (ISApplication) getApplication();
 
         component = application.getComponent();
-        tracker = application.getTracker();
     }
 
     @Override
@@ -60,11 +57,7 @@ public abstract class BaseActivity extends BaseTransitionActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        tracker.setScreenName(getScreenName());
-        tracker.send(new HitBuilders.ScreenViewBuilder().build());
-        answer.instance()
-                .logContentView(new ContentViewEvent().putContentId("Activity Screen: " + getScreenName()));
+        eventTracker.logActivityScreen(getScreenName());
     }
 
     public ISComponent getComponent() {

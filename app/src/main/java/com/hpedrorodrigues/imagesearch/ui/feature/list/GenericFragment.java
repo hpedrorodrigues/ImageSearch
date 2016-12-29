@@ -1,7 +1,6 @@
 package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -85,12 +84,6 @@ public class GenericFragment extends BaseFragment {
         MainActivity activity = (MainActivity) getActivity();
         presenter = new GenericPresenter(this, activity.getNavigator(), getApi());
         getComponent().inject(presenter);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

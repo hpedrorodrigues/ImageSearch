@@ -2,7 +2,6 @@ package com.hpedrorodrigues.imagesearch.ui.feature.list;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,14 +79,6 @@ public class MainPresenter extends BasePresenter<MainActivity> {
         }
 
         return super.onBackPressed();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (currentFragment != null) {
-            currentFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
     }
 
     private void setUpDrawerListener() {

@@ -1,27 +1,29 @@
-package com.hpedrorodrigues.imagesearch.util.general;
+package com.hpedrorodrigues.imagesearch.util.external;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.hpedrorodrigues.imagesearch.util.general.IntentUtil;
+
 import javax.inject.Inject;
 
-public class AppUtil {
+public class ExternalApp {
 
     @Inject
     public IntentUtil intentUtil;
 
     @Inject
-    public AppUtil() {
+    public ExternalApp() {
     }
 
-    public void openBrowser(Activity activity, String url) {
+    public void openBrowser(final Activity activity, final String url) {
         activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
-    public void viewOnPlayStore(Activity activity) {
-        String packageName = activity.getPackageName();
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+    public void openPlayStore(final Activity activity) {
+        final String packageName = activity.getPackageName();
+        final Intent intent = new Intent(Intent.ACTION_VIEW);
 
         intent.setData(Uri.parse("market://details?id=" + packageName));
 

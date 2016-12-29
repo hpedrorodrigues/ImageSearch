@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.data.manager;
+package com.hpedrorodrigues.imagesearch.util.general;
 
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -22,7 +22,7 @@ import static android.app.DownloadManager.Request;
 import static android.app.DownloadManager.STATUS_FAILED;
 import static android.app.DownloadManager.STATUS_SUCCESSFUL;
 
-public class ISDownloadManager {
+public class DownloadUtil {
 
     @Inject
     public Context context;
@@ -31,7 +31,7 @@ public class ISDownloadManager {
     public DownloadManager downloadManager;
 
     @Inject
-    public ISDownloadManager() {
+    public DownloadUtil() {
     }
 
     public void enqueueDownload(final String url, final Activity activity,

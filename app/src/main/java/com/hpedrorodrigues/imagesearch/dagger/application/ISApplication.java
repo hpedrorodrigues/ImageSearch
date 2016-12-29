@@ -18,37 +18,32 @@ import timber.log.Timber;
 public class ISApplication extends Application {
 
     private ISComponent component;
-    private Tracker tracker;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        boolean isDebug = BuildConfig.DEBUG;
+        final boolean isDebug = BuildConfig.DEBUG;
 
         // Timber
         Timber.plant(new Timber.DebugTree());
 
-        // Dagger
-        component = DaggerISComponent.builder().iSModule(new ISModule(this)).build();
-
-        // Crashlytics and Answers
-        CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(isDebug).build();
-        Fabric.with(this, new Crashlytics.Builder().core(core).build());
-
         // Analytics
-        GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+        final GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
         analytics.setAppOptOut(isDebug);
 
-        tracker = analytics.newTracker(R.xml.global_tracker);
+        final Tracker tracker = analytics.newTracker(R.xml.global_tracker);
         tracker.enableAdvertisingIdCollection(true);
+
+        // Dagger
+        component = DaggerISComponent.builder().iSModule(new ISModule(this, tracker)).build();
+
+        // Crashlytics and Answers
+        final CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(isDebug).build();
+        Fabric.with(this, new Crashlytics.Builder().core(core).build());
     }
 
     public ISComponent getComponent() {
         return component;
-    }
-
-    public Tracker getTracker() {
-        return tracker;
     }
 }

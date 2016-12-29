@@ -2,12 +2,15 @@ package com.hpedrorodrigues.imagesearch.data.manager;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 
 import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.api.entity.Image;
 import com.hpedrorodrigues.imagesearch.component.service.ConnectionService;
 import com.hpedrorodrigues.imagesearch.util.StringUtil;
-import com.hpedrorodrigues.imagesearch.util.general.ClipboardUtil;
+import com.hpedrorodrigues.imagesearch.util.general.DownloadUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ShareUtil;
 import com.hpedrorodrigues.imagesearch.util.general.ToastUtil;
 import com.hpedrorodrigues.imagesearch.util.general.WallpaperUtil;
@@ -17,18 +20,21 @@ import com.karumi.dexter.listener.single.EmptyPermissionListener;
 
 import javax.inject.Inject;
 
-import static com.hpedrorodrigues.imagesearch.data.manager.ISDownloadManager.OnDownloadListener;
+import static com.hpedrorodrigues.imagesearch.util.general.DownloadUtil.OnDownloadListener;
 
 public class ImageActionManager {
 
     @Inject
-    public ClipboardUtil clipboardUtil;
+    public Context context;
+
+    @Inject
+    public ClipboardManager clipboardManager;
 
     @Inject
     public ShareUtil shareUtil;
 
     @Inject
-    public ISDownloadManager downloadManager;
+    public DownloadUtil downloadManager;
 
     @Inject
     public ToastUtil toastUtil;
@@ -48,7 +54,11 @@ public class ImageActionManager {
     }
 
     public void copyImageUrl(final Image image) {
-        clipboardUtil.copy(getImageUrlByConnection(image));
+        final String text = getImageUrlByConnection(image);
+        final ClipData clip = ClipData.newPlainText(text, text);
+
+        clipboardManager.setPrimaryClip(clip);
+        toastUtil.showLong(context.getString(R.string.text_copied_to_clipboard, text));
     }
 
     public void changeWallpaper(final Image image, final Activity activity) {

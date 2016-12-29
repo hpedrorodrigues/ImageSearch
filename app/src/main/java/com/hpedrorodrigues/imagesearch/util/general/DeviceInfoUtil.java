@@ -1,13 +1,13 @@
-package com.hpedrorodrigues.imagesearch.util.info;
+package com.hpedrorodrigues.imagesearch.util.general;
 
 import android.os.Build;
 
 import javax.inject.Inject;
 
-public class DeviceInfo {
+public class DeviceInfoUtil {
 
     @Inject
-    public DeviceInfo() {
+    public DeviceInfoUtil() {
     }
 
     public String getDetails() {

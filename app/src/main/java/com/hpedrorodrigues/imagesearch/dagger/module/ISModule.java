@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 
+import com.google.android.gms.analytics.Tracker;
 import com.hpedrorodrigues.imagesearch.component.receiver.observable.NetworkStateObservable;
 import com.hpedrorodrigues.imagesearch.dagger.application.ISApplication;
 
@@ -21,9 +22,11 @@ import dagger.Provides;
 public final class ISModule extends BaseModule {
 
     private final ISApplication application;
+    private final Tracker tracker;
 
-    public ISModule(ISApplication application) {
+    public ISModule(final ISApplication application, final Tracker tracker) {
         this.application = application;
+        this.tracker = tracker;
     }
 
     @Provides
@@ -72,5 +75,11 @@ public final class ISModule extends BaseModule {
     @Singleton
     public WallpaperManager provideWallpaperManager(Context context) {
         return WallpaperManager.getInstance(context);
+    }
+
+    @Provides
+    @Singleton
+    public Tracker provideTracker() {
+        return tracker;
     }
 }

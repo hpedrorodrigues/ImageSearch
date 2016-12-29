@@ -17,9 +17,9 @@ public class IntentUtil {
     public IntentUtil() {
     }
 
-    public boolean isAvailable(Activity activity, Intent intent) {
-        PackageManager manager = activity.getPackageManager();
-        List<ResolveInfo> list = manager
+    public boolean isAvailable(final Activity activity, final Intent intent) {
+        final PackageManager manager = activity.getPackageManager();
+        final List<ResolveInfo> list = manager
                 .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
 
         return !CollectionUtil.isEmpty(list);

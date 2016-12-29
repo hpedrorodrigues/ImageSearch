@@ -1,16 +1,16 @@
-package com.hpedrorodrigues.imagesearch.util.general;
+package com.hpedrorodrigues.imagesearch.data.manager;
 
 import android.content.SharedPreferences;
 
 import javax.inject.Inject;
 
-public class PreferenceUtil {
+public class PreferenceManager {
 
     @Inject
     public SharedPreferences preferences;
 
     @Inject
-    public PreferenceUtil() {
+    public PreferenceManager() {
     }
 
     public void putBoolean(String key, boolean value) {
