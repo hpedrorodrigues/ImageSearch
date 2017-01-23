@@ -10,7 +10,7 @@
 [giphy-docs]: https://github.com/Giphy/GiphyAPI
 [playstore-badge]: ./art/general/en-play-badge.png
 [app-url]: https://play.google.com/store/apps/details?id=com.hpedrorodrigues.imagesearch
-[img-1]: ./art/phone/1.png
+[app-home-img]: https://raw.githubusercontent.com/hpedrorodrigues/ImageSearch/master/art/phone/1.png
 
 # Image Search
 
@@ -33,7 +33,7 @@ A simple android app to image search.
 
 ## Image
 
-![1][img-1]
+![Home][app-home-img]
 
 ## License
 
