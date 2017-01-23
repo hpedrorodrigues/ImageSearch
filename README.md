@@ -19,11 +19,6 @@ Currently available on the Play store.
 - [x] [Pixabay Docs][pixabay-docs]
 - [x] [Giphy Docs][giphy-docs]
 
-**APIs**:
-
-- API responses [here][docs]
-- More APIs [here][more-apis]
-
 ## More
 
 ImageSearch is a work in progress, but feel free to study it.
