@@ -44,7 +44,9 @@
 
     </group>
 
-    <item android:title="@string/general">
+    <item
+        android:checked="true"
+        android:title="@string/general">
 
         <menu>
 

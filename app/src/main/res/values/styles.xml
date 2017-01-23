@@ -70,4 +70,10 @@
         </item>
     </style>
 
+    <style name="AppTheme.NavigationView" parent="@style/ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.NavigationView.Item">
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Small</item>
+    </style>
+
 </resources>

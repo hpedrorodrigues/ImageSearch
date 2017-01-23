@@ -20,13 +20,16 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white"
+        android:background="@color/dark_gray"
+        android:elevation="@dimen/spacing_large"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/drawer_header"
         app:itemBackground="@drawable/drawer_item_background"
         app:itemIconTint="@drawable/drawer_item"
+        app:itemTextAppearance="@style/AppTheme.NavigationView.Item"
         app:itemTextColor="@drawable/drawer_item"
         app:menu="@menu/drawer"
-        app:theme="@style/ThemeOverlay.AppCompat.Light" />
+        app:theme="@style/AppTheme.NavigationView"
+        tools:targetApi="lollipop" />
 
 </android.support.v4.widget.DrawerLayout>

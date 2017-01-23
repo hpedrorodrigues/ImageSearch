@@ -3,15 +3,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@color/colorAccent"
-    android:gravity="bottom"
+    android:background="@color/black"
+    android:gravity="center"
     android:orientation="horizontal"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_large"
         android:layout_marginStart="@dimen/spacing_large"
         android:src="@mipmap/ic_launcher" />
@@ -19,10 +18,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
         android:layout_marginLeft="@dimen/spacing_medium"
         android:layout_marginStart="@dimen/spacing_medium"
-        android:gravity="center_vertical"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingEnd="@dimen/spacing_medium"
         android:paddingLeft="@dimen/spacing_medium"
@@ -33,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -41,9 +39,8 @@
             android:id="@+id/app_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_medium"
             android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
             android:textColor="@color/white" />
 
     </LinearLayout>
