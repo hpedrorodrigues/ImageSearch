@@ -33,7 +33,7 @@ A simple android app to image search.
 
 ## Image
 
-![Home][app-home-img]
+<img src="https://raw.githubusercontent.com/hpedrorodrigues/ImageSearch/master/art/phone/1.png" width="300"/>
 
 ## License
 
