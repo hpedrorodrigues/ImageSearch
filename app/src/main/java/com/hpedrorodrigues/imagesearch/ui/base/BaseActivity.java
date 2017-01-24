@@ -46,7 +46,7 @@ public abstract class BaseActivity extends BaseTransitionActivity {
             setUpToolbar();
         }
 
-        setUpPresenter();
+        onPresenter();
         inject();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -89,7 +89,7 @@ public abstract class BaseActivity extends BaseTransitionActivity {
         return true;
     }
 
-    protected abstract void setUpPresenter();
+    protected abstract void onPresenter();
 
     protected abstract void inject();
 

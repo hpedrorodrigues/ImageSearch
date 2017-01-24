@@ -21,7 +21,7 @@ public class SettingsActivity extends BaseActivity {
     }
 
     @Override
-    protected void setUpPresenter() {
+    protected void onPresenter() {
         presenter = new SettingsPresenter(this, new AndroidNavigator(this));
         getComponent().inject(presenter);
     }

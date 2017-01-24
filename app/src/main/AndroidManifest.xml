@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity"
+            android:name="com.hpedrorodrigues.imagesearch.ui.feature.list.ListActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">

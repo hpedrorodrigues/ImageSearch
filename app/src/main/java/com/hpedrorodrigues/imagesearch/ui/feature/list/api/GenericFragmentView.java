@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.feature.list;
+package com.hpedrorodrigues.imagesearch.ui.feature.list.api;
 
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;

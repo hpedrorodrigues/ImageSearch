@@ -54,10 +54,6 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
     }
 
     private void loadValues() {
-        boolean closeApp = preferences.getBoolean(PreferenceKey.ASK_TO_EXIT,
-                ISConstant.DEFAULT_ASK_TO_EXIT);
-        view.getToggleCloseTheApp().setChecked(closeApp);
-
         boolean keepScreenOn = preferences.getBoolean(PreferenceKey.KEEP_SCREEN_ON,
                 ISConstant.DEFAULT_KEEP_SCREEN_ON);
         view.getToggleKeepScreenOn().setChecked(keepScreenOn);
@@ -72,28 +68,6 @@ public class SettingsPresenter extends BasePresenter<SettingsActivity> {
     }
 
     private void setUpListeners() {
-        view.getCloseAppContainer().setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                boolean isChecked = !view.getToggleCloseTheApp().isChecked();
-
-                view.getToggleCloseTheApp().setChecked(isChecked);
-                preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
-                eventTracker.track("Close app check changed by container", isChecked);
-            }
-        });
-
-        view.getToggleCloseTheApp()
-                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        preferences.putBoolean(PreferenceKey.ASK_TO_EXIT, isChecked);
-                        eventTracker.track("Close app check changed by switch", isChecked);
-                    }
-                });
-
         view.getKeepScreenOnContainer().setOnClickListener(new View.OnClickListener() {
 
             @Override

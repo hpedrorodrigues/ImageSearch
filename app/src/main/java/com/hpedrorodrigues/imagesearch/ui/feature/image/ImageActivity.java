@@ -43,7 +43,7 @@ public class ImageActivity extends BaseActivity {
     }
 
     @Override
-    protected void setUpPresenter() {
+    protected void onPresenter() {
         presenter = new ImagePresenter(this, new AndroidNavigator(this));
         getComponent().inject(presenter);
     }

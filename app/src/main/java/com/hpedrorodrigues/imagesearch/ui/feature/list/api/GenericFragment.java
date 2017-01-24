@@ -1,4 +1,4 @@
-package com.hpedrorodrigues.imagesearch.ui.feature.list;
+package com.hpedrorodrigues.imagesearch.ui.feature.list.api;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,7 @@ import com.hpedrorodrigues.imagesearch.R;
 import com.hpedrorodrigues.imagesearch.data.constant.BundleKey;
 import com.hpedrorodrigues.imagesearch.data.remote.api.Api;
 import com.hpedrorodrigues.imagesearch.ui.base.BaseFragment;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.ListActivity;
 
 public class GenericFragment extends BaseFragment {
 
@@ -81,7 +82,7 @@ public class GenericFragment extends BaseFragment {
 
     @Override
     protected void setUpPresenter() {
-        MainActivity activity = (MainActivity) getActivity();
+        ListActivity activity = (ListActivity) getActivity();
         presenter = new GenericPresenter(this, activity.getNavigator(), getApi());
         getComponent().inject(presenter);
     }

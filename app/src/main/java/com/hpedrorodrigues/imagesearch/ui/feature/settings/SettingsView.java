@@ -9,9 +9,6 @@ import com.hpedrorodrigues.imagesearch.ui.base.BaseView;
 
 public class SettingsView extends BaseView<SettingsActivity> {
 
-    private RelativeLayout closeAppContainer;
-    private Switch toggleCloseTheApp;
-
     private RelativeLayout keepScreenOnContainer;
     private Switch toggleKeepScreenOn;
 
@@ -35,9 +32,6 @@ public class SettingsView extends BaseView<SettingsActivity> {
 
     @Override
     public void onView() {
-        closeAppContainer = (RelativeLayout) activity.findViewById(R.id.closeApp);
-        toggleCloseTheApp = (Switch) activity.findViewById(R.id.toggleCloseTheApp);
-
         keepScreenOnContainer = (RelativeLayout) activity.findViewById(R.id.keepScreenOn);
         toggleKeepScreenOn = (Switch) activity.findViewById(R.id.toggleKeepScreenOn);
 
@@ -54,14 +48,6 @@ public class SettingsView extends BaseView<SettingsActivity> {
         sendUsYourFeedback = (LinearLayout) activity.findViewById(R.id.sendUsYourFeedback);
         contactUs = (LinearLayout) activity.findViewById(R.id.contactUs);
         openSourceLicenses = (LinearLayout) activity.findViewById(R.id.openSourceLicenses);
-    }
-
-    public RelativeLayout getCloseAppContainer() {
-        return closeAppContainer;
-    }
-
-    public Switch getToggleCloseTheApp() {
-        return toggleCloseTheApp;
     }
 
     public RelativeLayout getKeepScreenOnContainer() {

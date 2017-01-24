@@ -7,12 +7,11 @@ import com.hpedrorodrigues.imagesearch.injection.module.ISModule;
 import com.hpedrorodrigues.imagesearch.ui.common.component.ImageDetailDialog;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImageActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.image.ImagePresenter;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragment;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericFragmentView;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.GenericPresenter;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.MainActivity;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.MainPresenter;
-import com.hpedrorodrigues.imagesearch.ui.feature.list.MainView;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.ListActivity;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.ListContract;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.api.GenericFragment;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.api.GenericFragmentView;
+import com.hpedrorodrigues.imagesearch.ui.feature.list.api.GenericPresenter;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsActivity;
 import com.hpedrorodrigues.imagesearch.ui.feature.settings.SettingsPresenter;
 
@@ -28,17 +27,15 @@ public interface ISComponent extends BaseComponent {
 
     void inject(BaseParser parser);
 
-    void inject(MainActivity activity);
+    void inject(ListActivity activity);
 
-    void inject(MainPresenter presenter);
+    void inject(ListContract.Presenter presenter);
 
     void inject(GenericFragment fragment);
 
     void inject(GenericPresenter presenter);
 
     void inject(GenericFragmentView view);
-
-    void inject(MainView view);
 
     void inject(SettingsActivity activity);
 
