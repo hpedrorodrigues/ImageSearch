@@ -16,7 +16,7 @@
 
 [![Build Status][travis-image]][travis-url]
 
-A simple android app to image search.
+A simple Android App.
 
 [![Play Store Badge][playstore-badge]][app-url]
 
